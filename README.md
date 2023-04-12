@@ -22,9 +22,9 @@ The overall framework of iLOSCAR is built upon the LOSCAR (*Long-term Ocean-atmo
 
 The ocean component in LOSCAR is composed of three (four in the palaeo version) ocean reservoirs (Atlantic, Indian, Pacific, and Tethys in the palaeo set-up). Each of the basins is further subdivided into three depth boxes (surface, intermediate, and deep) and there is one gereric box representing the high latitude ocean. The ocean part is coupled with a genuine sediment model, which contains 13 layers of diffenrent depths and calculates %CaCO3 in each layer.
 
-LOSCAR keeps track the concentrations of various biogeochemical tracers (including total carbon-TC, total alkalinity-TA, stable carbon isotopes-13C, and others) in different boxes. These tracers compose the state variables ($\overrightarrow{\theta}$) of the model and their dynamic changes over time are governed by the following first-order ordinary equation system (Zeebe, 2012):
+LOSCAR keeps track the concentrations of various biogeochemical tracers (including total carbon-TC, total alkalinity-TA, stable carbon isotopes-13C, and others) in different boxes. These tracers compose the state variables ($\overrightarrow{\y_i}$) of the model and their dynamic changes over time are governed by the following first-order ordinary equation system (Zeebe, 2012):
 
-$\frac{n!}{k!(n-k)!}$
+$\frac{d\overrightarrow{\y_i}}{dt}$
 
 ## Parameter explaination
 ### Mode control.  
