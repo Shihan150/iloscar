@@ -24,9 +24,9 @@ The ocean component in LOSCAR is composed of three (four in the palaeo version) 
 
 LOSCAR keeps track the concentrations of various biogeochemical tracers (including total carbon-TC, total alkalinity-TA, stable carbon isotopes-13C, and others) in different boxes. These tracers compose the state variables ($\overrightarrow{\theta}$) of the model and their dynamic changes over time are governed by the following first-order ordinary equation system (Zeebe, 2012):
 
-$$
-\frac{d\overrightarrow{\y_i}{dt}
-$$
+\begin{equation*} 
+\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x)
+\end{equation*} 
 
 ## Parameter explaination
 ### Mode control.  
