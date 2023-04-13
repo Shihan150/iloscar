@@ -42,10 +42,10 @@ There are three innovations in the iLOSCAR compared with the original LOSCAR mod
 The aim of inverse model is to estimate the carbon emission trajectory (i.e., fcinp(t)) from the given target records (i.e., pCO2 and mean sea surface pH, termed as x(t)) and to constrain the carbon isotopic value (d13c(t)) according to the mean sea surface d13c record (i.e., fd13c(t)). 
 
 x(t) can be derived from each given $\overrightarrow{y}(t)$ (pCO2 is a state variable and pH in each ocean box can be caculated from two state variables: TA and ALK.). We generalize the relationship as:  
-$$ x(t) = g(\overrightarrow{y}(t)) $$ (Eq. 3)
+$ x(t) = g(\overrightarrow{y}(t)) $ (Eq. 3)
 where $\overrightarrow{y}(t)$ can be solved from Eq. 2 when $lambda$, $\overrightarrow{y}(t=0)$, $fcinp(t)$ are given. Note that fd13c(t) only controls the 13C/12C ratio of input carbon and has no effect on x(t). Here we take $lambda$ and $\overrightarrow{y}(t=0)$ are fixed and $fcinp(t)$ could be adjusted to produce x(t) that makes the best fit with proxy records (X(t)). Then   Eq. 3 can be further written as:
 
-$$ x(t) = G(fcinp(t))$$.  (Eq. 4)
+$ x(t) = G(fcinp(t))$.  (Eq. 4)
 
 Theoretically carbon emission could be intermittent and spontaneous, thus it is adventurous to simplify $fcinp(t)$ to some known distributions. However, some assumption is inevitable to reduce the parameters required to describe $fcinp(t)$. Therefore, we seperate the input scenario to (n-1) intervals by n points from X(t) time series data, and in each interval, we assume a linear increase/decrease of emission rate, i.e.:
 
