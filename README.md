@@ -115,8 +115,8 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
 ###1. Benchmark
 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578).
 1. Go to the Forward page   
-2
-![image](https://user-images.githubusercontent.com/57557675/232096060-c7d49615-19d3-4df1-acb1-911ad0584e7f.png)
+
+![image](https://user-images.githubusercontent.com/57557675/232100195-e47c4d51-dbba-4b5b-a82a-b60cb3870703.png)
 
 2. Turn the PALEO to '1'. Then the model parameters in Table 2 will adjust automatically to the palaeo settings, so skip the Step 2.
 
@@ -137,11 +137,14 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
 6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). The folder will be in the same dictionary where you run your python code. 44Modeling Mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
 
 ![image](https://user-images.githubusercontent.com/57557675/232099371-c2bac20e-fd1c-4c16-8acb-88f4de7e7815.png)
-<img width="808" alt="image" src="https://user-images.githubusercontent.com/57557675/232098867-fe5a6609-0140-42ba-a520-3f06fef51aa1.png">
- 
 
 1.2 Inverse twin experiment
 
+To test the performance of inverse algorithm, an identical twin test is performed. In identical twin testing, a preliminary run of the forward model is used to generate a synthetic 'truth' data set which can subsequently be used in inversion experiments. It is straightfoward to check whether the inverse algorithm works correctly. 
+
+1. Preliminary run
+    * Choose 
+    * Item 2b
 
 ###2. Example
 
