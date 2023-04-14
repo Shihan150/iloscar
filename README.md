@@ -57,7 +57,7 @@ fcinp(t) &= k_1 * (t - t_0)  (if  t_0 <= t <=t_1) \\
 
 where t_i is the time points of time-series X(t) data. In this way, $fcinp(t)$ could be represented by $(n-1)$ parameters ($k_1 - k_{n-1}$). The problem can be rephrased as to find the $\overrightarrow{k})$ to minimize the following function:
 
-$$\sum_{i=1}^n G(\overrightarrow{k})[t = t_i] - X(t = t_i) (Eq.6)$$  
+$$\eqalign{\sum_{i=1}^n G(\overrightarrow{k})[t = t_i] - X(t = t_i)} (Eq.6)$$  
 
 Since there are k equations for k parameters, the essence of inverse problem belongs to the category of root finder instead of optimization. To find the solution, a sequential iteration algorithm is applied. Concretely, we start from [t0, t1] interval and apply 'secant' method from Python scipy package to solve the equation $G(k_1)[t=t_1] = X(t=t_1)$. The secant method is chosen as the numerical solver mainly due to its fast convergence rate, thus accelerating the model speed. When $k_1$ is solved, the algorithm will run forwardly with the $k_1$-based fcinp(t) at $[t_0, t_1]$ inveterval and save the $\overrightarrow{y}(t=t_1)$, which will serve as the initial y0 for next iteration at $[t1, t2]$ interval. The same process will repeat until $k_n$ is solved. 
 
@@ -70,29 +70,29 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
 | File.csv    | Unit        | Variable         |
 | ----------- | ----------- | ---------------- |
 | tcb    |  (deg C)  | OCN temperature|
-| dic    |   (mmol/kg) | OCN total dissolved inorganic carbon
-        alk    |  (mmol/kg)| OCN total alkalinity
-        po4   |    (umol/kg)| OCN phosphate
-        dox   |    (mol/m3) | OCN dissolved oxygen
-        dicc  |    (mmol/kg) |OCN DIC-13
-        d13c   |   (per mil)| OCN delta13C(DIC)
-        d13ca   |  (per mil) |ATM delta13C(atmosphere)
-        pco2a_d13c   |  (ppmv, per mil)   | ATM atmospheric pCO2 and d13c
-        co3      | (umol/kg) |OCN carbonate ion concentration
-        ph      |  (-)      | OCN pH (total scale)
-        pco2ocn |  (uatm)   | OCN ocean pCO2
-        omegaclc | (-)     |  OCN calcite saturation state
-        omegaarg | (-)     |  OCN aragonite saturation state
-        fca     |  (-)    |   SED calcite content Atlantic
-        fci    |   (-)     |  SED calcite content Indian
-        fcp     |  (-)     |  SED calcite content Pacific
-        fct     |  (-)     |  SED calcite content Tethys (PALEO only)
-        ccda   |   (m)     |  SED calcite compens. depth Atlantic
-        ccdi   |   (m)     |  SED calcite compens. depth Indian
-        ccdp   |   (m)     |  SED calcite compens. depth Pacific
-        ccdt    |  (m)     |  SED calcite compens. depth Tethys (PALEO only)
- Surface_dic_alk_d13c_ph | (-) |  Mean OCN surface DIC, ALK, d13c, and pH
-        Carbon_inventory |   (mol)   |  Total carbon and alkalinty in the ocean
+| dic    |   (mmol/kg) | OCN total dissolved inorganic carbon|
+      |  alk    |  (mmol/kg)| OCN total alkalinity|
+      |  po4   |    (umol/kg)| OCN phosphate|
+      |  dox   |    (mol/m3) | OCN dissolved oxygen|
+     |   dicc  |    (mmol/kg) |OCN DIC-13|
+      |  d13c   |   (per mil)| OCN delta13C(DIC)|
+      |  d13ca   |  (per mil) |ATM delta13C(atmosphere)|
+     |   pco2a_d13c   |  (ppmv, per mil)   | ATM atmospheric pCO2 and d13c|
+    |    co3      | (umol/kg) |OCN carbonate ion concentration|
+     |   ph      |  (-)      | OCN pH (total scale)|
+    |    pco2ocn |  (uatm)   | OCN ocean pCO2|
+    |    omegaclc | (-)     |  OCN calcite saturation state|
+    |    omegaarg | (-)     |  OCN aragonite saturation state|
+   |     fca     |  (-)    |   SED calcite content Atlantic|
+    |    fci    |   (-)     |  SED calcite content Indian|
+    |    fcp     |  (-)     |  SED calcite content Pacific|
+    |    fct     |  (-)     |  SED calcite content Tethys (PALEO only)|
+    |    ccda   |   (m)     |  SED calcite compens. depth Atlantic|
+    |    ccdi   |   (m)     |  SED calcite compens. depth Indian|
+    |    ccdp   |   (m)     |  SED calcite compens. depth Pacific|
+   |     ccdt    |  (m)     |  SED calcite compens. depth Tethys (PALEO only)|
+| Surface_dic_alk_d13c_ph | (-) |  Mean OCN surface DIC, ALK, d13c, and pH|
+|        Carbon_inventory |   (mol)   |  Total carbon and alkalinty in the ocean|
         
         
 
