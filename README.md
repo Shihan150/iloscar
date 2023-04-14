@@ -59,7 +59,7 @@ where t_i is the time points of time-series X(t) data. In this way, $fcinp(t)$ c
 
 $$\sum_{i=1}^n G(\overrightarrow{k})[t = t_i] - X(t = t_i)$$  (Eq.6)
 
-Since there are k equations for k parameters, the essence of inverse problem belongs to the category of root finder instead of optimization. To find the solution, a sequential iteration algorithm is applied. Concretely, we start from [t0, t1] interval and apply 'secant' method from Python scipy package to solve the equation $G(k_1)[t=t_1] = X(t=t_1}$. The secant method is chosen as the numerical solver mainly due to its fast convergence rate, thus accelerating the model speed. When $k_1$ is solved, the algorithm will run forwardly with the $k_1$-based fcinp(t) at $[t_0, t_1]$ inveterval and save the $\overrightarrow{y}(t=t_1)$, which will serve as the initial y0 for next iteration at $[t1, t2]$ interval. The same process will repeat until $k_n$ is solved. 
+Since there are k equations for k parameters, the essence of inverse problem belongs to the category of root finder instead of optimization. To find the solution, a sequential iteration algorithm is applied. Concretely, we start from [t0, t1] interval and apply 'secant' method from Python scipy package to solve the equation $G(k_1)[t=t_1] = X(t=t_1)$. The secant method is chosen as the numerical solver mainly due to its fast convergence rate, thus accelerating the model speed. When $k_1$ is solved, the algorithm will run forwardly with the $k_1$-based fcinp(t) at $[t_0, t_1]$ inveterval and save the $\overrightarrow{y}(t=t_1)$, which will serve as the initial y0 for next iteration at $[t1, t2]$ interval. The same process will repeat until $k_n$ is solved. 
 
 The modeling d13c results depend on both the isotopic signature and the mass of emitted carbon. When fcinp(t) is solved, the similar procedure will be applied to calculate fd13c(t), except that a constant d13c value in each interval.
 
@@ -67,7 +67,7 @@ The modeling d13c results depend on both the isotopic signature and the mass of 
 A LOWESS smoothing function is provided. Users are allowed to upload data files and tune the hyperparamter that controls the windown fraction used in LOWESS manually. Note that the default temporal resolution for output data is 0.2 kyr. For a full description of smoothing algorithm, refer to [https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
 ### Output files
-        FILE.csv |  UNIT    | VARIABLE
+   FILE.csv |  UNIT    | VARIABLE
         -----------------------------------------------------------------
         tcb    |  (deg C)  | OCN temperature
         dic    |   (mmol/kg) | OCN total dissolved inorganic carbon
