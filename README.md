@@ -172,10 +172,29 @@ To test the performance of inverse algorithm, an identical twin test is performe
  
   
 
-###2. Example
+### 2. Example
 
 2.1 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
     1. Derive the steady state y0
-        * At forward page, set PALEO == 1, tifnal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
-        * turn
-        * Name the experiment and 
+        * Navigate to the Forward page.
+        * In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
+        * In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
+        * In Table 4, input './gutjahr2017.dat' into the third row.
+        * Name the experiment and run the model.
+        
+    2. Inversion experiment
+        * Navigate to the Inverse page.
+        * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
+        * In Table 1, set PALEO == 1, LOADFLAG == 1, Save ystart == 0
+        * In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
+        * In Table 4, input './gutjahr2017.dat'
+        * Name the experiment and run the model
+        * Succeed! 
+        
+    3. Data interpretation
+        * Refer to [TBD]
+
+2.2 [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)
+
+        
+        
