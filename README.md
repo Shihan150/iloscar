@@ -61,7 +61,7 @@ $$\eqalign{
 \sum_{i=1}^n G(\overrightarrow{k})[t = t_i] - X(t = t_i)
 } \text{       }   Eq.6$$  
 
-Since there are k equations for k parameters, the essence of inverse problem belongs to the category of root finder instead of optimization. To find the solution, a sequential iteration algorithm is applied. Concretely, we start from [t0, t1] interval and apply 'secant' method from Python scipy package to solve the equation $G(k_1)[t=t_1] = X(t=t_1)$. The secant method is chosen as the numerical solver mainly due to its fast convergence rate, thus accelerating the model speed. When $k_1$ is solved, the algorithm will run forwardly with the $k_1$-based fcinp(t) at $[t_0, t_1]$ inveterval and save the $\overrightarrow{y}(t=t_1)$, which will serve as the initial y0 for next iteration at $[t1, t2]$ interval. The same process will repeat until $k_n$ is solved. 
+Since there are k equations for k parameters, the essence of inverse problem belongs to the category of root finder instead of optimization. To find the solution, a sequential iteration algorithm is applied. Concretely, we start from [t0, t1] interval and apply ['toms748' method](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.toms748.html) from Python scipy package to solve the equation $G(k_1)[t=t_1] = X(t=t_1)$. The toms74 method is chosen as the numerical solver mainly due to its fast convergence rate, thus accelerating the model speed. When $k_1$ is solved, the algorithm will run forwardly with the $k_1$-based fcinp(t) at $[t_0, t_1]$ inveterval and save the $\overrightarrow{y}(t=t_1)$, which will serve as the initial y0 for next iteration at $[t1, t2]$ interval. The same process will repeat until $k_n$ is solved. 
 
 The modeling d13c results depend on both the isotopic signature and the mass of emitted carbon. When fcinp(t) is solved, the similar procedure will be applied to calculate fd13c(t), except that a constant d13c value in each interval.
 
@@ -112,44 +112,68 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
 
 
 ## Example
+(Required dataset could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat).)
 ###1. Benchmark
 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578).
-1. Go to the Forward page   
+    1. Go to the Forward page   
 
 ![image](https://user-images.githubusercontent.com/57557675/232100195-e47c4d51-dbba-4b5b-a82a-b60cb3870703.png)
 
-2. Turn the PALEO to '1'. Then the model parameters in Table 2 will adjust automatically to the palaeo settings, so skip the Step 2.
+    2. Turn the PALEO to '1'. Then the model parameters in Table 2 will adjust automatically to the palaeo settings, so skip the Step 2.
 
 ![image](https://user-images.githubusercontent.com/57557675/232095753-3edcd6d7-9a06-49cd-85f8-ecf19c4fca94.png)
 
-3. Select the carbon emission scenario in Table 3. In this example, set 'emission pattern' == 1, emission amount == 3000, 'd13c emission' == -55, 'emission start' == 0, 'emission duration' == 6000.
+    3. Select the carbon emission scenario in Table 3. In this example, set 'emission pattern' == 1, emission amount == 3000, 'd13c emission' == -55, 'emission start' == 0, 'emission duration' == 6000.
 
 ![image](https://user-images.githubusercontent.com/57557675/232096837-51e2d08a-5f5c-48c5-b0dd-ac867f97327a.png)
 
-4. Give a name to your experiment and run it. I name it as Zeebe2009 here.
+    4. Give a name to your experiment and run it. I name it as Zeebe2009 here.
 
 ![image](https://user-images.githubusercontent.com/57557675/232097501-d03a8807-07e3-4e6f-bef9-ca7bb1eb8770.png)
 
-5. The running information will be given in the following chunck. A progress bar is displayed to track the experiment running. 
+    5. The running information will be given in the following chunck. A progress bar is displayed to track the experiment running. 
 
 ![image](https://user-images.githubusercontent.com/57557675/232097903-6d2d0c27-6d90-464b-9359-8d42d0d9bded.png)
 
-6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). The folder will be in the same dictionary where you run your python code. 44Modeling Mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
+    6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). The folder will be in the same dictionary where you run your python code. 44Modeling Mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
 
 ![image](https://user-images.githubusercontent.com/57557675/232099371-c2bac20e-fd1c-4c16-8acb-88f4de7e7815.png)
 
-1.2 Inverse twin experiment
+1.2 Inverse twin experiment 
 
 To test the performance of inverse algorithm, an identical twin test is performed. In identical twin testing, a preliminary run of the forward model is used to generate a synthetic 'truth' data set which can subsequently be used in inversion experiments. It is straightfoward to check whether the inverse algorithm works correctly. 
 
 1. Preliminary run
-    * Choose 
-    * Item 2b
+    * In Forward page, follow all the default settings in Table 1 and 2, except turn tfinal to 2e4.
+    * Set 'emission pattern' as 3 in Step 3 and input 'pulse_emi.dat' in second row of Table 4. Note that relative path is required for the file name. 
+    * 'puluse_emi.dat'  two emission events: fast and short (3000 Gt in 3 kyr) vs slow and long (10000 Gt in 35 kyr), thus serving an excellent example to check the inversion algorithm.
+    * Name the model and run the experiment. 
+    
+    ![image](https://user-images.githubusercontent.com/57557675/232114536-3d65cadb-fcea-45e9-9e52-c1cbb66c1bae.png)
+
+2. Prepare data for inversion
+    * At twin_exp folder, select the pCO2 results from pCO2_d13c.csv file and save as twin_pco2_for_inv.csv. Note that the modeling results are of high temporal resolution and we take a slice to keep the inversion time reasonable.
+    * Repeat the process for mean surface pH and surface d13C result.
+
+3. Inverse experiment (457.08s used)
+    * Navigate to the Inverse page. Select 'pCO2 + mean surface d13c' from the dropdown menu and input the target file names manually.
+    
+   ![image](https://user-images.githubusercontent.com/57557675/232131733-cedd0fb3-1246-43af-9c88-cb344e4517e0.png)
+    * Name the experiment and run the model.
+    * (If you meet an error similar to the following figure, which means some degassing rate is larger than the default higher boundary in Table 3. Try to adjust the values of second and third row in Table 3.)
+    
+    ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
+    
+    * Succeed! Note that when fcinp(t) = 0, inversed d13c may experience some fluctuation.
+![image](https://user-images.githubusercontent.com/57557675/232155210-c4b169b7-e0ba-49dd-a5e6-d061ef85e2b1.png)
+
+ 
+  
 
 ###2. Example
 
-
-```bash
-Go to 'Forward' page
-```
- 
+2.1 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
+    1. Derive the steady state y0
+        * At forward page, set PALEO == 1, tifnal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
+        * turn
+        * Name the experiment and 
