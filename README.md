@@ -176,6 +176,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
 ### 2. Example
 
 2.1 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
+
     1. Derive the steady state y0
         * Navigate to the Forward page.
         * In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
