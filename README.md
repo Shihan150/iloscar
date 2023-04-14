@@ -114,6 +114,25 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
 ## Example
 ###1. Benchmark
 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578).
+1. Go to the Forward page 
+![image](https://user-images.githubusercontent.com/57557675/232096060-c7d49615-19d3-4df1-acb1-911ad0584e7f.png)
+
+2. Turn the PALEO to '1'. Then the model parameters in Table 2 will adjust automatically to the palaeo settings, so skip the Step 2.
+![image](https://user-images.githubusercontent.com/57557675/232095753-3edcd6d7-9a06-49cd-85f8-ecf19c4fca94.png)
+
+3. Select the carbon emission scenario in Table 3. In this example, set 'emission pattern' == 1, emission amount == 3000, 'd13c emission' == -55, 'emission start' == 0, 'emission duration' == 6000.
+![image](https://user-images.githubusercontent.com/57557675/232096837-51e2d08a-5f5c-48c5-b0dd-ac867f97327a.png)
+
+4. Give a name to your experiment and run it. I name it as Zeebe2009 here.
+![image](https://user-images.githubusercontent.com/57557675/232097501-d03a8807-07e3-4e6f-bef9-ca7bb1eb8770.png)
+
+5. The running information will be given in the following chunck. A progress bar is displayed to show to what time the experiment has run to. 
+![image](https://user-images.githubusercontent.com/57557675/232097903-6d2d0c27-6d90-464b-9359-8d42d0d9bded.png)
+
+6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). The folder will be in the same dictionary where you run your python code. 44Modeling Mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
+![image](https://user-images.githubusercontent.com/57557675/232099371-c2bac20e-fd1c-4c16-8acb-88f4de7e7815.png)
+<img width="808" alt="image" src="https://user-images.githubusercontent.com/57557675/232098867-fe5a6609-0140-42ba-a520-3f06fef51aa1.png">
+ 
 
 1.2 Inverse twin experiment
 
