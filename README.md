@@ -24,10 +24,10 @@ The ocean component in LOSCAR is composed of three (four in the palaeo version) 
 
 LOSCAR keeps track the concentrations of various biogeochemical tracers (including total carbon-TC, total alkalinity-TA, stable carbon isotopes-13C, and others) in different boxes. These tracers compose the state variables ($\overrightarrow{y_i}$) of the model and their dynamic changes over time are governed by the following first-order ordinary equation system (Zeebe, 2012):
 
-$$\frac{d\overrightarrow{y_i}}{dt} = F(t, \overrightarrow{y_i})$$,   (Eq. 1)
+$$\frac{d\overrightarrow{y_i}}{dt} = F(t, \overrightarrow{y_i}) (Eq. 1)$$,  
 
 where $t$ is time, and F is a konwn function to calculate the derivatives of $\overrightarrow{y_i}$. The dimension of $\overrightarrow{y_i}$ is 140 (modern setup) or 184 (palaeo setup). Note that model parameters required for derivative calculation except the state variables are implicitly included in the function F. For the convenience of introducing the inverse algorithm, we rewrite Eq. 1 as:
-$$\frac{d\overrightarrow{y_i}}{dt} = f(\overrightarrow{y_i}, \lambda, \theta (t)$$, (Eq. 2)
+$$\frac{d\overrightarrow{y_i}}{dt} = f(\overrightarrow{y_i}, \lambda, \theta (t) (Eq. 2)$$, 
 
 where $\lambda$ represents the assembly of time-invariant parameters and $\theta$ for the time-dependent parameters. $\lambda$ can be subdivided into three categories: i. the model architecture settings (e.g., ocean volume and areas, oceanic Mg and Ca concentrations, the area percentage of each sediment layer, the thermohaline intensity et al.,); ii. initial fluxes and correponding isotopic values (e.g, the initial silicate and weathering fluxes, the initial primary productivity in the high box, et al.,); iii. to describe the dynamic evolution of each flux (e.g., the calcite dissolution constant, silicate and carbonate weathering exponent, air-sea CO2 exchange coefficient, biopump efficiency, rain ratio et al.,). In most LOSCAR applications, the flux from possilbe carbon input sources is the only item in $\theta$ (termed $fcinp$).
 
@@ -42,22 +42,22 @@ There are three innovations in the iLOSCAR compared with the original LOSCAR mod
 The aim of inverse model is to estimate the carbon emission trajectory (i.e., fcinp(t)) from the given target records (i.e., pCO2 and mean sea surface pH, termed as x(t)) and to constrain the carbon isotopic value (d13c(t)) according to the mean sea surface d13c record (i.e., fd13c(t)). 
 
 x(t) can be derived from each given $\overrightarrow{y}(t)$ (pCO2 is a state variable and pH in each ocean box can be caculated from two state variables: TA and ALK.). We generalize the relationship as:  
-$$x(t) = g(\overrightarrow{y}(t))$$ (Eq. 3)
+$$x(t) = g(\overrightarrow{y}(t)) (Eq. 3)$$ 
 where $\overrightarrow{y}(t)$ can be solved from Eq. 2 when $lambda$, $\overrightarrow{y}(t=0)$, $fcinp(t)$ are given. Note that fd13c(t) only controls the 13C/12C ratio of input carbon and has no effect on x(t). Here we take $lambda$ and $\overrightarrow{y}(t=0)$ are fixed and $fcinp(t)$ could be adjusted to produce x(t) that makes the best fit with proxy records (X(t)). Then   Eq. 3 can be further written as:
-$$x(t) = G(fcinp(t))$$.  (Eq. 4)
+$$x(t) = G(fcinp(t)) (Eq. 4)$$.  
 
 Theoretically carbon emission could be intermittent and spontaneous, thus it is adventurous to simplify $fcinp(t)$ to some known distributions. However, some assumption is inevitable to reduce the parameters required to describe $fcinp(t)$. Therefore, we seperate the input scenario to (n-1) intervals by n points from X(t) time series data, and in each interval, we assume a linear increase/decrease of emission rate, i.e.:
 
 $$\eqalign{
-fcinp(t) &= k_1 * (t - t_0)  (if t_0 <= t <=t_1) \\
-        &= fcinp(t_1) + k_2 * (t - t_1)  (if t_1 < t <= t_2) \\
+fcinp(t) &= k_1 * (t - t_0)  (if  t_0 <= t <=t_1) \\
+        &= fcinp(t_1) + k_2 * (t - t_1)  (if  t_1 < t <= t_2) \\
         & ... \\
-        &= fcinp(t_{n-1}) + k_n * (t - t_{n-1}) (if t_{n-1} < t <= t_n)
+        &= fcinp(t_{n-1}) + k_n * (t - t_{n-1}) (if  t_{n-1} < t <= t_n)
 } Eq. 5$$ 
 
 where t_i is the time points of time-series X(t) data. In this way, $fcinp(t)$ could be represented by $(n-1)$ parameters ($k_1 - k_{n-1}$). The problem can be rephrased as to find the $\overrightarrow{k})$ to minimize the following function:
 
-$$\sum_{i=1}^n G(\overrightarrow{k})[t = t_i] - X(t = t_i)$$  (Eq.6)
+$$\sum_{i=1}^n G(\overrightarrow{k})[t = t_i] - X(t = t_i) (Eq.6)$$  
 
 Since there are k equations for k parameters, the essence of inverse problem belongs to the category of root finder instead of optimization. To find the solution, a sequential iteration algorithm is applied. Concretely, we start from [t0, t1] interval and apply 'secant' method from Python scipy package to solve the equation $G(k_1)[t=t_1] = X(t=t_1)$. The secant method is chosen as the numerical solver mainly due to its fast convergence rate, thus accelerating the model speed. When $k_1$ is solved, the algorithm will run forwardly with the $k_1$-based fcinp(t) at $[t_0, t_1]$ inveterval and save the $\overrightarrow{y}(t=t_1)$, which will serve as the initial y0 for next iteration at $[t1, t2]$ interval. The same process will repeat until $k_n$ is solved. 
 
