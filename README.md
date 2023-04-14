@@ -113,7 +113,9 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
 
 ## Example
 (Required dataset could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat).)
-###1. Benchmark
+
+### 1. Benchmark
+
 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578).
     1. Go to the Forward page   
 
