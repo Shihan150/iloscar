@@ -42,25 +42,66 @@ There are three innovations in the iLOSCAR compared with the original LOSCAR mod
 The aim of inverse model is to estimate the carbon emission trajectory (i.e., fcinp(t)) from the given target records (i.e., pCO2 and mean sea surface pH, termed as x(t)) and to constrain the carbon isotopic value (d13c(t)) according to the mean sea surface d13c record (i.e., fd13c(t)). 
 
 x(t) can be derived from each given $\overrightarrow{y}(t)$ (pCO2 is a state variable and pH in each ocean box can be caculated from two state variables: TA and ALK.). We generalize the relationship as:  
-$$ x(t) = g(\overrightarrow{y}(t)) $$ (Eq. 3)
+$$x(t) = g(\overrightarrow{y}(t))$$ (Eq. 3)
 where $\overrightarrow{y}(t)$ can be solved from Eq. 2 when $lambda$, $\overrightarrow{y}(t=0)$, $fcinp(t)$ are given. Note that fd13c(t) only controls the 13C/12C ratio of input carbon and has no effect on x(t). Here we take $lambda$ and $\overrightarrow{y}(t=0)$ are fixed and $fcinp(t)$ could be adjusted to produce x(t) that makes the best fit with proxy records (X(t)). Then   Eq. 3 can be further written as:
-$$ x(t) = G(fcinp(t)) $$.  (Eq. 4)
+$$x(t) = G(fcinp(t))$$.  (Eq. 4)
 
 Theoretically carbon emission could be intermittent and spontaneous, thus it is adventurous to simplify $fcinp(t)$ to some known distributions. However, some assumption is inevitable to reduce the parameters required to describe $fcinp(t)$. Therefore, we seperate the input scenario to (n-1) intervals by n points from X(t) time series data, and in each interval, we assume a linear increase/decrease of emission rate, i.e.:
 
 $$\eqalign{
-fcinp(t) &= k_1 * t (t_0 <= t <=t_1) \\
-        &= fcinp(t_1) + k_2 * (t - t_1)  (t_1 < t <= t_2) \\
+fcinp(t) &= k_1 * (t - t_0)  (if t_0 <= t <=t_1) \\
+        &= fcinp(t_1) + k_2 * (t - t_1)  (if t_1 < t <= t_2) \\
         & ... \\
-        &= fcinp(t_{n-1}) + k_{n-1} * (t - t_{n-1}) (t_{n-1} < t <= t_n)
-}$$
- 
+        &= fcinp(t_{n-1}) + k_n * (t - t_{n-1}) (if t_{n-1} < t <= t_n)
+} Eq. 5$$ 
+
+where t_i is the time points of time-series X(t) data. In this way, $fcinp(t)$ could be represented by $(n-1)$ parameters ($k_1 - k_{n-1}$). The problem can be rephrased as to find the $\overrightarrow{k})$ to minimize the following function:
+
+$$\sum_{i=1}^n G(\overrightarrow{k})[t = t_i] - X(t = t_i)$$  (Eq.6)
+
+Since there are k equations for k parameters, the essence of inverse problem belongs to the category of root finder instead of optimization. To find the solution, a sequential iteration algorithm is applied. Concretely, we start from [t0, t1] interval and apply 'secant' method from Python scipy package to solve the equation $G(k_1)[t=t_1] = X(t=t_1}$. The secant method is chosen as the numerical solver mainly due to its fast convergence rate, thus accelerating the model speed. When $k_1$ is solved, the algorithm will run forwardly with the $k_1$-based fcinp(t) at $[t_0, t_1]$ inveterval and save the $\overrightarrow{y}(t=t_1)$, which will serve as the initial y0 for next iteration at $[t1, t2]$ interval. The same process will repeat until $k_n$ is solved. 
+
+The modeling d13c results depend on both the isotopic signature and the mass of emitted carbon. When fcinp(t) is solved, the similar procedure will be applied to calculate fd13c(t), except that a constant d13c value in each interval.
+
+### Smoothing function
+A LOWESS smoothing function is provided. Users are allowed to upload data files and tune the hyperparamter that controls the windown fraction used in LOWESS manually. Note that the default temporal resolution for output data is 0.2 kyr. For a full description of smoothing algorithm, refer to [https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
+
+### Output files
+        FILE.csv |  UNIT    | VARIABLE
+        -----------------------------------------------------------------
+        tcb    |  (deg C)  | OCN temperature
+        dic    |   (mmol/kg) | OCN total dissolved inorganic carbon
+        alk    |  (mmol/kg)| OCN total alkalinity
+        po4   |    (umol/kg)| OCN phosphate
+        dox   |    (mol/m3) | OCN dissolved oxygen
+        dicc  |    (mmol/kg) |OCN DIC-13
+        d13c   |   (per mil)| OCN delta13C(DIC)
+        d13ca   |  (per mil) |ATM delta13C(atmosphere)
+        pco2a_d13c   |  (ppmv, per mil)   | ATM atmospheric pCO2 and d13c
+        co3      | (umol/kg) |OCN carbonate ion concentration
+        ph      |  (-)      | OCN pH (total scale)
+        pco2ocn |  (uatm)   | OCN ocean pCO2
+        omegaclc | (-)     |  OCN calcite saturation state
+        omegaarg | (-)     |  OCN aragonite saturation state
+        fca     |  (-)    |   SED calcite content Atlantic
+        fci    |   (-)     |  SED calcite content Indian
+        fcp     |  (-)     |  SED calcite content Pacific
+        fct     |  (-)     |  SED calcite content Tethys (PALEO only)
+        ccda   |   (m)     |  SED calcite compens. depth Atlantic
+        ccdi   |   (m)     |  SED calcite compens. depth Indian
+        ccdp   |   (m)     |  SED calcite compens. depth Pacific
+        ccdt    |  (m)     |  SED calcite compens. depth Tethys (PALEO only)
+
+        Surface_dic_alk_d13c_ph | (-) |  Mean OCN surface DIC, ALK, d13c, and pH
+        Carbon_inventory |   (mol)   |  Total carbon and alkalinty in the ocean
+        
+
+## Example
+###1. Benchmark
+1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578).
 
 
-
-
-
-## Parameter explaination
-### Mode control.  
- 1. Forward vs Inverse
+```bash
+Go to 'Forward' page
+```
  
