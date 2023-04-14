@@ -67,12 +67,10 @@ The modeling d13c results depend on both the isotopic signature and the mass of 
 A LOWESS smoothing function is provided. Users are allowed to upload data files and tune the hyperparamter that controls the windown fraction used in LOWESS manually. Note that the default temporal resolution for output data is 0.2 kyr. For a full description of smoothing algorithm, refer to [https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
 ### Output files
-
-
-  | FILE.csv |  UNIT    | VARIABLE|
-        |------------|------------------|-----------------------------------|
-       | tcb    |  (deg C)  | OCN temperature|
-        dic    |   (mmol/kg) | OCN total dissolved inorganic carbon
+| File.csv    | Unit        | Variable         |
+| ----------- | ----------- | ---------------- |
+| tcb    |  (deg C)  | OCN temperature|
+| dic    |   (mmol/kg) | OCN total dissolved inorganic carbon
         alk    |  (mmol/kg)| OCN total alkalinity
         po4   |    (umol/kg)| OCN phosphate
         dox   |    (mol/m3) | OCN dissolved oxygen
@@ -93,14 +91,32 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
         ccdi   |   (m)     |  SED calcite compens. depth Indian
         ccdp   |   (m)     |  SED calcite compens. depth Pacific
         ccdt    |  (m)     |  SED calcite compens. depth Tethys (PALEO only)
-
-        Surface_dic_alk_d13c_ph | (-) |  Mean OCN surface DIC, ALK, d13c, and pH
+ Surface_dic_alk_d13c_ph | (-) |  Mean OCN surface DIC, ALK, d13c, and pH
         Carbon_inventory |   (mol)   |  Total carbon and alkalinty in the ocean
         
+        
+
+## External file requirement
+| Mode      | File usage| Format | Requirement
+| ----------- | ----------- | ------- | -------
+| Forward    | Initial y0   | .dat | 1 column, 140 (for modern) or 184  rows; <br /> y0 satisfies dy0/dt = F(t=t0, y0) = 0 
+|            | Emission file | .dat | When LOADFLAG == 2, two columns (age (yr) + emission mass (Gt/yr)).<br /> When LOADFLAG == 3, three columns (age (yr) + emission mass (Gt/yr)+d13c of input (per mil)).
+|            | Save yfinal  | .dat | When Save ystart == 1, y(t=tfinal) will be saved into the according |
+| Inverse | pCO2 data for inversion | .csv | 2 column with headline, age (yr) + pCO2 (ppmv)
+|          | mean surface pH data for inversion | .csv | 2 column with headline, age (yr) + pH |
+|          | mean surface d13c data for inversion | .csv | 2 column with headline, age (yr) + d13c |
+
+| Function | data to be smoothed | .csv | 2 column with headline, age (yr) + data |
+
 
 ## Example
 ###1. Benchmark
 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578).
+
+1.2 Inverse twin experiment
+
+
+###2. Example
 
 
 ```bash
