@@ -67,9 +67,9 @@ The modeling d13c results depend on both the isotopic signature and the mass of 
 A LOWESS smoothing function is provided. Users are allowed to upload data files and tune the hyperparamter that controls the windown fraction used in LOWESS manually. Note that the default temporal resolution for output data is 0.2 kyr. For a full description of smoothing algorithm, refer to [https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
 ### Output files
-   FILE.csv |  UNIT    | VARIABLE
+  | FILE.csv |  UNIT    | VARIABLE|
         -----------------------------------------------------------------
-        tcb    |  (deg C)  | OCN temperature
+       | tcb    |  (deg C)  | OCN temperature|
         dic    |   (mmol/kg) | OCN total dissolved inorganic carbon
         alk    |  (mmol/kg)| OCN total alkalinity
         po4   |    (umol/kg)| OCN phosphate
