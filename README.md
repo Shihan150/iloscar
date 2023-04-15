@@ -186,18 +186,18 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * Name the experiment and run the model.
         
 2. Inversion experiment (878s)
-        * Navigate to the Inverse page.
-        * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
-        * In Table 1, set PALEO == 1, LOADFLAG == 1, Save ystart == 0
-        * In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
-        * In Table 4, input './gutjahr2017.dat'
-        * Name the experiment and run the model
-        * Succeed! 
+    * Navigate to the Inverse page.
+    * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
+    * In Table 1, set PALEO == 1, LOADFLAG == 1, Save ystart == 0
+    * In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
+    * In Table 4, input './gutjahr2017.dat'
+    * Name the experiment and run the model
+    * Succeed! 
         ![image](https://user-images.githubusercontent.com/57557675/232181246-16ce5d2d-33df-49c0-974e-6cfee240f723.png)
 
         
 3. Data interpretation
-        * Refer to [TBD]
+    * Refer to [TBD]
 
 2.2 [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)
 
