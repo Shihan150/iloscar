@@ -178,11 +178,12 @@ To test the performance of inverse algorithm, an identical twin test is performe
 2.1 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
 
 1. Derive the steady state y0
-        * Navigate to the Forward page.
-        * In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
-        * In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
-        * In Table 4, input './gutjahr2017.dat' into the third row.
-        * Name the experiment and run the model.
+
+    * Navigate to the Forward page.
+    * In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
+    * In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
+    * In Table 4, input './gutjahr2017.dat' into the third row.
+    * Name the experiment and run the model.
         
     2. Inversion experiment (878s)
         * Navigate to the Inverse page.
