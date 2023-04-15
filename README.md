@@ -193,6 +193,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * In Table 4, input './gutjahr2017.dat'
     * Name the experiment and run the model
     * Succeed! 
+  
         ![image](https://user-images.githubusercontent.com/57557675/232181246-16ce5d2d-33df-49c0-974e-6cfee240f723.png)
 
         
