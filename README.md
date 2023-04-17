@@ -219,6 +219,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * In Table 4, input './wu2023.dat'
     * Name the experiment and run the model
     * Succeed! 
-  
+  ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
+
         
         
