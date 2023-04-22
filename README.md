@@ -1,6 +1,6 @@
 # iloscar
- A web-based interactive carbon cycle model, built upon the classic LOSCAR model. Forward and inverse mode incorporated.
- Author: Shihan Li
+ A web-based interactive carbon cycle model, built upon the classic LOSCAR model. Forward and inverse mode incorporated.  
+ Author: Shihan Li. 
  For any questions, please contact shihan@tamu.edu
 
 ## Install it from PyPI
