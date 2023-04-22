@@ -196,8 +196,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * Name the experiment and run the model
     * Succeed! 
   
-        ![image](https://user-images.githubusercontent.com/57557675/232181246-16ce5d2d-33df-49c0-974e-6cfee240f723.png)
-
+        
         
 3. Data interpretation
     * Refer to [TBD]
@@ -222,6 +221,10 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * Name the experiment and run the model
     * Succeed! 
   ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
+
+
+## Common bugs
+1. The age of target records must be in year unit.
 
         
         
