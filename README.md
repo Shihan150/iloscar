@@ -183,7 +183,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
 
     * Navigate to the Forward page.
     * In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
-    * In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
+    * In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
     * In Table 4, input './gutjahr2017.dat' into the third row.
     * Name the experiment and run the model.
         
@@ -191,7 +191,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * Navigate to the Inverse page.
     * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
     * In Table 1, set PALEO == 1, LOADFLAG == 1
-    * In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17, d13c volcanic == -1.5
+    * In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
     * In Table 4, input './gutjahr2017.dat'
     * Name the experiment and run the model
     * Succeed! 
