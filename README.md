@@ -191,7 +191,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * Navigate to the Inverse page.
     * Download the 'wu_pco2.csv' and 'wu_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
     * In Table 1, set PALEO == 0, LOADFLAG == 1
-    * In Table 2, set  pCO2_ref == 425, pCO2_initial == 449, fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042, nsi == 0.3, ncc == 0.5
+    * In Table 2, set  pCO2_ref == 425, pCO2_initial == 449, fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042, nsi == 0.4, ncc == 0.4
     * In table 3, set lower and higher boundary as [-0.1, 1], which will accelerate the model
     * In Table 4, input './wu2023.dat'
     * Name the experiment and run the model
