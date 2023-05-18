@@ -4,13 +4,18 @@
  For any questions, please contact shihan@tamu.edu
 
 ## Install it from PyPI
-
+### Mac and Linux
 ```bash
 pip install iloscar
+
 ```
+
+### Windows
+We are still trying to resolve some consistency issues for the iLOSCAR implementation in Windows system. So for Windows users, please download the code  directly from [https://github.com/Shihan150/iloscar](https://github.com/Shihan150/iloscar). 
 
 ## Usage
 
+### Mac and Linux
 ```py
 from iloscar import iloscar_run
 
@@ -18,6 +23,22 @@ iloscar_run()
 
 ```
 Open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) to run the model. 
+
+### Windows
+Python version dependency: ***>3.7 and <3.11***.  
+	
+```
+pip install numpy scipy dash plotly pandas numba diskcache statsmodels dash_bootstrap_components dash_extensions dash[diskcache] dill==0.3.5.1
+
+```
+1. open Terminal and input the following command.
+	
+```
+pip install numpy scipy dash plotly pandas numba diskcache statsmodels dash_bootstrap_components dash_extensions dash[diskcache] dill==0.3.5.1
+
+```
+2. cd to iloscar-main/iloscar
+3. python app.py
 
 ## Model description
 The overall framework of iLOSCAR is built upon the LOSCAR (*Long-term Ocean-atmosphere Sediment CArbon cycle Reservoir*). LOSCAR is a carbon cycle box model that can operate on both short-term (centuries) and long-term (millions of years) time scales, efficiently computing the partitioning of carbon between various model components (ocean, atmosphere, and sediments). The thorough description of the equations and corresponding processes in the model is given in [***Zeebe (2012)***](https://gmd.copernicus.org/articles/5/149/2012/). Here I will briefly introduce the original forward model from the mathematic perspective, and the algorithm for the inverse model.
