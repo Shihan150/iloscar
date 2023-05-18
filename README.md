@@ -38,8 +38,11 @@ pip install numpy scipy dash plotly pandas numba diskcache statsmodels dash_boot
 
 ```
 2. cd to iloscar-main/iloscar
-3. input: python app.py
+3. input the following command at terminal window
+```
+python app.py
 
+```
 ## Model description
 For the details of iLOSCAR, including model structure and derivation of equations, please refer to [our paper](TBD).
 
