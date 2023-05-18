@@ -29,10 +29,6 @@ Open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) to run the model.
 ### Windows
 Python version dependency: ***>3.7 and <3.11***.  
 	
-```
-pip install numpy scipy dash plotly pandas numba diskcache statsmodels dash_bootstrap_components dash_extensions dash[diskcache] dill==0.3.5.1
-
-```
 1. open Terminal and input the following command.
 	
 ```
