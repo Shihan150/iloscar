@@ -38,7 +38,7 @@ pip install numpy scipy dash plotly pandas numba diskcache statsmodels dash_boot
 
 ```
 2. cd to iloscar-main/iloscar
-3. python app.py
+3. input: python app.py
 
 ## Model description
 The overall framework of iLOSCAR is built upon the LOSCAR (*Long-term Ocean-atmosphere Sediment CArbon cycle Reservoir*). LOSCAR is a carbon cycle box model that can operate on both short-term (centuries) and long-term (millions of years) time scales, efficiently computing the partitioning of carbon between various model components (ocean, atmosphere, and sediments). The thorough description of the equations and corresponding processes in the model is given in [***Zeebe (2012)***](https://gmd.copernicus.org/articles/5/149/2012/). Here I will briefly introduce the original forward model from the mathematic perspective, and the algorithm for the inverse model.
