@@ -3,7 +3,7 @@
  Author: Shihan Li.    
  For any questions, please contact shihan@tamu.edu
 
-## Install it from PyPI
+## Install
 ### Mac and Linux
 ```bash
 pip install iloscar
