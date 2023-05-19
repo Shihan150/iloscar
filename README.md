@@ -42,7 +42,7 @@ python app.py
 
 ```
 ## Model description
-For the details of iLOSCAR, including model structure and derivation of equations, please refer to [our paper](TBD).
+For the details of iLOSCAR, including model structure and derivation of equations, please refer to our paper (in preparation).
 
 ### Smoothing function
 A LOWESS smoothing function is provided. Users are allowed to upload data files and tune the hyperparamter that controls the windown fraction used in LOWESS manually. Note that the default temporal resolution for output data is 0.2 kyr. For a full description of smoothing algorithm, refer to [https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
