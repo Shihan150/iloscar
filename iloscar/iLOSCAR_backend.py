@@ -131,6 +131,8 @@ def init_start(params):
         fcinp = interpolate.interp1d([tcin0, tcin0+tcspan],[cinp/tcspan, cinp/tcspan], fill_value=(0,0), bounds_error=False)
         frccinp = interpolate.interp1d([tcin0, tcin0+tcspan],[rccinp, rccinp], fill_value=(0,0), bounds_error=False)
 
+
+
     # table 4
     if LOADFLAG == 1:
         global initfile
@@ -2161,8 +2163,10 @@ def wo_params():
     #     fpout.write(f'{ystart[k]:.6e}, ystart[{k}] \n')
     # fpout.close()
 
-# @jit(nopython = True)
-def derivs(t, y, set_progress, hpls):
+
+def derivs(t, y, set_progress, hpls ):
+    print(FTYS)
+
     yp = np.zeros(NEQ)
 
 
@@ -2452,13 +2456,13 @@ def derivs(t, y, set_progress, hpls):
     if FSED:
 
 
-        rscva, rscvacc, rdva, rdvacc, wcva, wcvacc, gsda, dissa, dissmcca, fba =  funcsed(ealv[0], ealvcc[0], eah, eahcc, ab[0], fccva, fcva, fc0a, asva, phiia, tcb, co3, gp[6], 1, 0)
-        rscvi, rscvicc, rdvi, rdvicc, wcvi, wcvicc, gsdi, dissi, dissmcci, fbi =  funcsed(ealv[1], ealvcc[1], eah, eahcc, ab[1], fccvi, fcvi, fc0i, asvi, phiii, tcb, co3, gp[7], 1, 1)
-        rscvp, rscvpcc, rdvp, rdvpcc, wcvp, wcvpcc, gsdp, dissp, dissmccp, fbp =  funcsed(ealv[2], ealvcc[2], eah, eahcc, ab[2], fccvp, fcvp, fc0p, asvp, phiip, tcb, co3, gp[8], 0.5, 2)
+        rscva, rscvacc, rdva, rdvacc, wcva, wcvacc, gsda, dissa, dissmcca, fba =  funcsed(ealv[0], ealvcc[0], eah, eahcc, ab[0], fccva, fcva, fc0a, asva, phiia, tcb, co3, gp[6], 1, 0, fsh)
+        rscvi, rscvicc, rdvi, rdvicc, wcvi, wcvicc, gsdi, dissi, dissmcci, fbi =  funcsed(ealv[1], ealvcc[1], eah, eahcc, ab[1], fccvi, fcvi, fc0i, asvi, phiii, tcb, co3, gp[7], 1, 1, fsh)
+        rscvp, rscvpcc, rdvp, rdvpcc, wcvp, wcvpcc, gsdp, dissp, dissmccp, fbp =  funcsed(ealv[2], ealvcc[2], eah, eahcc, ab[2], fccvp, fcvp, fc0p, asvp, phiip, tcb, co3, gp[8], 0.5, 2, fsh)
 
 
         if FTYS:
-            rscvt, rscvtcc, rdvt, rdvtcc, wcvt, wcvtcc, gsdt, disst, dissmcct, fbt =  funcsedt(ealv[3], ealvcc[3], eah, eahcc, ab[10], fccvt, fcvt, fc0t, asvt, phiit, tcb, co3, 0, 6)
+            rscvt, rscvtcc, rdvt, rdvtcc, wcvt, wcvtcc, gsdt, disst, dissmcct, fbt =  funcsedt(ealv[3], ealvcc[3], eah, eahcc, ab[10], fccvt, fcvt, fc0t, asvt, phiit, tcb, co3, 0, 6, fsht)
             dissm = np.vstack((dissa, dissi, dissp, disst))
             dissmcc = np.vstack((dissmcca, dissmcci, dissmccp, dissmcct))
 
@@ -2673,7 +2677,6 @@ def derivs(t, y, set_progress, hpls):
         cinp = fcinp(t)
 
 
-
         catmp += cinp*1e15/12/AOC
         # dicp[m1] += cinp*1e15/12/vb[m1]/NOC
         #
@@ -2766,7 +2769,7 @@ def derivs(t, y, set_progress, hpls):
 
 @jit(nopython = True)
 # @jit(nopython = True , nogil = True)
-def funcsed(ealv, ealvcc, eah, eahcc, ab, fccv, fcv, fc0, asv, phii, tcb, co3,gp, coef, i):
+def funcsed(ealv, ealvcc, eah, eahcc, ab, fccv, fcv, fc0, asv, phii, tcb, co3,gp, coef, i, fsh):
     # input
     # ealv: caco3 export * 2
     # ealvcc: d13 of caco3 export
@@ -2925,7 +2928,7 @@ def funcsed(ealv, ealvcc, eah, eahcc, ab, fccv, fcv, fc0, asv, phii, tcb, co3,gp
 
 @jit(nopython = True)
 # @jit(nopython = True , nogil = True)
-def funcsedt(ealv, ealvcc, eah, eahcc, ab, fccv, fcv, fc0, asv, phii, tcb, co3, gp, coef):
+def funcsedt(ealv, ealvcc, eah, eahcc, ab, fccv, fcv, fc0, asv, phii, tcb, co3, gp, coef, fsht):
     # input
     # ealv: caco3 export * 2
     # ealvcc: d13 of caco3 export
