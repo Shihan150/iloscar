@@ -367,7 +367,7 @@ layout = dbc.Container(fluid = False,style = Home_STYLE, children = [
         dbc.Col(html.Div(
             [
             dbc.Button("Run",  id = 'run', outline = True, color = 'dark', className = "me-1", n_clicks = 0),
-            dbc.Button('Cancel', id = 'cancel_run', outline = True, color = 'dark', className = 'me-1', n_clicks = 0),
+            # dbc.Button('Cancel', id = 'cancel_run', outline = True, color = 'dark', className = 'me-1', n_clicks = 0),
             dbc.Button('Clean the output', id = 'clean', outline = True, color = 'secondary', className = 'me-1', n_clicks = 0)
             ],
             className="d-grid gap-2 col-6 mx-auto",
@@ -607,7 +607,7 @@ def activate_progress_bar(key, info):
 @callback(output = [Output('info_integration', 'children'), Output('ysol', 'data'), Output('tsol', 'data')],
         inputs = [Input('progress_bar','hidden')],
         state = State('parameters', 'data'),
-        background = True,
+        background = False,
         progress = [Output('progress_bar', 'value'), Output('progress_bar', 'max')],
          running=[
         (Output("run", "disabled"), True, False),
@@ -617,17 +617,15 @@ def activate_progress_bar(key, info):
         prevent_initial_call = True,
 
         )
-def update_progress(set_progress,key,data):
+def update_progress(key,data):
 
 
     if key:
         return [], [], []
     else:
-        try:
-            return model_run(set_progress)
-        except:
-            temp = init_start(data)
-            return model_run(set_progress)
+    
+        return model_run(0)
+
 
 
 
