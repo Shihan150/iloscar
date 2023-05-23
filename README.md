@@ -158,7 +158,7 @@ Note that the initial y0 for the default parameter settings are given in our pac
     The export file name can be manually specified in Table 4. Here we use the 'petm_steady.dat'.
     Then the model parameters in Table 2 will adjust automatically to the palaeo settings.
     
-    ![image](https://github.com/Shihan150/iloscar/assets/57557675/fb654bff-d91a-4b0f-a294-1788638cd85e)
+ ![image](https://github.com/Shihan150/iloscar/assets/57557675/fb654bff-d91a-4b0f-a294-1788638cd85e)
     
    
     3. Turn off the carbon emission by changing 'emission pattern' to 0 in Table 3.
