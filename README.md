@@ -26,7 +26,7 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 4. Go to the code file by typing ***cd iloscar*** 
 <img width="351" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/661d7c95-3d25-451a-b5f3-e703939e5884">
 
-5. Type ***python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) to run the model.
+5. Type ***python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) in your browser to run the model.
 <img width="414" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/a0c92e81-420b-4e6f-883a-a520ed82cd1a">
 <img width="1844" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/99778982-9208-47d6-a1a9-7da45d5c6747">
 
@@ -38,8 +38,17 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 
 2. Go to the iloscar main directory downloaed in the previous step. One example is shown below and you need to specify your own path.
 
-3. 
+3. Type ***conda env create -f iloscar_mac.yml*** to install the iloscar environment. It may take ~1-2 mins.
+![image](https://github.com/Shihan150/iloscar/assets/57557675/4d85dae4-7816-4496-8850-cebf2541a2b7)
 
+
+4. Type ***conda activate iloscar***
+![image](https://github.com/Shihan150/iloscar/assets/57557675/30bf756c-7ef8-4c92-90c5-d3164c91d952)
+
+5. Type ***python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) in your browser to run the model.
+![image](https://github.com/Shihan150/iloscar/assets/57557675/2e28f0cf-8c84-4e21-9ab0-cab5edd5e642)
+
+Succeed!
 ```
 ## Model description
 For the details of iLOSCAR, including model structure and derivation of equations, please refer to our paper (in preparation).
