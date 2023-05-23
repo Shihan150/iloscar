@@ -211,6 +211,11 @@ Users can click the 'Clean the output' button, then the experiment information f
 
 
 ### 2. Inverse model
+The general workflow for the inverse model follows:  
+1. Tune the parameters and derive the inital steady state y0 in the forward model page.
+2. Navigate to the inverse model page and provide file names that contain the target records.
+3. Change the parameters according to the tuning results.
+4. Run the inverse model.
 
 #### 2.1 Inverse twin experiment 
 
@@ -246,20 +251,23 @@ To test the performance of inverse algorithm, an identical twin test is performe
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
 
-    * Name the experiment and run the model.  
+    * Name the experiment and run the model.    
+    
+    * If you want to terminate the ongoing experiment, just click the 'Cancel' button.  
+![image](https://github.com/Shihan150/iloscar/assets/57557675/8fda005f-e110-484e-b072-6222f2b9ecfe)
+
+    
     * (If you meet an error similar to the following figure,   
     which means some degassing rate is larger than the default higher boundary in Table 3.   
-    Try to adjust the values of second and third row in Table 3.)
+    Try to adjust the values of second and third row in Table 3.) 
     
 ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
     
     * Succeed! 
-![image](https://user-images.githubusercontent.com/57557675/232155210-c4b169b7-e0ba-49dd-a5e6-d061ef85e2b1.png)
+![image](https://github.com/Shihan150/iloscar/assets/57557675/db0604e2-b4c4-4d76-a4e9-68c93fa41cb8)
 
  
-  
-
-
+ 
 
 #### 2.2 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
 
