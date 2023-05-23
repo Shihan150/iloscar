@@ -197,16 +197,22 @@ Note that the initial y0 for the default parameter settings are given in our pac
 
 
     
-    4. Run the model. users can click the 'Clean the output' button, then the experiment information from the previous run will be cleared. But it is only optional and users can run the next experiment directly.
-    
+    4. Run the model. 
+Users can click the 'Clean the output' button, then the experiment information from the previous run will be cleared. But it is only optional and users can run the next experiment directly.
+
+![image](https://github.com/Shihan150/iloscar/assets/57557675/96f94b67-62ed-4d99-8ddf-2c3f33178344)
 
 
+    6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). 
+    The folder will be in the same dictionary where you run your python code. 
+    Modeling mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
 
-    6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). The folder will be in the same dictionary where you run your python code. Modeling mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
+![image](https://github.com/Shihan150/iloscar/assets/57557675/3bf77e45-77af-4c92-9fa2-e375fc50ec24)
 
-![image](https://user-images.githubusercontent.com/57557675/232099371-c2bac20e-fd1c-4c16-8acb-88f4de7e7815.png)
 
-1.2 Inverse twin experiment 
+### 2. Inverse model
+
+2.1 Inverse twin experiment 
 
 To test the performance of inverse algorithm, an identical twin test is performed. In identical twin testing, a preliminary run of the forward model is used to generate a synthetic 'truth' data set which can subsequently be used in inversion experiments. It is straightfoward to check whether the inverse algorithm works correctly. 
 
