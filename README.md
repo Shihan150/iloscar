@@ -149,22 +149,28 @@ Note that the prolonged carbon leak after the major emission and the inferred re
 Note that the initial y0 for the default parameter settings are given in our package (**preind_steady.dat** and **petm_steady.dat**), which can be used directly. Thus, if users want to run the default model, they can skip this part directly.
 
     1. Go to the Forward page   
+![image](https://github.com/Shihan150/iloscar/assets/57557675/1a9ea74e-718d-482b-984e-ad074916be60)
 
-![image](https://user-images.githubusercontent.com/57557675/232100195-e47c4d51-dbba-4b5b-a82a-b60cb3870703.png)
+
 
     2. Turn the PALEO to '1', LOADFLAG to '0', and Save ystart to '1'.
     Save ystart decides if the model will export the y values at t=tfinal. 
     The export file name can be manually specified in Table 4. Here we use the 'petm_steady.dat'.
     Then the model parameters in Table 2 will adjust automatically to the palaeo settings.
     
+    ![image](https://github.com/Shihan150/iloscar/assets/57557675/fb654bff-d91a-4b0f-a294-1788638cd85e)
+    
    
     3. Turn off the carbon emission by changing 'emission pattern' to 0 in Table 3.
     
-<img width="868" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/92e1c8da-264b-49af-b10b-d706a5d7edcb">
+![image](https://github.com/Shihan150/iloscar/assets/57557675/00f621d3-d1fc-435f-bc3d-b396a66d16c7)
 
-    4. Set tfinal to 2e7 in Table 2.
-    <img width="852" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/de5ff72e-285e-4d42-867d-6cc1e8b2d0b6">
 
+    4. Change tfinal to 2e7 in Table 2.
+    ![image](https://github.com/Shihan150/iloscar/assets/57557675/362a0071-4355-4f7d-a917-fba1570f967a)
+
+
+    
     5. Give a name to your experiment and run it. I name it as Zeebe2009 here.
 <img width="975" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/c5edd496-f93e-4d6c-8095-00d19a4d1594">
 
