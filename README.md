@@ -131,16 +131,19 @@ Some external files are required to run the model.
 ## Example
 (Required data files could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat).)
 
+
 ### 1. Forward model
 The general workflow follows: 
     1. choose the version control information in Table 1; 
     2. Tune relevant parameters in Table 2 and turn off the carbon emission in Table 3; 
     3. Change the t0 and tfinal in Table 3 and spin up the model for 2 Ma. Check if the steady state is achieved;
-    4. Using the final steady state from last step as y0 and turn on the carbon emission. Run the model.
+    4. using the final steady state from last step as y0 and turn on the carbon emission. Run the model.
     
 Here several examples are given to help users practice how to run the iLOSCAR.
 
-1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578). Note that the prolonged carbon leak after the major emission and the inferred reverse circulation are not incorporated here. 
+#### 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578). 
+
+Note that the prolonged carbon leak after the major emission and the inferred reverse circulation are not incorporated here. 
 
     1. Go to the Forward page   
 
