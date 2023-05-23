@@ -218,30 +218,39 @@ To test the performance of inverse algorithm, an identical twin test is performe
 
 2.1.1. Preliminary run  
 
-    * In Forward page, follow all the default settings in Table 1 and 2, except turn tfinal to 2e4.
+    * In Forward page, follow all the default settings in Table 1 and 2, except turn tfinal to 4e4.
 
     
-    * Set 'emission pattern' as 3 in Step 3 and input 'pulse_emi.dat' in the second row of Table 4. Note that relative path is required for the file name. 
-    * 'puluse_emi.dat'  two emission events: fast and short (3000 Gt in 3 kyr) vs slow and long (10000 Gt in 35 kyr), thus serving an excellent example to check the inversion algorithm.
-    * Name the model and run the experiment. 
+    * Set 'emission pattern' as 3 in Step 3 and input 'pulse_emi.dat' in the second row of Table 4. 
+    Note that relative path is required for the file name. 
+    
+    * 'puluse_emi.dat'  two emission events:
+    fast and short (3000 Gt in 3 kyr) vs slow and long (10000 Gt in 35 kyr),
+    thus serving an excellent example to check the inversion algorithm.
+    
+    * Name and run the experiment  
     
 ![image](https://user-images.githubusercontent.com/57557675/232114536-3d65cadb-fcea-45e9-9e52-c1cbb66c1bae.png)
 
 2.1.2. Prepare data for inversion   
 
-    * At twin_exp folder, select the pCO2 results from pCO2_d13c.csv file and save as twin_pco2_for_inv.csv. Note that the modeling results are of high temporal resolution and we take a slice to keep the inversion time reasonable.
+    * At twin_exp folder, select the pCO2 results from pCO2_d13c.csv file and save as twin_pco2_for_inv.csv. 
+    Note that the modeling results are of high temporal resolution 
+    and we take a slice to keep the inversion time reasonable.
+    
     * Repeat the process for mean surface pH and surface d13C result.
 
 2.1.3. Inverse experiment (457.08s used)
     * Navigate to the Inverse page. Select 'pCO2 + mean surface d13c' from the dropdown menu and input the target file names manually.
     
-   ![image](https://user-images.githubusercontent.com/57557675/232131733-cedd0fb3-1246-43af-9c88-cb344e4517e0.png)
+![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
+
     * Name the experiment and run the model.
     * (If you meet an error similar to the following figure, which means some degassing rate is larger than the default higher boundary in Table 3. Try to adjust the values of second and third row in Table 3.)
     
-    ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
+![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
     
-    * Succeed! Note that when fcinp(t) = 0, inversed d13c may experience some fluctuation.
+    * Succeed! 
 ![image](https://user-images.githubusercontent.com/57557675/232155210-c4b169b7-e0ba-49dd-a5e6-d061ef85e2b1.png)
 
  
