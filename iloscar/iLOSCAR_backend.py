@@ -2165,7 +2165,7 @@ def wo_params():
 
 
 def derivs(t, y, set_progress, hpls ):
-    print(FTYS)
+    
 
     yp = np.zeros(NEQ)
 
