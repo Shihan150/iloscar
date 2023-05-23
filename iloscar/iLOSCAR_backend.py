@@ -4,21 +4,9 @@
 @author: shihan
 """
 
-"""
-update:
-    v3: time-variant d13c for carbon emission (09.15.2022)
 
 """
 
-"""
-A python class for running the carbon cycle.
-
-The main function file
-1. read the mode commands from the front-end user input
-2. read the model settings from: i. front-end user input, ii. default settings
-3. read the derivate equations from derivs.py
-4. solve the ode system by by applying the 'BDF' method from scipy package
-5. write out the parameters of interest
 Author: Shihan Li
 
 Original reference:
@@ -1418,7 +1406,7 @@ def wo_results(y, t):
     h_surf_d13c = html.P()
 
     # if svstart:
-    h_surf_ph = html.P(['The final average surface ph is: ', round(surface_ph[-1],2)])
+    h_surf_ph = html.P(['The final average surface pH is: ', round(surface_ph[-1],2)])
     h_surf_d13c =  html.P(['The final average surface d13c is: ', round(d13c_surf[-1],2)])
     h_pco2 =  html.P(['The final pCO2 is: ', round(pco2a[-1],2)], 'uatm')
 
@@ -2178,9 +2166,9 @@ def derivs(t, y, set_progress, hpls):
     yp = np.zeros(NEQ)
 
 
-    if RUN_TYPE == 1:
-        n = int((t-t0)/(tfinal-t0)*100)
-        set_progress((str(n), str(100)))
+    # if RUN_TYPE == 1:
+    #     n = int((t-t0)/(tfinal-t0)*100)
+    #     set_progress((str(n), str(100)))
 
 
     # read tracer values from y
