@@ -259,9 +259,9 @@ To test the performance of inverse algorithm, an identical twin test is performe
  
   
 
-### 2. Example
 
-2.1 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
+
+### 2.2 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
 
 1. Derive the steady state y0
 
@@ -281,11 +281,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * Succeed! 
   
         
-        
-3. Data interpretation
-    * Refer to [TBD]
-
-2.2 [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)
+### 2.3 [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)
 
 1. Derive the steady state y0
 
