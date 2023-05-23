@@ -139,12 +139,13 @@ Some external files are required to run the model.
 
 ![image](https://user-images.githubusercontent.com/57557675/232100195-e47c4d51-dbba-4b5b-a82a-b60cb3870703.png)
 
-    2. Turn the PALEO to '1'. Then the model parameters in Table 2 will adjust automatically to the palaeo settings, so skip the Step 2.
+    2. Turn the PALEO to '1'. 
+    Then the model parameters in Table 2 will adjust automatically to the palaeo settings.
 
 ![image](https://user-images.githubusercontent.com/57557675/232095753-3edcd6d7-9a06-49cd-85f8-ecf19c4fca94.png)
 
     3. Select the carbon emission scenario in Table 3. In this example, set:
-    'emission pattern' == 1, emission amount == 3000, 
+    'emission pattern' == 1, 'emission amount' == 3000, 
     'd13c emission' == -55, 'emission start' == 0, 
     'emission duration' == 6000.
 
@@ -154,11 +155,11 @@ Some external files are required to run the model.
 
 ![image](https://user-images.githubusercontent.com/57557675/232097501-d03a8807-07e3-4e6f-bef9-ca7bb1eb8770.png)
 
-    5. The running information will be given in the following chunck. A progress bar is displayed to track the experiment running. 
+    5. The running information will be given in the following chunck. 
 
 ![image](https://user-images.githubusercontent.com/57557675/232097903-6d2d0c27-6d90-464b-9359-8d42d0d9bded.png)
 
-    6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). The folder will be in the same dictionary where you run your python code. 44Modeling Mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
+    6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). The folder will be in the same dictionary where you run your python code. Modeling mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
 
 ![image](https://user-images.githubusercontent.com/57557675/232099371-c2bac20e-fd1c-4c16-8acb-88f4de7e7815.png)
 
