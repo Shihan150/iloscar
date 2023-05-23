@@ -131,7 +131,7 @@ Some external files are required to run the model.
 ## Example
 (Required dataset could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat).)
 
-### 1. Benchmark
+### 1. Forward model
 
 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578).
 
@@ -143,7 +143,10 @@ Some external files are required to run the model.
 
 ![image](https://user-images.githubusercontent.com/57557675/232095753-3edcd6d7-9a06-49cd-85f8-ecf19c4fca94.png)
 
-    3. Select the carbon emission scenario in Table 3. In this example, set 'emission pattern' == 1, emission amount == 3000, 'd13c emission' == -55, 'emission start' == 0, 'emission duration' == 6000.
+    3. Select the carbon emission scenario in Table 3. In this example, set:
+    'emission pattern' == 1, emission amount == 3000, 
+    'd13c emission' == -55, 'emission start' == 0, 
+    'emission duration' == 6000.
 
 ![image](https://user-images.githubusercontent.com/57557675/232096837-51e2d08a-5f5c-48c5-b0dd-ac867f97327a.png)
 
