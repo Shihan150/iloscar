@@ -218,15 +218,15 @@ To test the performance of inverse algorithm, an identical twin test is performe
 
 2.1.1. Preliminary run  
 
-    * In Forward page, follow all the default settings in Table 1 and 2, except turn tfinal to 4e4.
+    * In Forward page, follow all the default settings in Table 1 and 2, except turn tfinal to 4e4.   
 
     
-    * Set 'emission pattern' as 3 in Step 3 and input 'pulse_emi.dat' in the second row of Table 4. 
-    Note that relative path is required for the file name. 
+    * Set 'emission pattern' as 3 in Step 3 and input 'pulse_emi.dat' in the second row of Table 4.   
+    Note that relative path is required for the file name.   
     
-    * 'puluse_emi.dat'  two emission events:
-    fast and short (3000 Gt in 3 kyr) vs slow and long (10000 Gt in 35 kyr),
-    thus serving an excellent example to check the inversion algorithm.
+    * 'puluse_emi.dat'  two emission events:  
+    fast and short (3000 Gt in 3 kyr) vs slow and long (10000 Gt in 35 kyr),  
+    thus serving an excellent example to check the inversion algorithm.  
     
     * Name and run the experiment  
     
@@ -234,9 +234,9 @@ To test the performance of inverse algorithm, an identical twin test is performe
 
 2.1.2. Prepare data for inversion   
 
-    * At twin_exp folder, select the pCO2 results from pCO2_d13c.csv file and save as twin_pco2_for_inv.csv. 
-    Note that the modeling results are of high temporal resolution 
-    and we take a slice to keep the inversion time reasonable.
+    * At twin_exp folder, select the pCO2 results from pCO2_d13c.csv file and save as twin_pco2_for_inv.csv.  
+    Note that the modeling results are of high temporal resolution   
+    and we take a slice to keep the inversion time reasonable.   
     
     * Repeat the process for mean surface pH and surface d13C result.
 
