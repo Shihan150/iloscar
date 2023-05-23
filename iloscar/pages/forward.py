@@ -623,12 +623,8 @@ def update_progress(key,data):
     if key:
         return [], [], []
     else:
-        try:
-            return model_run(0)
-        except:
-            temp = init_start(data)
-            return model_run(0)
-        
+
+        return model_run(0)
 
 
 
@@ -806,8 +802,10 @@ def update_figure(data, exp_name, dict_mode):
 
 
 
-        fig1.update_layout(xaxis_title = 'Age (kyr)', yaxis_title = 'CCD (m)')
 
+
+        fig1.update_layout(xaxis_title = 'Age (kyr)', yaxis_title = 'CCD (m)')
+        fig1.update_yaxes(autorange="reversed")
         fig1.update_layout(
                     autosize=True,
                     # width=800,
