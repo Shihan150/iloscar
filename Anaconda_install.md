@@ -26,7 +26,7 @@ Succeed!
 ## Windows 10
 1.Download from the [anaconda website](https://www.anaconda.com/products/individual).
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/6a6621d8-503d-443f-8f81-862cb34eb04c">  
-\n
+$\n$
 
 2.Double click to install. Generally just click 'allow' or 'continue' when proceeding.
 
