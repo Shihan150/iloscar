@@ -240,13 +240,16 @@ To test the performance of inverse algorithm, an identical twin test is performe
     
     * Repeat the process for mean surface pH and surface d13C result.
 
-2.1.3. Inverse experiment (457.08s used)
-    * Navigate to the Inverse page. Select 'pCO2 + mean surface d13c' from the dropdown menu and input the target file names manually.
+2.1.3. Inverse experiment (457.08s used)    
+    * Navigate to the Inverse page.   
+    Select 'pCO2 + mean surface d13c' from the dropdown menu and input the target file names manually.  
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
 
-    * Name the experiment and run the model.
-    * (If you meet an error similar to the following figure, which means some degassing rate is larger than the default higher boundary in Table 3. Try to adjust the values of second and third row in Table 3.)
+    * Name the experiment and run the model.  
+    * (If you meet an error similar to the following figure,   
+    which means some degassing rate is larger than the default higher boundary in Table 3.   
+    Try to adjust the values of second and third row in Table 3.)
     
 ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
     
