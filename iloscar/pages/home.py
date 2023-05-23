@@ -4,7 +4,7 @@ from style import *
 
 dash.register_page(__name__, path='/', order = 1)
 
-link = "href='https://doi.org/10.5194/gmd-5-149-2012"
+link = "https://doi.org/10.5194/gmd-5-149-2012"
 layout = html.Div(children=[
     html.Div(style = Home_STYLE, children =[
     html.P("The LOSCAR model is designed to efficiently compute the partitioning of carbon between ocean, atmosphere, and sediments on time scales ranging from centuries to millions of years. "),
