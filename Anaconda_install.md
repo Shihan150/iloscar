@@ -18,6 +18,7 @@ This tutorial is for installing Anaconda on your machine. I highly suggest taht 
 <img width="618" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/4c03ab32-435f-48a5-a932-30ca45e5333f">
 <img width="720" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/005eebd9-5f8d-49ac-b67e-345248059bd0">
 <img width="718" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/8336901a-2979-4a2f-85b4-4a96552a8e42">
+
 Succeed!
 
 ## Windows 10
@@ -33,6 +34,8 @@ Succeed!
 <img width="601" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/c0c6903d-28d9-4109-ac11-f68b0727d30c">
 <img width="541" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/ac87c512-bfb0-4bcd-b0c9-caff1b713e3d">
 <img width="590" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/455eabc8-88ff-412d-b9b0-ab076f729ab8">
+
+Succeed!
 
 ## Linux
 If you have a Linux machine, here is the [link](https://docs.anaconda.com/anaconda/install/linux/) for installment tutorials.
