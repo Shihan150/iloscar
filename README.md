@@ -130,7 +130,7 @@ Some external files are required to run the model.
 
 ## Example
 (Required data files could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat).)
-
+For all tables, the first column can be adjusted manually.
 
 ### 1. Forward model
 The general workflow follows: 
@@ -139,21 +139,50 @@ The general workflow follows:
     3. Change the t0 and tfinal in Table 3 and spin up the model for 2 Ma. Check if the steady state is achieved;
     4. using the final steady state from last step as y0 and turn on the carbon emission. Run the model.
     
-Here several examples are given to help users practice how to run the iLOSCAR.
+Here one example is given to help users practice how to run the iLOSCAR forwardly.
 
 #### 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578). 
 
 Note that the prolonged carbon leak after the major emission and the inferred reverse circulation are not incorporated here. 
 
+##### Tune the steady state
+Note that the initial y0 for the default parameter settings are given in our package (**preind_steady.dat** and **petm_steady.dat**), which can be used directly. Thus, if users want to run the default model, they can skip this part directly.
+
     1. Go to the Forward page   
 
 ![image](https://user-images.githubusercontent.com/57557675/232100195-e47c4d51-dbba-4b5b-a82a-b60cb3870703.png)
 
-    2. Turn the PALEO to '1'. 
+    2. Turn the PALEO to '1', LOADFLAG to '0', and Save ystart to '1'.
+    Save ystart decides if the model will export the y values at t=tfinal. 
+    The export file name can be manually specified in Table 4. Here we use the 'petm_steady.dat'.
     Then the model parameters in Table 2 will adjust automatically to the palaeo settings.
+    
+   
+    3. Turn off the carbon emission by changing 'emission pattern' to 0 in Table 3.
+    
+<img width="868" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/92e1c8da-264b-49af-b10b-d706a5d7edcb">
 
-![image](https://user-images.githubusercontent.com/57557675/232095753-3edcd6d7-9a06-49cd-85f8-ecf19c4fca94.png)
+    4. Set tfinal to 2e7 in Table 2.
+    <img width="852" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/de5ff72e-285e-4d42-867d-6cc1e8b2d0b6">
 
+    5. Give a name to your experiment and run it. I name it as Zeebe2009 here.
+<img width="975" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/c5edd496-f93e-4d6c-8095-00d19a4d1594">
+
+    6. The running information will be given in the following chunck. 
+<img width="926" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/b32fb30d-6b34-4eeb-8a72-3d5d6c8fc83b">
+
+    7. When integration finished, the final steady state will be saved to the file specified in Table 4 ('petm_steady.dat' here).
+    The export file can be used for perturbation experiments later.
+<img width="794" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/dba35d27-b377-4943-8c7c-05f95377fbb3">
+
+##### Perturbation experiment
+    1. Stay in the same page. In table 1, set LOADFALG  to '1' and Save ystart to '0'.
+    <img width="827" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/cfcaeffe-20ea-4aaa-b473-530b1a0b1600">
+
+    2. In table 2, change tfinal to 2e5.
+    <img width="837" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/faf87155-42fc-4807-b1c3-35240339aa06">
+
+    
     3. Select the carbon emission scenario in Table 3. In this example, set:
     'emission pattern' == 1, 'emission amount' == 3000, 
     'd13c emission' == -55, 'emission start' == 0, 
@@ -161,13 +190,11 @@ Note that the prolonged carbon leak after the major emission and the inferred re
 
 ![image](https://user-images.githubusercontent.com/57557675/232096837-51e2d08a-5f5c-48c5-b0dd-ac867f97327a.png)
 
-    4. Give a name to your experiment and run it. I name it as Zeebe2009 here.
+    
+    4. Run the model. users can click the 'Clean the output' button, then the experiment information from the previous run will be cleared. But it is only optional and users can run the next experiment directly.
+    
 
-![image](https://user-images.githubusercontent.com/57557675/232097501-d03a8807-07e3-4e6f-bef9-ca7bb1eb8770.png)
 
-    5. The running information will be given in the following chunck. 
-
-![image](https://user-images.githubusercontent.com/57557675/232097903-6d2d0c27-6d90-464b-9359-8d42d0d9bded.png)
 
     6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). The folder will be in the same dictionary where you run your python code. Modeling mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
 
