@@ -14,9 +14,12 @@ layout = html.Div(children=[
     html.Br(),
     html.P("This is the iLOSCAR-0.1 written in Python, which allows users to run the model from the website interface."),
     html.Br(),
-    html.P("Author: Shihan Li"),
-    html.P("Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA")
-
+    html.P("Author"),
+    html.P(" Shihan Li | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA"),
+    html.Br(),
+    html.P('Contributors'),
+    html.P('Dr. Richard E. Zeebe | Department of Oceanography, University of Hawaii, Manoa Honolulu, HI 96822, USA'),
+    html.P('Dr. Shuang Zhang | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA'),
     ])
 
 ])
