@@ -623,8 +623,12 @@ def update_progress(key,data):
     if key:
         return [], [], []
     else:
-    
-        return model_run(0)
+        try:
+            return model_run(0)
+        except:
+            temp = init_start(data)
+            return model_run(0)
+        
 
 
 
