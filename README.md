@@ -30,6 +30,11 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 <img width="414" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/a0c92e81-420b-4e6f-883a-a520ed82cd1a">
 <img width="1844" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/99778982-9208-47d6-a1a9-7da45d5c6747">
 
+Succeed!
+
+
+
+
 
 #### Windows 10
 1. Open the start menu and look for **Anaconda Prompt**. 
@@ -49,6 +54,10 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/2e28f0cf-8c84-4e21-9ab0-cab5edd5e642)
 
 Succeed!
+
+
+
+
 
 ## Model description
 For the details of iLOSCAR, including model structure and derivation of equations, please refer to our paper (in preparation).
