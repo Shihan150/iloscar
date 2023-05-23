@@ -6,14 +6,12 @@
  For any questions, please contact shihan@tamu.edu
 
 ## Install
-### Mac and Linux
-```bash
-pip install iloscar
+To avoid the potential inconvenience caused by the Python package inconsistency, we highly recommend downloading the code directly from [https://github.com/Shihan150/iloscar](https://github.com/Shihan150/iloscar) and setting up an Anaconda virtual environment to run iLOSCAR. 
 
-```
+0. Anaconda install
+Please refer to the Anaconda_install.md file for detailed instructions on installing Anaconda. If you already have Anaconda installed, you can proceed to the next step.
 
-### Windows
-We are still trying to resolve some consistency issues for the iLOSCAR implementation in Windows system. So for Windows users, please download the code  directly from [https://github.com/Shihan150/iloscar](https://github.com/Shihan150/iloscar). 
+
 
 ## Usage
 
