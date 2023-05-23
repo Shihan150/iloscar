@@ -27,7 +27,11 @@ Succeed!
 1. Download from the [anaconda website](https://www.anaconda.com/products/individual).
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/6a6621d8-503d-443f-8f81-862cb34eb04c">
 
+
+
 2. Double click to install. Generally just click 'allow' or 'continue' when proceeding.
+
+
 <img width="847" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/601db6ff-180d-4de7-bcef-e55c2750f31d">
 <img width="559" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/c91c2977-3b3f-4e5e-b798-b47da71254dd">
 <img width="576" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/2faeb8e8-a769-4382-8c31-deedf216c4a0">
