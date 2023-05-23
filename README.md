@@ -167,12 +167,12 @@ Note that the initial y0 for the default parameter settings are given in our pac
 
 
     4. Change tfinal to 2e7 in Table 2.
-    ![image](https://github.com/Shihan150/iloscar/assets/57557675/362a0071-4355-4f7d-a917-fba1570f967a)
+![image](https://github.com/Shihan150/iloscar/assets/57557675/362a0071-4355-4f7d-a917-fba1570f967a)
 
 
     
     5. Give a name to your experiment and run it. I name it as Zeebe2009 here.
-<img width="975" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/c5edd496-f93e-4d6c-8095-00d19a4d1594">
+![image](https://github.com/Shihan150/iloscar/assets/57557675/1171abab-39c3-4999-9415-fa96c20f1fcb)
 
     6. The running information will be given in the following chunck. 
 <img width="926" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/b32fb30d-6b34-4eeb-8a72-3d5d6c8fc83b">
@@ -183,18 +183,18 @@ Note that the initial y0 for the default parameter settings are given in our pac
 
 ##### Perturbation experiment
     1. Stay in the same page. In table 1, set LOADFALG  to '1' and Save ystart to '0'.
-    <img width="827" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/cfcaeffe-20ea-4aaa-b473-530b1a0b1600">
+![image](https://github.com/Shihan150/iloscar/assets/57557675/0481554b-a6db-49e8-8162-25faa08cbe83)
 
     2. In table 2, change tfinal to 2e5.
-    <img width="837" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/faf87155-42fc-4807-b1c3-35240339aa06">
-
+ ![image](https://github.com/Shihan150/iloscar/assets/57557675/d08149a5-d8c1-47db-ac80-42b0db5e3e00)
     
     3. Select the carbon emission scenario in Table 3. In this example, set:
     'emission pattern' == 1, 'emission amount' == 3000, 
     'd13c emission' == -55, 'emission start' == 0, 
     'emission duration' == 6000.
+    
+![image](https://github.com/Shihan150/iloscar/assets/57557675/ca30ed7c-a9f4-4c4f-a9a7-1af2471b9100)
 
-![image](https://user-images.githubusercontent.com/57557675/232096837-51e2d08a-5f5c-48c5-b0dd-ac867f97327a.png)
 
     
     4. Run the model. users can click the 'Clean the output' button, then the experiment information from the previous run will be cleared. But it is only optional and users can run the next experiment directly.
