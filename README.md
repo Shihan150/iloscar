@@ -27,7 +27,7 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 <img width="351" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/661d7c95-3d25-451a-b5f3-e703939e5884">
 
 5. Type ***Python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) to run the model.
-
+<img width="414" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/a0c92e81-420b-4e6f-883a-a520ed82cd1a">
 
 
 
