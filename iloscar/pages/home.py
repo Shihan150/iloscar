@@ -18,7 +18,7 @@ layout = html.Div(children=[
     html.P(" Shihan Li | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA"),
     html.Br(),
     html.P('Contributors'),
-    html.P('Dr. Richard E. Zeebe | Department of Oceanography, University of Hawaii, Manoa Honolulu, HI 96822, USA'),
+    html.P('Dr. Richard E. Zeebe | Department of Oceanography, University of Hawaii, Manoa Honolulu, Hawaii, 96822, USA'),
     html.P('Dr. Shuang Zhang | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA'),
     ])
 
