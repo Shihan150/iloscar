@@ -11,6 +11,13 @@ To avoid the potential inconvenience caused by the Python package inconsistency,
 ### 0. Anaconda install  
 Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/blob/main/Anaconda_install.md) file for detailed instructions on installing Anaconda. If you already have Anaconda installed, you can proceed to the next step.
 
+### 1. Create a virtual environment
+
+#### Mac system
+1. Open the Terminal and go to the iloscar main directory downloaed in the previous step. One example is shown below and you need to specify your own path.
+<img width="422" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/fe677631-6469-4d00-a53d-8dcef8ba448c">
+
+2. Type ***conda env create -f iloscar_mac.yml*** to install the iloscar environment.
 
 
 ## Usage
