@@ -19,7 +19,7 @@ To avoid the potential inconvenience caused by the Python package inconsistency,
 ### 0. Anaconda install  
 Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/blob/main/Anaconda_install.md) file for detailed instructions on installing Anaconda. If you already have Anaconda installed, you can proceed to the next step.
 
-### 1. Create a virtual environment and running
+### 1. Create a virtual environment and run the model
 
 #### Mac system
 1. Open the Terminal and go to the iloscar main directory downloaed in the previous step. One example is shown below and you need to specify your own path.
@@ -46,7 +46,6 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 
 <img width="387" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/eca0100f-7c9e-4fa8-a455-57d8ee86cc6e">
 <img width="1844" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/99778982-9208-47d6-a1a9-7da45d5c6747">   
-<br>
 Succeed!
 
 <br>
@@ -84,6 +83,8 @@ For the details of iLOSCAR, including model structure and derivation of equation
 A LOWESS smoothing function is provided. Users are allowed to upload data files and tune the hyperparamter that controls the windown fraction used in LOWESS manually. Note that the default temporal resolution for output data is 0.2 kyr. For a full description of smoothing algorithm, refer to [https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
 ### Output files
+In each experiment, the model will output following data files.
+
 | File.csv    | Unit        | Variable         |
 | ----------- | ----------- | ---------------- |
 | tcb    |  (deg C)  | OCN temperature|
@@ -114,6 +115,8 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
         
 
 ## External file requirement
+Some external files are required to run the model.
+
 | Mode      | File usage| Format | Requirement
 | ----------- | ----------- | ------- | -------
 | Forward    | Initial y0   | .dat | 1 column, 140 (for modern) or 184  rows; <br /> y0 satisfies dy0/dt = F(t=t0, y0) = 0 
@@ -122,7 +125,6 @@ A LOWESS smoothing function is provided. Users are allowed to upload data files 
 | Inverse | pCO2 data for inversion | .csv | 2 column with headline, age (yr) + pCO2 (ppmv)
 |          | mean surface pH data for inversion | .csv | 2 column with headline, age (yr) + pH |
 |          | mean surface d13c data for inversion | .csv | 2 column with headline, age (yr) + d13c |
-
 | Function | data to be smoothed | .csv | 2 column with headline, age (yr) + data |
 
 
