@@ -5,7 +5,7 @@
  Shihan Li | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA
  
  Contributors  
- Dr. Richard E. Zeebe | Department of Oceanography, University of Hawaii, Manoa Honolulu, HI 96822, USA  
+ Dr. Richard E. Zeebe | Department of Oceanography, University of Hawaii, Manoa Honolulu, Hawaii, 96822, USA  
  Dr. Shuang Zhang | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA  
  
  For any questions, please contact shihan@tamu.edu
