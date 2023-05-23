@@ -3,7 +3,7 @@
 This tutorial is for installing Anaconda on your machine. I highly suggest taht your machine has at least 4GB storage space for installation of Anaconda.
 
 ## Mac system
-1. Download from the [anaconda website](https://www.anaconda.com/products/individual).
+1.Download from the [anaconda website](https://www.anaconda.com/products/individual).
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/9352970a-d053-4121-b552-5d65e5ddc574">
 \n.        
 2. Double click to install. Generally just click 'allow' or 'continue' when proceeding.
@@ -24,13 +24,12 @@ Succeed!
 
 
 ## Windows 10
-1. Download from the [anaconda website](https://www.anaconda.com/products/individual).
+1.Download from the [anaconda website](https://www.anaconda.com/products/individual).
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/6a6621d8-503d-443f-8f81-862cb34eb04c">
 
+\n
 
-\n.   
-
-2. Double click to install. Generally just click 'allow' or 'continue' when proceeding.
+2.Double click to install. Generally just click 'allow' or 'continue' when proceeding.
 
 
 <img width="847" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/601db6ff-180d-4de7-bcef-e55c2750f31d">
