@@ -256,7 +256,8 @@ run_info =   dbc.Container(style = run_info_style, id = 'run_info',children = [ 
 
     dbc.Row([
            dbc.Col(dbc.FormText(id = 'progress_bar_title', children = [],
-        style = { "padding": "0rem 0rem"}), style = {'textAlign': 'left'},),
+        style = { "padding": "0rem 0rem"}), style = {'textAlign': 'left', 'margin-bottom': '2rem'},),
+
 
         ]),
     dbc.Row([
@@ -598,14 +599,14 @@ def activate_progress_bar(key, info):
         if key == 'Fail':
             raise PreventUpdate
         if key == 'Success':
-            return False, 'Progressing...'
+            return True, 'Progressing...'
 
     else:
         return True, []
 
 # run the model
 @callback(output = [Output('info_integration', 'children'), Output('ysol', 'data'), Output('tsol', 'data')],
-        inputs = [Input('progress_bar','hidden')],
+        inputs = [Input('progress_bar_title','children')],
         state = State('parameters', 'data'),
         background = False,
         progress = [Output('progress_bar', 'value'), Output('progress_bar', 'max')],
@@ -621,11 +622,10 @@ def update_progress(key,data):
 
 
     if key:
-        return [], [], []
-    else:
-
+        temp = init_start(data)
         return model_run(0)
-
+    else:
+        return [], [], []
 
 
 
