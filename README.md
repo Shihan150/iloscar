@@ -30,33 +30,6 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 <img width="414" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/a0c92e81-420b-4e6f-883a-a520ed82cd1a">
 
 
-
-
-## Usage
-
-### Mac and Linux
-```py
-from iloscar import iloscar_run
-
-iloscar_run()
-
-```
-Open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) to run the model. 
-
-### Windows
-Python version dependency: ***>3.7 and <3.11***.  
-	
-1. open Terminal and input the following command.
-	
-```
-pip install numpy scipy dash plotly pandas numba diskcache statsmodels dash_bootstrap_components dash_extensions dash[diskcache] dill==0.3.5.1
-
-```
-2. cd to iloscar-main/iloscar
-3. input the following command at terminal window
-```
-python app.py
-
 ```
 ## Model description
 For the details of iLOSCAR, including model structure and derivation of equations, please refer to our paper (in preparation).
