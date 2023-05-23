@@ -1,4 +1,26 @@
-# iloscar
+- [iloscar](#iloscar)
+  * [Install](#install)
+    + [0. Anaconda install](#0-anaconda-install)
+    + [1. Create a virtual environment and run the model](#1-create-a-virtual-environment-and-run-the-model)
+      - [Mac system](#mac-system)
+      - [Windows 10](#windows-10)
+  * [Model description](#model-description)
+    + [Smoothing function](#smoothing-function)
+    + [Output files](#output-files)
+  * [External file requirement](#external-file-requirement)
+  * [Example](#example)
+    + [1. Forward model](#1-forward-model)
+      - [1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578).](#11-origninal-petm-example-from--zeebe-et-al--2009--https---wwwnaturecom-articles-ngeo578-)
+        * [Tune the steady state](#tune-the-steady-state)
+        * [Perturbation experiment](#perturbation-experiment)
+    + [2. Inverse model](#2-inverse-model)
+      - [2.1 Inverse twin experiment](#21-inverse-twin-experiment)
+      - [2.2 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)](#22--gutjahr-et-al--2017--https---wwwnaturecom-articles-nature23646-tab1-)
+      - [2.3 [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)](#23--wu-et-al--2023--https---wwwscienceorg-doi-full-101126-sciadvabq4082-)
+  * [Common bugs](#common-bugs)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
  A web-based interactive carbon cycle model, built upon the classic LOSCAR model. Forward and inverse mode included.  
  
  Author  
