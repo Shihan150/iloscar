@@ -217,6 +217,7 @@ Users can click the 'Clean the output' button, then the experiment information f
 To test the performance of inverse algorithm, an identical twin test is performed. In identical twin testing, a preliminary run of the forward model is used to generate a synthetic 'truth' data set which can subsequently be used in inversion experiments. It is straightfoward to check whether the inverse algorithm works correctly. 
 
 2.1.1. Preliminary run  
+
     * In Forward page, follow all the default settings in Table 1 and 2, except turn tfinal to 2e4.
     * Set 'emission pattern' as 3 in Step 3 and input 'pulse_emi.dat' in the second row of Table 4. Note that relative path is required for the file name. 
     * 'puluse_emi.dat'  two emission events: fast and short (3000 Gt in 3 kyr) vs slow and long (10000 Gt in 35 kyr), thus serving an excellent example to check the inversion algorithm.
