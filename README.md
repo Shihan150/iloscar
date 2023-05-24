@@ -257,11 +257,19 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * Repeat the process for mean surface pH and surface d13C result.
 
 2.1.3. Inverse experiment (457.08s used)    
-    * Navigate to the Inverse page.   
+    * Navigate to the Inverse page.     
     Select 'pCO2 + mean surface d13c' from the dropdown menu and input the target file names manually.  
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
+    * In table 3, boundary values need to be specified for the [Toms748 root-finding algorithm](https://docs.scipy.org/doc/scipy/reference/optimize.root_scalar-toms748.html). 
+    Their physical meanings represent the expected minimum and maximum degassing rate. 
+    The closer is the range, the faster the experiment will run, but at the expense of higher failure probability.
+    The default values are -0.1 and 1 Gt/yr, which can meet the requirement of most geological settings.
+    
+![image](https://github.com/Shihan150/iloscar/assets/57557675/2914c095-10c2-45f0-b20c-6983096e272e)
 
+    
+    
     * Name the experiment and run the model.    
     
     * If you want to terminate the ongoing experiment, just click the 'Cancel' button.  
@@ -280,7 +288,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
  
  
 
-#### 2.2 [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
+#### 2.2 PETM experiment after [Gutjahr et al., 2017](https://www.nature.com/articles/nature23646#Tab1)
 
 1. Derive the steady state y0
 
@@ -298,9 +306,12 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * In Table 4, input './gutjahr2017.dat'
     * Name the experiment and run the model
     * Succeed! 
+
+<img width="836" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/2c7bd82d-a6c3-481f-8ae5-dc0ec13aa7f7">
+
   
         
-#### 2.3 [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)
+#### 2.3 PTB experiment [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)
 
 1. Derive the steady state y0
 
