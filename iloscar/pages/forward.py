@@ -272,13 +272,24 @@ run_info =   dbc.Container(style = run_info_style, id = 'run_info',children = [ 
     dbc.Row([
         dbc.Col(html.Div(id = 'info_wo_results'))]),
         ])
-
+link_forward = "https://github.com/Shihan150/iloscar/blob/main/README.md#1-forward-model-example"
+link_inverse = "https://github.com/Shihan150/iloscar/blob/main/README.md#2-inverse-model-example"
 #################
 
 layout = dbc.Container(fluid = False,style = Home_STYLE, children = [
     dcc.Store(id = 'ysol', data = []),
     dcc.Store(id = 'tsol', data = []),
 
+    dbc.Row([
+        dbc.Col(html.Div("The first column in each table is editable, allowing users to manually adjust parameters.",
+                        style={'fontSize':20, 'textAlign':'left', 'font-style': 'italic', "margin-left": "10rem",'padding': '1rem 1rem'} )),
+
+    ]),
+    # dbc.Row([
+    #     dbc.Col(
+    #     html.P(["Learn how to run the model from the ",  html.Label([ html.A('example', href=link_forward, target = '_blank'),  '.'])]),
+    #     style={'fontSize':20, 'textAlign':'left', 'font-style': 'italic', "margin-left": "10rem",'padding': '1rem 1rem'}
+    # )]),
 
     dbc.Row([
         dbc.Col(html.Div("Step 1: select the experiment version",
