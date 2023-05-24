@@ -263,7 +263,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
 
-    * In table 3, boundary values need to be specified for the [Toms748 root-finding algorithm](https://docs.scipy.org/doc/scipy/reference/optimize.root_scalar-toms748.html). 
+    * In table 3, boundary values need to be specified for the [Toms748 root-finding algorithm]([https://www.nature.com/articles/nature23646#Tab1](https://docs.scipy.org/doc/scipy/reference/optimize.root_scalar-toms748.html))
     Their physical meanings represent the expected minimum and maximum degassing rate. 
     The closer is the range, the faster the experiment will run, but at the expense of higher failure probability.
     The default values are -0.1 and 1 Gt/yr, which can meet the requirement of most geological settings.
