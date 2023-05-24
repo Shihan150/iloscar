@@ -144,11 +144,11 @@ Some external files are required to run the model.
 For all tables, the first column can be adjusted manually.
 
 ### 1. Forward model example
-The general workflow follows: 
-    1. choose the version control information in Table 1; 
-    2. Tune relevant parameters in Table 2 and turn off the carbon emission in Table 3; 
-    3. Change the t0 and tfinal in Table 3 and spin up the model for 2 Ma. Check if the steady state is achieved;
-    4. using the final steady state from last step as y0 and turn on the carbon emission. Run the model.
+The general workflow follows:   
+    1. choose the version control information in Table 1;    
+    2. Tune relevant parameters in Table 2 and turn off the carbon emission in Table 3;   
+    3. Change the t0 and tfinal in Table 3 and spin up the model for 2 Ma. Check if the steady state is achieved;  
+    4. using the final steady state from last step as y0 and turn on the carbon emission. Run the model.  
     
 Here one example is given to help users practice how to run the iLOSCAR forwardly.
 
