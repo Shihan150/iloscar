@@ -300,7 +300,7 @@ To test the performance of inverse algorithm, an identical twin test is performe
     * In Table 4, input './gutjahr2017.dat' into the third row.
     * Name the experiment and run the model.
         
-2. Inversion experiment (878s)
+2. Inversion experiment (838s)
     * Navigate to the Inverse page.
     * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
     * In Table 1, set PALEO == 1, LOADFLAG == 1
