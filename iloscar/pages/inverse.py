@@ -331,6 +331,12 @@ layout = dbc.Container(fluid = False, style = Home_STYLE, children = [
     html.Hr(style = {'margin-left':'7rem', 'width':900}),
 
     dbc.Row([
+        dbc.Col(html.Div("The first column in each table is editable, allowing users to manually adjust parameters.",
+                        style={'fontSize':20, 'textAlign':'left', 'font-style': 'italic', "margin-left": "10rem",'padding': '1rem 1rem'} )),
+
+    ]),
+
+    dbc.Row([
         dbc.Col(html.Div("Step 1: choose the experiment version",
                         style={'fontSize':24, 'textAlign':'left', "margin-left": "10rem",'padding': '1rem 1rem'} )),
 
