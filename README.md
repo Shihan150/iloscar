@@ -65,7 +65,7 @@ Succeed!
 <br>
 <br>
 
-
+----
 
 #### Windows 10
 1. Open the start menu and look for **Anaconda Prompt**. 
