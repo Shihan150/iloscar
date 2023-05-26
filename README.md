@@ -40,7 +40,7 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 <img width="478" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/8359350e-6ebc-4d94-9455-4e31128eefeb">
 <br>
 
-2. Type ***conda env create -f iloscar_mac.yml*** to install the iloscar environment. It may take ~1 min.
+2. Type ***conda env create -f iloscar_mac.yml*** to install the iloscar environment. It may take ~1 - 5 min.
 
 <img width="460" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/98e28f3a-121b-4b64-949b-e01100a64981">
 <br>
