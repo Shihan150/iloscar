@@ -1,3 +1,4 @@
+# iLOSCAR
 - [Install](#install)
   * [0. Anaconda install](#0-anaconda-install)
   * [1. Create a virtual environment and run the model](#1-create-a-virtual-environment-and-run-the-model)
