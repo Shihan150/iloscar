@@ -9,7 +9,7 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
  Dr. Shuang Zhang | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA  
  
  For any questions, please contact shihan@tamu.edu
-
+---
 - [Install](#install)
   * [0. Anaconda install](#0-anaconda-install)
   * [1. Create a virtual environment and run the model](#1-create-a-virtual-environment-and-run-the-model)
