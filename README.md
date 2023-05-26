@@ -147,59 +147,60 @@ Some external files are required to run the model.
 For all tables, the first column can be adjusted manually.
 
 ### 1. Forward model example
-The general workflow follows:   
-    1. choose the version control information in Table 1;    
+The general workflow is as follows:   
+    1. Select the desired version in Table 1;    
     2. Tune relevant parameters in Table 2 and turn off the carbon emission in Table 3;   
     3. Change the t0 and tfinal in Table 3 and spin up the model for 2 Ma. Check if the steady state is achieved;  
-    4. using the final steady state from last step as y0 and turn on the carbon emission. Run the model.  
+    4. Utilize the final steady state achieved in the previous step as the initial condition (y0). Enable the carbon emissions and run the model.  
     
-Here one example is given to help users practice how to run the iLOSCAR forwardly.
+To assist users in familiarizing themselves with the process of running iLOSCAR in a forward manner, an example is provided.
 
 #### 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578). 
 
-Note that the prolonged carbon leak after the major emission and the inferred reverse circulation are not incorporated here. 
+Please note that this specific implementation does not include the prolonged carbon release following the main emission event or the inferred reverse circulation described in the original study by Zeebe et al., 2009.
 
-##### Tune the steady state
-Note that the initial y0 for the default parameter settings are given in our package (**preind_steady.dat** and **petm_steady.dat**), which can be used directly. Thus, if users want to run the default model, they can skip this part directly.
+##### Tuning the steady state
+Please note that if you intend to run the default model, you can skip this part as the initial y0 values are provided in our package (preind_steady.dat and petm_steady.dat), which can be used directly.
 
     1. Go to the Forward page   
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/1a9ea74e-718d-482b-984e-ad074916be60)
 
 
 
-    2. Turn the PALEO to '1', LOADFLAG to '0', and Save ystart to '1'.
-    Save ystart decides if the model will export the y values at t=tfinal. 
-    The export file name can be manually specified in Table 4. Here we use the 'petm_steady.dat'.
-    Then the model parameters in Table 2 will adjust automatically to the palaeo settings.
+    2. Set the PALEO parameter to '1', LOADFLAG to '0', and Save ystart to '1'.
+    The model parameters in Table 2 will adjust automatically to the palaeo settings.
+    Save ystart determines if the model will export the y values at t=tfinal. 
+    The export file name can be manually specified in Table 4. In this example, we use the 'petm_steady.dat'.
+    
     
  ![image](https://github.com/Shihan150/iloscar/assets/57557675/fb654bff-d91a-4b0f-a294-1788638cd85e)
     
    
-    3. Turn off the carbon emission by changing 'emission pattern' to 0 in Table 3.
+    3. Turn off carbon emissions by changing 'emission pattern' to 0 in Table 3.
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/00f621d3-d1fc-435f-bc3d-b396a66d16c7)
 
 
-    4. Change tfinal to 2e7 in Table 2.
+    4. Modify 'tfinal' to '2e7' in Table 2.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/362a0071-4355-4f7d-a917-fba1570f967a)
 
 
     
-    5. Give a name to your experiment and run it. I name it as Zeebe2009 here.
+    5. Provide a name for your experiment and run it. I name it as Zeebe2009 here.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/1171abab-39c3-4999-9415-fa96c20f1fcb)
 
-    6. The running information will be given in the following chunck. 
+    6. The running information will be displayed in the following chunck. 
 <img width="926" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/b32fb30d-6b34-4eeb-8a72-3d5d6c8fc83b">
 
-    7. When integration finished, the final steady state will be saved to the file specified in Table 4 ('petm_steady.dat' here).
-    The export file can be used for perturbation experiments later.
+    7. Once the integration is complete, the final steady state will be saved to the file specified in Table 4 ('petm_steady.dat' in this case). 
+    The exported file can be used as the initial y0 for perturbation experiments later.
 <img width="794" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/dba35d27-b377-4943-8c7c-05f95377fbb3">
 
 ##### Perturbation experiment
-    1. Stay in the same page. In table 1, set LOADFALG  to '1' and Save ystart to '0'.
+    1. Stay on the same page. In table 1, set LOADFALG  to '1' and Save ystart to '0'.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/0481554b-a6db-49e8-8162-25faa08cbe83)
 
-    2. In table 2, change tfinal to 2e5.
+    2. In table 2, change 'tfinal' to '2e5'.
  ![image](https://github.com/Shihan150/iloscar/assets/57557675/d08149a5-d8c1-47db-ac80-42b0db5e3e00)
     
     3. Select the carbon emission scenario in Table 3. In this example, set:
@@ -212,82 +213,81 @@ Note that the initial y0 for the default parameter settings are given in our pac
 
     
     4. Run the model. 
-Users can click the 'Clean the output' button, then the experiment information from the previous run will be cleared. But it is only optional and users can run the next experiment directly.
-
+    Optionally, you can click the 'Clean the output' button to clear the experiment information from the previous run. 
+    However, this step is optional, and you can proceed to run the next experiment directly.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/96f94b67-62ed-4d99-8ddf-2c3f33178344)
 
 
-    6. When integration finished, modeling results are saved to exp_name folder (Zeebe2009 here). 
-    The folder will be in the same dictionary where you run your python code. 
+    6. Once the integration is complete, the modeling results will be saved in the exp_name folder (e.g., 'Zeebe2009').
+    The folder will be located in the same directory where you ran your Python code. 
     Modeling mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
 
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/3bf77e45-77af-4c92-9fa2-e375fc50ec24)
 
 
 ### 2. Inverse model example
-The general workflow for the inverse model follows:  
-1. Tune the parameters and derive the inital steady state y0 in the forward model page.
-2. Navigate to the inverse model page and provide file names that contain the target records.
-3. Change the parameters according to the tuning results.
+The general workflow for the inverse model is as follows:  
+1. Tune the parameters and obtain the initial steady state y0 using the forward model page.
+2. Go to the inverse model page and specify the file names that contain the target records.
+3. Adjust the parameters based on the tuning results obtained from the forward model.
 4. Run the inverse model.
 
 #### 2.1 Inverse twin experiment 
 
-To test the performance of inverse algorithm, an identical twin test is performed. In identical twin testing, a preliminary run of the forward model is used to generate a synthetic 'truth' data set which can subsequently be used in inversion experiments. It is straightfoward to check whether the inverse algorithm works correctly. 
+To evaluate the performance of the inverse algorithm, an identical twin test can be conducted. In this type of test, a preliminary run of the forward model is performed to generate a synthetic 'truth' dataset that can be used for subsequent inversion experiments. This allows for a straightforward assessment of the accuracy of the inverse algorithm.
 
 2.1.1. Preliminary run  
 
-    * In Forward page, follow all the default settings in Table 1 and 2, except turn tfinal to 4e4.   
+    * In the Forward page, maintain all the default settings in Table 1 and 2, except for setting 'tfinal' to '4e4'.   
 
     
-    * Set 'emission pattern' as 3 in Step 3 and input 'pulse_emi.dat' in the second row of Table 4.   
-    Note that relative path is required for the file name.   
+    * Set the 'emission pattern' to 3 in Table 3, and input 'pulse_emi.dat' in the second row of Table 4. 
+    Note that the file name should be provided as a relative path.
     
-    * 'puluse_emi.dat'  two emission events:  
-    fast and short (3000 Gt in 3 kyr) vs slow and long (10000 Gt in 35 kyr),  
-    thus serving an excellent example to check the inversion algorithm.  
+    * 'puluse_emi.dat' file represents two emission events:  
+    a fast and short event (3000 Gt in 3 kyr) and a slow and long event (10000 Gt in 35 kyr).  
+     This dataset serves as an excellent example for checking the performance of the inversion algorithm. 
     
-    * Name and run the experiment  
+    * Provide a name for the experiment and run it.
     
 ![image](https://user-images.githubusercontent.com/57557675/232114536-3d65cadb-fcea-45e9-9e52-c1cbb66c1bae.png)
 
 2.1.2. Prepare data for inversion   
 
-    * At twin_exp folder, select the pCO2 results from pCO2_d13c.csv file and save as twin_pco2_for_inv.csv.  
-    Note that the modeling results are of high temporal resolution   
-    and we take a slice to keep the inversion time reasonable.   
+    * Navigate to the twin_exp folder.
+    * Locate the pCO2 results in the pCO2_d13c.csv file.
+    * Select the desired pCO2 values and save them as twin_pco2_for_inv.csv. 
+    * Keep in mind that the modeling results may have a high temporal resolution, so it is recommended to select a subset of data to ensure reasonable inversion times.
+    * Repeat the same process for the mean surface pH and surface d13C results. Select the relevant values and save them accordingly for use in the inversion experiment.
     
-    * Repeat the process for mean surface pH and surface d13C result.
-
 2.1.3. Inverse experiment (457.08s used)    
 
-    * Navigate to the Inverse page.     
-    Select 'pCO2 + mean surface d13c' from the dropdown menu and input the target file names manually.  
+    * Go to the Inverse page.    
+    From the dropdown menu, select 'pCO2 + mean surface d13c'.
+    Manually input the target file names.
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
 
-    * In table 3, boundary values need to be specified for the Toms748 root-finding algorithm.
-    Their physical meanings represent the expected minimum and maximum degassing rate. 
-    The closer is the range, the faster the experiment will run, but at the expense of higher failure probability.
-    The default values are -0.1 and 2 Gt/yr, which can meet the requirement of most applications.
-    
+    * In Table 3, specify the boundary values for the Toms748 root-finding algorithm. 
+    These values represent the expected minimum and maximum degassing rates. 
+    The closer the range, the faster the experiment will run, but there is a higher chance of failure. 
+    The default values of -0.1 and 2 Gt/yr should be suitable for most applications.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/2914c095-10c2-45f0-b20c-6983096e272e)
 
     
     
-    * Name the experiment and run the model.    
+    * Provide a name for the experiment and run the model.
     
-    * If you want to terminate the ongoing experiment, just click the 'Cancel' button.  
+    * If you need to terminate the ongoing experiment, simply click the 'Cancel' button.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/8fda005f-e110-484e-b072-6222f2b9ecfe)
 
     
-    * (If you meet an error similar to the following figure,   
-    which means some degassing rate is larger than the default higher boundary in Table 3.   
-    Try to adjust the values of second and third row in Table 3.) 
+    * If you encounter an error similar to the figure below, it means that some degassing rates exceed the default upper boundary in Table 3.
+    Adjust the values in the second and third rows of Table 3 accordingly.
     
 ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
     
-    * Succeed! 
+    * Once the inverse experiment is successful, the results will be displayed.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/db0604e2-b4c4-4d76-a4e9-68c93fa41cb8)
 
  
@@ -297,43 +297,43 @@ To test the performance of inverse algorithm, an identical twin test is performe
 
 1. Derive the steady state y0
 
-    * Navigate to the Forward page.
+    * Go to the Forward page.
     * In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
     * In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
-    * In Table 4, input './gutjahr2017.dat' into the third row.
-    * Name the experiment and run the model.
+    * In Table 4, input './gutjahr2017.dat' in the third row.
+    * Provide a name for the experiment and run the model.
         
 2. Inversion experiment (838s)
-    * Navigate to the Inverse page.
+    * Go to the Inverse page.
     * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
     * In Table 1, set PALEO == 1, LOADFLAG == 1
     * In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
     * In Table 4, input './gutjahr2017.dat'
-    * Name the experiment and run the model
+    * Provide a name for the experiment and run the model.
     * Succeed! 
 
 <img width="836" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/2c7bd82d-a6c3-481f-8ae5-dc0ec13aa7f7">
 
   
         
-#### 2.3 PTB experiment [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)
+#### 2.3 PTB experiment after [Wu et al., 2023](https://www.science.org/doi/full/10.1126/sciadv.abq4082)
 
 1. Derive the steady state y0
 
-    * Navigate to the Forward page.
+    * Go to the Forward page.
     * In Table 1, set PALEO == 0, LOADFLAG == 0, Save ystart == 1
     * In Table 2, set tfinal == 1e7, pCO2_ref == 425, pCO2_initial == 449, , fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042
     * In Table 4, input './wu2023.dat' into the third row.
-    * Name the experiment and run the model.
+    * Provide a name for the experiment and run the model.
         
 2. Inversion experiment (s)
-    * Navigate to the Inverse page.
+    * Go to the Inverse page.
     * Download the 'wu_pco2.csv' and 'wu_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
     * In Table 1, set PALEO == 0, LOADFLAG == 1
     * In Table 2, set  pCO2_ref == 425, pCO2_initial == 449, fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042, nsi == 0.4, ncc == 0.4
     * In table 3, set lower and higher boundary as [-0.1, 1], which will accelerate the model
     * In Table 4, input './wu2023.dat'
-    * Name the experiment and run the model
+    * Provide a name for the experiment and run the model.
     * Succeed! 
   ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
 
