@@ -1,4 +1,15 @@
 # iLOSCAR
+A web-based interactive carbon cycle model, built upon the classic LOSCAR model. Forward and inverse mode included.  
+ 
+ Author  
+ Shihan Li | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA
+ 
+ Contributors  
+ Dr. Richard E. Zeebe | Department of Oceanography, University of Hawaii, Manoa Honolulu, Hawaii, 96822, USA  
+ Dr. Shuang Zhang | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA  
+ 
+ For any questions, please contact shihan@tamu.edu
+
 - [Install](#install)
   * [0. Anaconda install](#0-anaconda-install)
   * [1. Create a virtual environment and run the model](#1-create-a-virtual-environment-and-run-the-model)
@@ -10,16 +21,6 @@
   * [1. Forward model example](#1-forward-model-example)
   * [2. Inverse model example](#2-inverse-model-example)
 
- A web-based interactive carbon cycle model, built upon the classic LOSCAR model. Forward and inverse mode included.  
- 
- Author  
- Shihan Li | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA
- 
- Contributors  
- Dr. Richard E. Zeebe | Department of Oceanography, University of Hawaii, Manoa Honolulu, Hawaii, 96822, USA  
- Dr. Shuang Zhang | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA  
- 
- For any questions, please contact shihan@tamu.edu
 
 ## Install  
 To avoid the potential inconvenience caused by the Python package inconsistency, we highly recommend downloading the code directly from [https://github.com/Shihan150/iloscar](https://github.com/Shihan150/iloscar) and setting up an Anaconda virtual environment to run iLOSCAR. 
