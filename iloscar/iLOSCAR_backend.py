@@ -273,7 +273,7 @@ def model_run(set_progress):
 
         hpls = np.ones(NB) * HGUESS
 
-        ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA')
+        ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 2e2)
 
         elapse = timeit.default_timer() - start_time
 
