@@ -39,6 +39,8 @@ from scipy.integrate import solve_ivp
 from os.path import join, exists
 from os import makedirs
 
+import platform
+
 
 
 
@@ -273,7 +275,24 @@ def model_run(set_progress):
 
         hpls = np.ones(NB) * HGUESS
 
-        ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 2e2)
+
+        if platform.system() == 'Windows':
+                ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA')
+
+                if np.isnan(ysol['y']).any():
+
+                    ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                    if np.isnan(ysol['y']).any():
+                        
+                        ysol =  solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+        else:
+            first_step = None
+            ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = first_step)
 
         elapse = timeit.default_timer() - start_time
 
@@ -2165,7 +2184,7 @@ def wo_params():
 
 
 def derivs(t, y, set_progress, hpls ):
-    
+
 
     yp = np.zeros(NEQ)
 
