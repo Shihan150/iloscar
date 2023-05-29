@@ -74,7 +74,7 @@ Succeed!
 
 2. Go to the iloscar main directory downloaed in the previous step. One example is shown below and you need to specify your own path.
 
-3. Type ***conda env create -f iloscar_mac.yml*** to install the iloscar environment. It may take ~1-2 mins.
+3. Type ***conda env create -f iloscar_win.yml*** to install the iloscar environment. It may take ~1-2 mins.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/4d85dae4-7816-4496-8850-cebf2541a2b7)
 
 
