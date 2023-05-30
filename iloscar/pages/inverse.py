@@ -63,8 +63,8 @@ df_mode_inv = pd.DataFrame(OrderedDict([
     ('Value', [0,1,1,1]),
     ('Parameter', ['PALEO', 'Sediment', 'LOADFLAG', 'Ocaen temperature change']),
     ('Options', [ '1/0', '1/0', '1/0', '1/0']),
-    ('Comment', [ '1: Paleo setup; \n 0: Modern setup', '1: Sediment box on; \n 0: sediment box off',
-     '1: load initial settings from an external file; \n 0: off','1: Ocean temperature change (co2-sensitivity) ON \n 0: Off',
+    ('Comment', [ '1: paleo setup; \n 0: modern setup', '1: sediment box on; \n 0: sediment box off',
+     '1: load initial settings from an external file; \n 0: off','1: ocean temperature change (co2-sensitivity) ON \n 0: Off',
          ]),
 
 ]))
@@ -78,13 +78,13 @@ df_param_inv = pd.DataFrame(OrderedDict([
     ('Parameter', ['t0', 'tfinal', 'pCO2_ref', 'pCO2_initial',
                     'fepl', 'eph', 'rrain', 'fsh',
                     'silicate weathering0', 'carbonate weathering0',  'd13c carbonate weathering', 'd13c volcanic',
-                    'Conveyor Transport',  'Ca_concentration', 'Mg concentration', 'climate sensitvity', 'nsi', 'ncc']),
+                    'conveyor transport',  'Ca_concentration', 'Mg concentration', 'climate sensitvity', 'nsi', 'ncc']),
    ('Unit', ['yr', 'yr', 'uatm', 'uatm',
               '-', 'mol m-2 yr-1', '-', '-',
               '10^12 mol yr-1', '10^12 mol yr-1', 'per mil','per mil',
               'Sv',  'mol/kg', 'mol/kg', '-', '-', '-']),
 
-    ('Comment', [ 'Follow the time range of target records', 'Follow the time range of target records', 'pCO2 reference', 'steady-state pCO2',
+    ('Comment', [ 'follow the time range of target records', 'follow the time range of target records', 'pCO2 reference', 'steady-state pCO2',
             'biopump-efficiency', 'high-latitude carbon export', 'rain ratio', 'raise shelf rain relative to deep rain',
         'CaSiO3 weathering flux (initial)', 'CaCO3 weathering flux (initial)', 'd13c carbonate weathering', 'd13c volcanic degassing',
         'thermalhaline transport', 'oceanic Ca concentration', 'oceanic Mg concentration', 'default OCN temperature change per double pCO2', 'silicate weathering exponent',
@@ -107,7 +107,7 @@ df_carbon_emission_inv = pd.DataFrame(OrderedDict([
 df_file_inv = pd.DataFrame(OrderedDict([
     ('File name', ['./preind_steady.dat']),
     ('Parameter', ['Initial steady state file name']),
-    ('Comment', [ 'Required in Inversion mode'
+    ('Comment', [ 'initial steady state file, \n mandatory the inverse model'
 ]),
 
 ]))
@@ -240,7 +240,8 @@ inverse_file = dash_table.DataTable(
         'name': 'File name',
         'type': 'text',
         'editable': True
-    }, {
+    },
+    {
         'id': 'Comment',
         'name': 'Comment',
         'type': 'text',
