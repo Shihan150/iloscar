@@ -19,8 +19,8 @@ df_mode = pd.DataFrame(OrderedDict([
     ('Value', [0,1,1,1,0]),
     ('Parameter', ['PALEO', 'Sediment', 'LOADFLAG', 'Ocaen temperature change', 'Save ystart']),
     ('Options', [ '1/0', '1/0', '1/0', '1/0', '1/0']),
-    ('Comment', [ '1: Paleo setup; \n 0: Modern setup', '1: Sediment box on; \n 0: sediment box off',
-     '1: load initial settings from an external file; \n 0: off','1: Ocean temperature change (co2-sensitivity) ON \n 0: Off',
+    ('Comment', [ '1: paleo setup; \n 0: modern setup', '1: sediment box on; \n 0: sediment box off',
+     '1: load initial settings from an external file; \n 0: off','1: ocean temperature change (co2-sensitivity) ON \n 0: Off',
      '1: the experiment aim is to autospin to the steady state and the system variables at t=tfinal will be saved \n 0: off.'
          ]),
 
@@ -56,7 +56,7 @@ df_carbon_emission = pd.DataFrame(OrderedDict([
                    'emission start', 'emission duration']),
     ('Unit', [ '3/2/1/0', 'Gt', 'per mil', 'yr', 'yr']),
     ('Comment', [ f'3: emission scenario with time-dependant d13c \n 2: emission scenario from the external files \n 1:carbon emission in uniform distribution \n 0: no carbon emission',
-    'total amount of carbon input, \n only useful when Emission_Pattern == 1', 'd13c of input carbon, \n only useful when Emission_Pattern == 1', 'start year for the emission, \n only useful when Emission_Pattern == 1', 'duration for the emission, \n only useful when Emission_Pattern == 1',
+    'total amount of carbon input, \n only useful when "emission pattern" == 1', 'd13c of input carbon, \n only useful when "emission pattern" == 1', 'start year for the emission, \n only useful when "emission pattern" == 1', 'duration for the emission, \n only useful when "emission pattern" == 1',
 ]),
 
 ]))
@@ -66,9 +66,9 @@ df_file = pd.DataFrame(OrderedDict([
     ('Parameter', ['Initial steady state file name',
                    'Time-resolved carbon input ',
                    'File to save the final modeling results']),
-    ('Comment', [ 'Required only when LOADFLAG == 1 in Step 1',
-                  'Required only when Emission pattern == 2 or 3 in Step 3',
-                  'Required only when Save ystart == 1'
+    ('Comment', [ 'initial steady state file, \n required only when LOADFLAG == 1 in Step 1',
+                  'time-resolved carbon input file, \n required only when "emission pattern" == 2 or 3 in Step 3',
+                  'file to save the y when t = tfinal, \n required only when Save ystart == 1'
 ]),
 
 ]))
@@ -201,7 +201,7 @@ forward_file = dash_table.DataTable(
         'name': 'File name',
         'type': 'text',
         'editable': True
-    }, {
+    },{
         'id': 'Comment',
         'name': 'Comment',
         'type': 'text',
