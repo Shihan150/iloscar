@@ -269,6 +269,7 @@ def init_start(params):
 def model_run(set_progress):
 
     global RUN_TYPE
+
     if RUN_TYPE == 1:
         start_time = timeit.default_timer()
 
@@ -277,16 +278,16 @@ def model_run(set_progress):
 
 
         if platform.system() == 'Windows':
-                ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA')
+            ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA')
 
-                if np.isnan(ysol['y']).any():
+            if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 5e2)
+                ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 5e2)
 
 
-                    if np.isnan(ysol['y']).any():
-                        
-                        ysol =  solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 1e2)
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =  solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 1e2)
 
 
 
@@ -373,7 +374,28 @@ def model_run(set_progress):
                 tracer_eval[i] = ems_new
 
                 # write out the ysol as the initial values for the next loop
-                ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+
+
+                if platform.system() == 'Windows':
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA', first_step = 5e2)
+
+
+                        if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA', first_step = 1e2)
+
+
+
+                else:
+                    first_step = None
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA',  first_step = first_step)
+
+
+
                 yfinal = ysol['y'][:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
                 np.savetxt('inv_ystart.dat', yfinal)
@@ -406,7 +428,27 @@ def model_run(set_progress):
 
 
 
-            ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+
+            if platform.system() == 'Windows':
+                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = 5e2)
+
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =  solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = 1e2)
+
+
+
+            else:
+                first_step = None
+                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA', first_step = first_step)
+
+
+
 
             info = html.Div([
                             html.P(f'{elapse: .2f}s used.'),
@@ -469,9 +511,29 @@ def model_run(set_progress):
                 tracer_eval[i]= ems_new
 
 
-                # write out hte ysol as the initial values for next loop
+                # write out the ysol as the initial values for next loop
 
-                ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = 'LSODA')
+                if platform.system() == 'Windows':
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = 'LSODA')
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]],  method = 'LSODA', first_step = 5e2)
+
+
+                        if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = 'LSODA', first_step = 1e2)
+
+
+
+                else:
+                    first_step = None
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = 'LSODA', first_step = first_step)
+
+
+
+
                 yfinal = ysol.y[:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
                 np.savetxt('inv_ystart.dat', yfinal)
@@ -511,7 +573,26 @@ def model_run(set_progress):
 
             RUN_TYPE = 3
 
-            ysol = solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+
+            if platform.system() == 'Windows':
+                ysol = solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],   method = 'LSODA', first_step = 5e2)
+
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =  solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = 1e2)
+
+
+
+            else:
+                first_step = None
+                ysol = solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = first_step)
+
+
 
             info = html.Div([
                             html.P(f'{elapse: .2f}s used.'),
@@ -574,7 +655,26 @@ def model_run(set_progress):
                 tracer_eval[i] = ems_new
 
                 # write out the ysol as the initial values for the next loop
-                ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+
+                if platform.system() == 'Windows':
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA', first_step = 5e2)
+
+
+                        if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA', first_step = 1e2)
+
+
+
+                else:
+                    first_step = None
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = first_step)
+
+
                 yfinal = ysol['y'][:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
                 np.savetxt('inv_ystart.dat', yfinal)
@@ -605,7 +705,24 @@ def model_run(set_progress):
             emi_scenario.to_csv('inverse_emission_from_ph.csv')
 
 
-            ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+
+            if platform.system() == 'Windows':
+                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = 5e2)
+
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =  solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+            else:
+                first_step = None
+                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA', first_step = first_step)
 
             info = html.Div([
                             html.P(f'{elapse: .2f}s used.'),
@@ -660,7 +777,25 @@ def model_run(set_progress):
                 tracer_eval[i] = ems_new
 
                 # write out the ysol as the initial values for the next loop
-                ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+
+                if platform.system() == 'Windows':
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                        if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+                else:
+                    first_step = None
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = first_step)
+
                 yfinal = ysol['y'][:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
                 np.savetxt('inv_ystart.dat', yfinal)
@@ -748,7 +883,24 @@ def model_run(set_progress):
 
                 # write out hte ysol as the initial values for next loop
 
-                ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA')
+                if platform.system() == 'Windows':
+                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA')
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = 5e2)
+
+
+                        if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                            ysol =  solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = 1e2)
+
+
+
+                else:
+                    first_step = None
+                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = first_step)
+
                 yfinal = ysol.y[:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
                 np.savetxt('inv_ystart.dat', yfinal)
@@ -774,7 +926,24 @@ def model_run(set_progress):
 
 
 
-            ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA')
+
+            if platform.system() == 'Windows':
+                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA')
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =  solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+            else:
+                first_step = None
+                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = first_step)
 
             info = html.Div([
                             html.P(f'{elapse: .2f}s used.'),
@@ -829,7 +998,25 @@ def model_run(set_progress):
                 tracer_eval[i] = ems_new
 
                 # write out the ysol as the initial values for the next loop
-                ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+
+                if platform.system() == 'Windows':
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                        if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+                else:
+                    first_step = None
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = first_step)
+
                 yfinal = ysol['y'][:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
                 np.savetxt('inv_ystart.dat', yfinal)
@@ -930,7 +1117,25 @@ def model_run(set_progress):
 
                 # write out hte ysol as the initial values for next loop
 
-                ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA')
+
+                if platform.system() == 'Windows':
+                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA')
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = 5e2)
+
+
+                        if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                            ysol =  solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = 1e2)
+
+
+
+                else:
+                    first_step = None
+                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = first_step)
+
                 yfinal = ysol.y[:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
                 np.savetxt('inv_ystart.dat', yfinal)
@@ -956,7 +1161,24 @@ def model_run(set_progress):
 
 
 
-            ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA')
+
+            if platform.system() == 'Windows':
+                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA')
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                    if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                        ysol =  solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+            else:
+                first_step = None
+                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = first_step)
 
             info = html.Div([
                             html.P(f'{elapse: .2f}s used.'),
@@ -987,7 +1209,24 @@ def cost_function(ems_new, tracer_type, hpls, tems, ems):
         global fcinp
         fcinp = interpolate.interp1d([tems[0], tems[1]], [ems[0], ems[1]], bounds_error=False, fill_value=0)
 
-        ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+
+        if platform.system() == 'Windows':
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+
+            if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+        else:
+            first_step = None
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = first_step)
 
         index = NOCT * NB
 
@@ -1001,7 +1240,25 @@ def cost_function(ems_new, tracer_type, hpls, tems, ems):
     if tracer_type == 'd13c_for_emi':
         ems = np.array([ems_new, ems_new])
         fcinp = interpolate.interp1d([tems[0], tems[1]], [ems[0], ems[1]], bounds_error=False, fill_value=0)
-        ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+
+        if platform.system() == 'Windows':
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+
+            if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+        else:
+            first_step = None
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = first_step)
+
         dic = ysol.y[0:NB,:]
         dicc = ysol.y[5*NB:6*NB,:] * CNTI*1e3/RHO
         temp = dicc/(dic*1e3/RHO)/RST
@@ -1020,7 +1277,26 @@ def cost_function(ems_new, tracer_type, hpls, tems, ems):
         rccinp = (ems_new/1e3+1)*RST
         # frccinp = interpolate.interp1d([tems[0], tems[1]], [ems[0], ems[1]], bounds_error=False, fill_value=0, kind = 'zero')
 
-        ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls],method = 'LSODA')
+
+        if platform.system() == 'Windows':
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+
+            if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+        else:
+            first_step = None
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = first_step)
+
+
         dic = ysol.y[0:NB,:]
         dicc = ysol.y[5*NB:6*NB,:] * CNTI*1e3/RHO
         temp = dicc/(dic*1e3/RHO)/RST
@@ -1037,7 +1313,25 @@ def cost_function(ems_new, tracer_type, hpls, tems, ems):
         ems = np.array([ems_new, ems_new])
 
         fcinp = interpolate.interp1d([tems[0], tems[1]], [ems[0], ems[1]], bounds_error=False, fill_value=0)
-        ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+
+        if platform.system() == 'Windows':
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+
+            if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 5e2)
+
+
+                if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
+
+                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 1e2)
+
+
+
+        else:
+            first_step = None
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = first_step)
+
 
         t = ysol.t
         ysol = ysol.y
