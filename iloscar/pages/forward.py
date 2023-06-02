@@ -17,7 +17,7 @@ dash.register_page(__name__, order = 2)
 
 df_mode = pd.DataFrame(OrderedDict([
     ('Value', [0,1,1,1,0]),
-    ('Parameter', ['PALEO', 'Sediment', 'LOADFLAG', 'Ocaen temperature change', 'Save ystart']),
+    ('Parameter', ['PALEO', 'Sediment', 'LOADFLAG', 'Ocean temperature change', 'Save ystart']),
     ('Options', [ '1/0', '1/0', '1/0', '1/0', '1/0']),
     ('Comment', [ '1: paleo setup; \n 0: modern setup', '1: sediment box on; \n 0: sediment box off',
      '1: load initial settings from an external file; \n 0: off','1: ocean temperature change (co2-sensitivity) ON \n 0: Off',
