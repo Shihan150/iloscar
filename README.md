@@ -146,7 +146,7 @@ Some external files are required to run the model.
 
 
 ## Example
-(Required data files could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat).).    
+(Example data files could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat).).    
 
 For all tables, the first column can be adjusted manually.
 
