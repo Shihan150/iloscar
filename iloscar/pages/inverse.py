@@ -39,12 +39,12 @@ inv_opt = html.Div(
             # dbc.InputGroup([
             [dbc.Input(id = 'target_file', style = {'width': 700},
                 value = '',
-                placeholder = "choose the .csv file containing pCO2 data for inversion...",
+                placeholder = "INPUT the .csv file containing pCO2 data for inversion...",
                 ),
             html.Br(),
             dbc.Input(id = 'target_file2', style = {'width': 700}, type = 'text',
                 value = '',
-                placeholder = "choose the .csv file containing d13c data for inversion...",
+                placeholder = "INPUT the .csv file containing d13c data for inversion...",
                 )],
             # dbc.InputGroupText('.csv'),
             # ]
@@ -61,7 +61,7 @@ inv_opt = html.Div(
 
 df_mode_inv = pd.DataFrame(OrderedDict([
     ('Value', [0,1,1,1]),
-    ('Parameter', ['PALEO', 'Sediment', 'LOADFLAG', 'Ocaen temperature change']),
+    ('Parameter', ['PALEO', 'Sediment', 'LOADFLAG', 'Ocean temperature change']),
     ('Options', [ '1/0', '1/0', '1/0', '1/0']),
     ('Comment', [ '1: paleo setup; \n 0: modern setup', '1: sediment box on; \n 0: sediment box off',
      '1: load initial settings from an external file; \n 0: off','1: ocean temperature change (co2-sensitivity) ON \n 0: Off',
@@ -452,19 +452,19 @@ layout = dbc.Container(fluid = False, style = Home_STYLE, children = [
             )
 def update_placeholder_target_file(value):
     if value == 'pCO2':
-        return 'choose the .csv file containing pCO2 data for inversion...', []
+        return 'INPUT the .csv file containing pCO2 data for inversion...', []
 
     elif value == 'd13c':
-        return 'choose the .csv file containing mean surface ocean d13C for inversion...', []
+        return 'INPUT the .csv file containing mean surface ocean d13C for inversion...', []
 
     elif value == 'pCO2_d13c':
-        return 'choose the .csv file containing pCO2 for double inversion...', []
+        return 'INPUT the .csv file containing pCO2 for double inversion...', []
 
     elif value == 'GSpH':
-        return 'choose the .csv file containing mean surface ocean pH for inversion...', []
+        return 'INPUT the .csv file containing mean surface ocean pH for inversion...', []
 
     elif value == 'pH_d13c':
-        return 'choose the .csv file containing mean surface ocean pH for inversion...', []
+        return 'INPUT the .csv file containing mean surface ocean pH for inversion...', []
 
     elif value == None:
 
@@ -478,23 +478,23 @@ def update_placeholder_target_file(value):
             )
 def update_placeholder_target_file(value):
     if value == 'pCO2':
-        return 'choose the .csv file containing pCO2 data for inversion...', 'hidden'
+        return 'INPUT the .csv file containing pCO2 data for inversion...', 'hidden'
 
     elif value == 'd13c':
-        return 'choose the .csv file containing mean surface ocean d13C for inversion...', 'hidden'
+        return 'INPUT the .csv file containing mean surface ocean d13C for inversion...', 'hidden'
 
     elif value == 'pCO2_d13c':
-        return 'choose the .csv file containing d13c data for inversion...', 'text'
+        return 'INPUT the .csv file containing d13c data for inversion...', 'text'
 
     elif value == 'GSpH':
-        return 'choose the .csv file containing d13c for inversion...', 'hidden'
+        return 'INPUT the .csv file containing d13c for inversion...', 'hidden'
 
     elif value == 'pH_d13c':
-        return 'choose the .csv file containing d13c data for inversion...', 'text'
+        return 'INPUT the .csv file containing d13c data for inversion...', 'text'
 
     elif value == None:
 
-        return "choose the .csv file containing d13c data for inversion...", 'hidden'
+        return "INPUT the .csv file containing d13c data for inversion...", 'hidden'
 
 
 # store the target information for inversion
