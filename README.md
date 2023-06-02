@@ -24,11 +24,7 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
 
 
 ## Install  
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
+<h1 style="color:purple;">Hello World</h1>
 
 To avoid the potential inconvenience caused by the Python package inconsistency, we highly recommend downloading the code directly from [https://github.com/Shihan150/iloscar](https://github.com/Shihan150/iloscar) and setting up an Anaconda virtual environment to run iLOSCAR. 
 
