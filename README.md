@@ -24,11 +24,9 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
 
 
 ## Install  
-```diff
 
-- To successfully install iLOSCAR, please follow the tutorial provided. Note that the 'pip' command installation method is not effective in this case.
-‘’‘
-...
+
+- To successfully install iLOSCAR, please follow the tutorial provided. Note that the 'pip' command installation method is not effective in this case. -
 
 To avoid the potential inconvenience caused by the Python package inconsistency, we highly recommend downloading the code directly from [https://github.com/Shihan150/iloscar](https://github.com/Shihan150/iloscar) and setting up an Anaconda virtual environment to run iLOSCAR. 
 
