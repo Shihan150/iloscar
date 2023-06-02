@@ -70,7 +70,7 @@ f_lowess = html.Div(children = [
                 dbc.Row([html.Div('Select the raw data for LOWESS smoothing')],
                 style = {'padding': '1rem 0rem', 'fontSize' : 18}),
                 dbc.Row([dbc.Input(id = 'lowess_file', style = {'width': 700},
-                        value = '', placeholder = 'choose .csv file...')])
+                        value = '', placeholder = 'INPUT the .csv file...')])
 
                 ])
 
