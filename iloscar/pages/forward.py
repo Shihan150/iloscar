@@ -281,7 +281,7 @@ layout = dbc.Container(fluid = False,style = Home_STYLE, children = [
     dcc.Store(id = 'tsol', data = []),
 
     dbc.Row([
-        dbc.Col(html.Div("The first column in each table is editable, allowing users to manually adjust parameters.",
+        dbc.Col(html.Div("The first column in each table is editable and users can manually adjust the values.",
                         style={'fontSize':20, 'textAlign':'left', 'font-style': 'italic', "margin-left": "10rem",'padding': '1rem 1rem'} )),
 
     ]),
