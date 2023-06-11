@@ -3,6 +3,7 @@
 # color platte
 colors = {
     'background': '#fcfaea',
+    # 'background':'f9dcc4',
     'text': '#25252f',
     'title':'#FF8C00',
     'other':'#C5C5C5',
@@ -36,7 +37,7 @@ CONTENT_STYLE = {
 Home_STYLE = {
     'textAlign': 'left',
     'color': colors['text'],
-    "fontSize": 24,
+    "fontSize": 18,
     "margin-left": "0rem",
     "margin-right": "0rem",
     "padding": "2rem 2rem",
