@@ -17,6 +17,12 @@ Original reference:
 Based on the .c version
 """
 
+"""
+Update log:
+
+06/14/2023: fix the bugs when FSED = 0
+"""
+
 import pandas as pd
 import numpy as np
 from numba import jit
@@ -1658,62 +1664,63 @@ def wo_results(y, t):
     # np.savetxt(join(dir_name , "omegaarg.dat"), np.transpose(co3/1e6*cac/kspa), fmt = "%18.15f")
 
     # calculate the CCD
-    fccd = FCCD
-    faca = np.zeros((len(zv), len(t)))
-    fica = np.zeros((len(zv), len(t)))
-    fpca = np.zeros((len(zv), len(t)))
-    if FTYS:
-        ftca = np.zeros((len(zv), len(t)))
+    if FSED:
+        fccd = FCCD
+        faca = np.zeros((len(zv), len(t)))
+        fica = np.zeros((len(zv), len(t)))
+        fpca = np.zeros((len(zv), len(t)))
+        if FTYS:
+            ftca = np.zeros((len(zv), len(t)))
 
-    for i in range(len(t)):
-        fa = interpolate.interp1d(dsv, fcva[:,i],  fill_value="extrapolate")
-        faca[:,i] = fa(zv)
-        fi = interpolate.interp1d(dsv, fcvi[:,i],  fill_value="extrapolate")
-        fica[:,i] = fi(zv)
-        fp = interpolate.interp1d(dsv, fcvp[:,i],  fill_value="extrapolate")
-        fpca[:,i] = fp(zv)
+        for i in range(len(t)):
+            fa = interpolate.interp1d(dsv, fcva[:,i],  fill_value="extrapolate")
+            faca[:,i] = fa(zv)
+            fi = interpolate.interp1d(dsv, fcvi[:,i],  fill_value="extrapolate")
+            fica[:,i] = fi(zv)
+            fp = interpolate.interp1d(dsv, fcvp[:,i],  fill_value="extrapolate")
+            fpca[:,i] = fp(zv)
+
+            if FTYS:
+
+                ft = interpolate.interp1d(dsv, fcvt[:,i],  fill_value="extrapolate")
+                ftca[:,i] = ft(zv)
+
+
+        faca = np.abs(faca-fccd)
+        fica = np.abs(fica-fccd)
+        fpca = np.abs(fpca-fccd)
+        if FTYS:
+            ftca = np.abs(ftca-fccd)
+
+
+
+        # np.savetxt(join(dir_name , "ccda.dat"), np.argmin(faca, axis = 0), fmt = "%7.2f")
+        # np.savetxt(join(dir_name , "ccdi.dat"), np.argmin(fica, axis = 0), fmt = "%7.2f")
+        # np.savetxt(join(dir_name , "ccdp.dat"), np.argmin(fpca, axis = 0), fmt = "%7.2f")
 
         if FTYS:
+            pd_ccd = pd.DataFrame(
+                    {
+                        'Atlantic': np.argmin(faca, axis = 0),
+                    'Indian':np.argmin(fica, axis = 0),
+                    'Pacific':np.argmin(fpca, axis = 0),
+                    'Tetheys': np.argmin(ftca, axis = 0)
+                    },
+                    index = t
+                    )
 
-            ft = interpolate.interp1d(dsv, fcvt[:,i],  fill_value="extrapolate")
-            ftca[:,i] = ft(zv)
-
-
-    faca = np.abs(faca-fccd)
-    fica = np.abs(fica-fccd)
-    fpca = np.abs(fpca-fccd)
-    if FTYS:
-        ftca = np.abs(ftca-fccd)
-
-
-
-    # np.savetxt(join(dir_name , "ccda.dat"), np.argmin(faca, axis = 0), fmt = "%7.2f")
-    # np.savetxt(join(dir_name , "ccdi.dat"), np.argmin(fica, axis = 0), fmt = "%7.2f")
-    # np.savetxt(join(dir_name , "ccdp.dat"), np.argmin(fpca, axis = 0), fmt = "%7.2f")
-
-    if FTYS:
-        pd_ccd = pd.DataFrame(
-                {
-                    'Atlantic': np.argmin(faca, axis = 0),
-                'Indian':np.argmin(fica, axis = 0),
-                'Pacific':np.argmin(fpca, axis = 0),
-                'Tetheys': np.argmin(ftca, axis = 0)
-                },
-                index = t
-                )
-
-        # np.savetxt(join(dir_name , "ccdt.dat"), np.argmin(ftca, axis = 0), fmt = "%7.2f")
-    else:
-        pd_ccd = pd.DataFrame(
-                {
-                    'Atlantic': np.argmin(faca, axis = 0),
-                'Indian':np.argmin(fica, axis = 0),
-                'Pacific':np.argmin(fpca, axis = 0)
-                },
-                index = t
-                )
-    pd_ccd.index.name = 'Age'
-    pd_ccd.to_csv(join(dir_name , "ccd.csv"))
+            # np.savetxt(join(dir_name , "ccdt.dat"), np.argmin(ftca, axis = 0), fmt = "%7.2f")
+        else:
+            pd_ccd = pd.DataFrame(
+                    {
+                        'Atlantic': np.argmin(faca, axis = 0),
+                    'Indian':np.argmin(fica, axis = 0),
+                    'Pacific':np.argmin(fpca, axis = 0)
+                    },
+                    index = t
+                    )
+        pd_ccd.index.name = 'Age'
+        pd_ccd.to_csv(join(dir_name , "ccd.csv"))
 
 
 
@@ -1780,6 +1787,7 @@ def load_const():
 
     # of DEQS
     NEQ = NOCT * NB + NCATM + NCCATM + NOC * NSD + NOC * NSDCC
+
 
     # oceans
     VOC = 1.2918235e18   # m3 volume ocean
@@ -2099,6 +2107,7 @@ def model_initialize():
     # kerogen oxidation, tuded to match d13c-sw results with observations
     if FTYS:
         fkrg = 7e12/AOC    # mol C/m2/y 7 [WK92, Berner]
+
     else:
         fkrg = 10e12/AOC
 
@@ -2164,29 +2173,30 @@ def model_initialize():
 
 
     # sediment box depths
-    dsv = dsv0 * 1e3           # km -> m
+    if FSED:
+        dsv = dsv0 * 1e3           # km -> m
 
     # depth variable (0< = z <= dsv[NSD])
-    nz = 6500+1
-    zv = np.arange(dsv[-1]+1, dtype = int)
+        nz = 6500+1
+        zv = np.arange(dsv[-1]+1, dtype = int)
 
 
-    # klid: assign sediment to ocean boxes
-    # low, interm or deep
-    kl = np.where(dsv <= hlid[0])
-    ki = np.where((dsv > hlid[0]) &
-              (dsv <= (hlid[0]+hlid[1])))
-    kd = np.where(dsv>(hlid[0]+hlid[1]))
-    klid = np.zeros(len(dsv),dtype = int)
-    klid[kl] = 0
-    klid[ki] = 3
-    klid[kd] = 6
+        # klid: assign sediment to ocean boxes
+        # low, interm or deep
+        kl = np.where(dsv <= hlid[0])
+        ki = np.where((dsv > hlid[0]) &
+                  (dsv <= (hlid[0]+hlid[1])))
+        kd = np.where(dsv>(hlid[0]+hlid[1]))
+        klid = np.zeros(len(dsv),dtype = int)
+        klid[kl] = 0
+        klid[ki] = 3
+        klid[kd] = 6
 
-    if FTYS:
-        klidt[kl] = 10
-        klidt[ki] = 11
-        klidt[kd] = 12
-    nlid = np.array([len(dsv[kl]),len(dsv[ki]),len(dsv[kd])])
+        if FTYS:
+            klidt[kl] = 10
+            klidt[ki] = 11
+            klidt[kd] = 12
+        nlid = np.array([len(dsv[kl]),len(dsv[ki]),len(dsv[kd])])
 
 
 
@@ -2304,33 +2314,33 @@ def model_initialize():
         if FTYS:
             fc0t = np.ones(NSD) * 0.46
     #   copy all to ystart
-    ystart[NOATM: NOATM + 3 * NSD] = np.hstack((fc0a,fc0i,fc0p))
+        ystart[NOATM: NOATM + 3 * NSD] = np.hstack((fc0a,fc0i,fc0p))
 
-    if FTYS:
-        ystart[NOATM+3*NSD: NOATM+4*NSD] = fc0t
+        if FTYS:
+            ystart[NOATM+3*NSD: NOATM+4*NSD] = fc0t
 
 # initial porosities and CaCO3 mass
-    ffphi = (phi1-phi0)/(1-phi1)
-    phiia = (phi0 + ffphi*fc0a)/(1+ffphi*fc0a)
-    phiii = (phi0 + ffphi*fc0i)/(1+ffphi*fc0i)
-    phiip = (phi0 + ffphi*fc0p)/(1+ffphi*fc0p)
-    mc0a = fc0a * RHOS * (1-phiia)
-    mc0i = fc0i * RHOS * (1-phiii)
-    mc0p = fc0p * RHOS * (1-phiip)
-    if FTYS:
-        phiit = (phi0 + ffphi*fc0t)/(1+ffphi*fc0t)
-        mc0t = fc0t * RHOS * (1-phiit)
-    if FSEDCC:
-        fcc0a = rincc * fc0a
-        fcc0i = rincc * fc0i
-        fcc0p = rincc * fc0p
-    if FTYS:
-        fcc0t = rincc * fc0t
+        ffphi = (phi1-phi0)/(1-phi1)
+        phiia = (phi0 + ffphi*fc0a)/(1+ffphi*fc0a)
+        phiii = (phi0 + ffphi*fc0i)/(1+ffphi*fc0i)
+        phiip = (phi0 + ffphi*fc0p)/(1+ffphi*fc0p)
+        mc0a = fc0a * RHOS * (1-phiia)
+        mc0i = fc0i * RHOS * (1-phiii)
+        mc0p = fc0p * RHOS * (1-phiip)
+        if FTYS:
+            phiit = (phi0 + ffphi*fc0t)/(1+ffphi*fc0t)
+            mc0t = fc0t * RHOS * (1-phiit)
+        if FSEDCC:
+            fcc0a = rincc * fc0a
+            fcc0i = rincc * fc0i
+            fcc0p = rincc * fc0p
+        if FTYS:
+            fcc0t = rincc * fc0t
 
-    # copy all to ystart
-    ystart[NOATM + (3 + KTY) * NSD: NOATM + (6+KTY) * NSD ] = np.hstack((fcc0a/CNTI, fcc0i/CNTI, fcc0p/CNTI))
-    if FTYS:
-        ystart[NOATM + (6+KTY) *NSD: NOATM +(7+KTY) * NSD] = fcc0t/CNTI
+        # copy all to ystart
+        ystart[NOATM + (3 + KTY) * NSD: NOATM + (6+KTY) * NSD ] = np.hstack((fcc0a/CNTI, fcc0i/CNTI, fcc0p/CNTI))
+        if FTYS:
+            ystart[NOATM + (6+KTY) *NSD: NOATM +(7+KTY) * NSD] = fcc0t/CNTI
 
 
 
@@ -2430,31 +2440,32 @@ def wo_params():
     if FSED:
         fpout.write(f'{ncsd:.6e} ncsd \n')
         fpout.write(f'{kssd:.6e} kssd \n')
-    for k in range(NSD):
-        fpout.write(f'{dsv[k]:.6e} dsv[{k}] \n')
-    for k in range(NSD):
-        fpout.write(f'{asva[k]:.6e} asva[{k}] \n')
-    for k in range(NSD):
-        fpout.write(f'{asvi[k]:.6e} asvi[{k}] \n')
-    for k in range(NSD):
-        fpout.write(f'{asvp[k]:.6e} asvp[{k}] \n')
-    if FTYS:
+    if FSED:
         for k in range(NSD):
-            fpout.write(f'{asvt[k]:.6e} asvt[{k}] \n')
-    for k in range(NSD):
-        fpout.write(f'{klid[k]:d} klid[{k}] \n')
-    if FTYS:
-        for k in range(3):
-            fpout.write(f'{nlid[k]:d} nlid[{k}] \n')
+            fpout.write(f'{dsv[k]:.6e} dsv[{k}] \n')
+        for k in range(NSD):
+            fpout.write(f'{asva[k]:.6e} asva[{k}] \n')
+        for k in range(NSD):
+            fpout.write(f'{asvi[k]:.6e} asvi[{k}] \n')
+        for k in range(NSD):
+            fpout.write(f'{asvp[k]:.6e} asvp[{k}] \n')
+        if FTYS:
+            for k in range(NSD):
+                fpout.write(f'{asvt[k]:.6e} asvt[{k}] \n')
+        for k in range(NSD):
+            fpout.write(f'{klid[k]:d} klid[{k}] \n')
+        if FTYS:
+            for k in range(3):
+                fpout.write(f'{nlid[k]:d} nlid[{k}] \n')
     if FTYS:
         for k in range(NSD):
             fpout.write(f'{klidt[k]:d} klidt[{k}] \n')
-    for k in range(NSD):
-        fpout.write(f'{phiia[k]:.6e} phiia[{k}] \n')
-    for k in range(NSD):
-        fpout.write(f'{phiii[k]:.6e} phiii[{k}] \n')
-    for k in range(NSD):
-        fpout.write(f'{phiip[k]:.6e} phiip[{k}] \n')
+        for k in range(NSD):
+            fpout.write(f'{phiia[k]:.6e} phiia[{k}] \n')
+        for k in range(NSD):
+            fpout.write(f'{phiii[k]:.6e} phiii[{k}] \n')
+        for k in range(NSD):
+            fpout.write(f'{phiip[k]:.6e} phiip[{k}] \n')
     fpout.close()
 
     # # dsv.out
