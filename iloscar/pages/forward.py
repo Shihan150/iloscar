@@ -794,58 +794,60 @@ def update_figure(data, exp_name, dict_mode):
             x=1))
 
         fig1 = go.Figure()
-        ocn_list = ['ATL', 'IND', 'PAC', 'TET']
 
-        if dict_mode['FTYS'] == 1:
+        if dict_mode['FSED'] == 1:
+            ocn_list = ['ATL', 'IND', 'PAC', 'TET']
 
-            n_ocn = 4
-        else:
-            n_ocn = 3
+            if dict_mode['FTYS'] == 1:
 
-        for i in range(n_ocn):
-            fig1.add_trace(go.Scatter(x=data_ccd.Age/1000, y = data_ccd.iloc[:,i+1],
-                            mode = 'lines',
-                            name = ocn_list[i],
-                            showlegend = True,
-                            line = dict(width = 2),
-                            ),
-                            )
+                n_ocn = 4
+            else:
+                n_ocn = 3
+
+            for i in range(n_ocn):
+                fig1.add_trace(go.Scatter(x=data_ccd.Age/1000, y = data_ccd.iloc[:,i+1],
+                                mode = 'lines',
+                                name = ocn_list[i],
+                                showlegend = True,
+                                line = dict(width = 2),
+                                ),
+                                )
 
 
 
 
 
-        fig1.update_layout(xaxis_title = 'Age (kyr)', yaxis_title = 'CCD (m)')
-        fig1.update_yaxes(autorange="reversed")
-        fig1.update_layout(
-                    autosize=True,
-                    # width=800,
-                    # height=300,
-        xaxis = dict(
-                    showline = True, showgrid = True, showticklabels = True,
-                    linecolor = 'rgb(204,204,204)',
-                    linewidth = 2, ticks = 'inside',
-                    tickfont = dict( color = 'rgb(82,82,82)'),
-                    ),
-        yaxis = dict(
-                    showgrid = True, zeroline = True, showline = True,
-                    ticks = 'outside', linecolor = 'rgb(204,204,204)',
-                    linewidth = 2
-                    ),
-        plot_bgcolor = '#fcfaea',
-        font = dict(
-                    size = 16,
-                    family = 'Arial'
-                    ),
-        legend=dict(
-        orientation="h",
+            fig1.update_layout(xaxis_title = 'Age (kyr)', yaxis_title = 'CCD (m)')
+            fig1.update_yaxes(autorange="reversed")
+            fig1.update_layout(
+                        autosize=True,
+                        # width=800,
+                        # height=300,
+            xaxis = dict(
+                        showline = True, showgrid = True, showticklabels = True,
+                        linecolor = 'rgb(204,204,204)',
+                        linewidth = 2, ticks = 'inside',
+                        tickfont = dict( color = 'rgb(82,82,82)'),
+                        ),
+            yaxis = dict(
+                        showgrid = True, zeroline = True, showline = True,
+                        ticks = 'outside', linecolor = 'rgb(204,204,204)',
+                        linewidth = 2
+                        ),
+            plot_bgcolor = '#fcfaea',
+            font = dict(
+                        size = 16,
+                        family = 'Arial'
+                        ),
+            legend=dict(
+            orientation="h",
 
-        yanchor="bottom",
-        y=1.02,
-        xanchor="right",
-        x=1)
+            yanchor="bottom",
+            y=1.02,
+            xanchor="right",
+            x=1)
 
-        )
+            )
 
 
         return dcc.Graph(id ='pco2', figure = fig), dcc.Graph(id='CCD', figure = fig1)
