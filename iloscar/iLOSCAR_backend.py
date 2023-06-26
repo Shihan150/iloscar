@@ -508,7 +508,7 @@ def model_run(set_progress):
                 #              args = (tracer_type, hpls, tems, ems_d13c))
                 # ems_d13c_new = ems_d13c_new.root
 
-                ems_new, results = toms748(cost_function, tom_low, toms_high,
+                ems_new, results = toms748(cost_function, toms_low, toms_high,
                                         args = ('d13c_for_emi', hpls, tems, ems),
                                         xtol = 1e-4, rtol = 1e-8,
                                         full_output = True)
