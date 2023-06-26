@@ -107,7 +107,7 @@ df_carbon_emission_inv = pd.DataFrame(OrderedDict([
 df_file_inv = pd.DataFrame(OrderedDict([
     ('File name', ['./preind_steady.dat']),
     ('Parameter', ['Initial steady state file name']),
-    ('Comment', [ 'initial steady state file, \n mandatory the inverse model'
+    ('Comment', [ 'initial steady state file, \n mandatory for the inverse model'
 ]),
 
 ]))
