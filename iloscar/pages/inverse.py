@@ -732,11 +732,9 @@ def update_progress(set_progress,key, data):
     if key:
         return [], [], []
     else:
-        try:
-            return model_run(set_progress)
-        except:
-            temp = init_start(data)
-            return model_run(set_progress)
+        
+        temp = init_start(data)
+        return model_run(set_progress)
 
 
 # save the results
