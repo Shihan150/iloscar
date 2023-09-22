@@ -2139,16 +2139,16 @@ def model_initialize():
 
 
 
-    if FTYS:
-        klidt = np.zeros(NSD, dtype = 'int8')
-        fc0t  = np.zeros(NSD)
-        phiit = np.zeros(NSD)
-    if FSEDCC:
-        fcc0a = np.zeros(NSD)
-        fcc0i = np.zeros(NSD)
-        fcc0p = np.zeros(NSD)
-    if FTYS:
-        fcc0t = np.zeros(NSD)
+        if FTYS:
+            klidt = np.zeros(NSD, dtype = 'int8')
+            fc0t  = np.zeros(NSD)
+            phiit = np.zeros(NSD)
+        if FSEDCC:
+            fcc0a = np.zeros(NSD)
+            fcc0i = np.zeros(NSD)
+            fcc0p = np.zeros(NSD)
+            if FTYS:
+                fcc0t = np.zeros(NSD)
 
     # rain of remainder
     frrf = 0.35                 # g/cm2/ky remainder
