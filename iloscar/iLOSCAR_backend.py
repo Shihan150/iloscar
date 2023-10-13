@@ -3479,7 +3479,7 @@ def fcsys(dic,alk,hgss,tc,sal,prs,calc,mgcl):
 
         hx = 0.5 *((gam-1)*k1+np.sqrt(tmp))
 
-        if (np.fabs(hx-hgss).all() <= (hgss*1e-4)).all() :
+        if (np.fabs(hx-hgss) <= (hgss*1e-4)).all() :
             break
 
 
