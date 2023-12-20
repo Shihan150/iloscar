@@ -17,6 +17,7 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
 - [Model description](#model-description)
   * [Model functions](#Model-functions)
   * [Model structure](#Model-structure)
+  * [Numeric algorithms](#Numeric-algorithms)
   * [External input files](#external-input-files)
   * [Output files](#output-files)
 - [Example](#example)
@@ -98,7 +99,7 @@ Succeed!
 For the details of iLOSCAR, including the relevant processes, the physical meanings of parameters, model structure, and derivation of equations, please refer to our paper (in preparation) and [Zeebe, 2012, GMD](https://gmd.copernicus.org/articles/5/149/2012/).
 
 ### Model functions 
-* Forward model
+#### Forward model ####
 
 In the forward mode, a specific emission trajectory is applied as the forcing and the model will return the temporal evolution of various parameters in the global carbon cycle (see Output files section). The core part is to solve the ODE problem:   
 
@@ -106,7 +107,7 @@ $$ {d\vec y \over dt} = F(t, \vec y)   $$
  
 This is the ordinary differential equation system that governs the dynamic changes of the model's state variables over time, where t is time, $\vec y$ is the vector containing vaious biogeochemical tracers, and F is the function used to calculate the derivatives of the state variables $\vec y$.
  
-* Inverse model
+#### Inverse model ####
 
 Five inversion options are provided in the inverse model. The aim of the inverse model is to derive the time-dependent carbon emission scenario ($fcinp(t)$) and the isotopic composition of emitted carbon ( $f\delta^{13}C(t)$, which can minimize the relative errors between observations and corresponding modeling results:  
 
@@ -122,7 +123,7 @@ $$  fcinp(t), f\delta^{13}C(t) = argmin\sum_{i=1}^n  | {x_{model}(t_i) - x_{obs}
 | pCO2_d13c | pCO2 and mean surface d13C proxy records | fcinp(t) +  fd13C(t)|
 | pH_d13c | pH and mean surface d13C proxy records | fcinp(t) +  fd13C(t)|
 
-* Smoothing function
+#### Smoothing function ####
 
 A LOWESS smoothing function is available within the module. Users have the flexibility to upload data files and manually adjust the hyperparameters that controls the window fraction used in the LOWESS algorithm. Note that the default temporal resolution for output data is 0.2 kyr. For a comprehensive explanation of the smoothing algorithm, please refer to the following link: [LOWESS Smoothing Algorithm](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
@@ -141,16 +142,21 @@ iLOSCAR
 ├── petm_steady.dat
 ├── preind_steady.dat
 ```
-* Front-end  
+#### Front-end  ####
 The web-based interface in iLOSCAR is developed upon the [Dash](https://dash.plotly.com/) Package, which provides a low-code framework for rapidly building data apps in Python. The app.py is used to activate the model and the interface. The contents of the interface are controlled by the .py files in the 'pages' folder.   
-* Back-end  
+#### Back-end  ####
 The iLOSCAR_backen.py contains all the core functions to run the model, including setting up the model parameters and ODE functions, solutions for both forward and inverse model, saving the experiment results, as well as some tool functions such as solving the carbonate system from ALK and DIC.   
-* Initial y file  
+#### Initial y file  ####
 Two files (***petm_steady.dat*** and ***preind_steady.dat***) are provided, which are the initial state files from the original LOSCAR default settings.  
 
 For each experiment, users can update parameters from the front-end, which will be transferred to call the backend functions.   
 
+### Numeric algorithms
+#### ODE solver for the forward model ####
+The LSODA (an acronym for Livermore Solver for Ordinary Differential equations, with Automatic method switching for stiff and nonstiff problems) algorithm is employed as the ODE solver, given its demonstrated stability when dealing with stiff problems, as highlighted by [Hindmarsh (1992)](https://www.osti.gov/biblio/145724). The algorithm is available in the [Python Scipy Package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html).
 
+#### TOMS 748, a Root-finding algorithm, for the inverse model  ####
+To solve the inverse problem, the TOMS 748 root-finding algorithm is applied, which uses a mixture of inverse cubic interpolation and Newton-quadratic steps to enclose zeros of contiguous univariate functions ([Alefeld et al., 1995](https://dl.acm.org/doi/10.1145/210089.210111)). This algorithm offers the advantage of a rapid convergence rate, which significantly accelerates the inversion process. Additionally, Algorithm 748 is readily available in the [Python Scipy package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.toms748.html). Note that two parameters ($a, b$) need to be given to determine the boundaries of the algorithm search interval, i.e., $f(a)\times f(b) < 0$, where f is the function ${x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)}$. In our context, $a, b$ represent the possible maximum C burial and emission rates (in Gt), respectively. Default settings are -0.5 and 5, which should work for most applications. Increase the absolute value can reduce the failure probability of experiment, but at the expense of running speed. Therefore, users need to decide the values carefully according to their domain knowledge, to optimize the model performance.
 
 ### External input files
 Some external files are required to run the model.
