@@ -15,7 +15,7 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
   * [0. Anaconda install](#0-anaconda-install)
   * [1. Create a virtual environment and run the model](#1-create-a-virtual-environment-and-run-the-model)
 - [Model description](#model-description)
-  * [Smoothing function](#smoothing-function)
+  * [Model functions](#Model-functions)
   * [Output files](#output-files)
   * [External file requirement](#external-file-requirement)
 - [Example](#example)
