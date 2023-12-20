@@ -242,56 +242,56 @@ To evaluate the performance of the inverse algorithm, an identical twin test can
 
 2.1.1. Preliminary run  
 
-    * In the Forward page, maintain all the default settings in Table 1 and 2, except for setting 'tfinal' to '4e4'.   
+* In the Forward page, maintain all the default settings in Table 1 and 2, except for setting 'tfinal' to '4e4'.   
 
-    
-    * Set the 'emission pattern' to 3 in Table 3, and input 'pulse_emi.dat' in the second row of Table 4. 
-    Note that the file name should be provided as a relative path.
-    
-    * 'puluse_emi.dat' file represents two emission events:  
-    a fast and short event (3000 Gt in 3 kyr) and a slow and long event (10000 Gt in 35 kyr).  
-     This dataset serves as an excellent example for checking the performance of the inversion algorithm. 
-    
-    * Provide a name for the experiment and run it.
+
+* Set the 'emission pattern' to 3 in Table 3, and input 'pulse_emi.dat' in the second row of Table 4. 
+Note that the file name should be provided as a relative path.
+
+* 'puluse_emi.dat' file represents two emission events:  
+a fast and short event (3000 Gt in 3 kyr) and a slow and long event (10000 Gt in 35 kyr).  
+ This dataset serves as an excellent example for checking the performance of the inversion algorithm. 
+
+* Provide a name for the experiment and run it.
     
 ![image](https://user-images.githubusercontent.com/57557675/232114536-3d65cadb-fcea-45e9-9e52-c1cbb66c1bae.png)
 
 2.1.2. Prepare data for inversion   
 
-    * Navigate to the twin_exp folder.
-    * Locate the pCO2 results in the pCO2_d13c.csv file.
-    * Select the desired pCO2 values and save them as twin_pco2_for_inv.csv. 
-    * Keep in mind that the modeling results may have a high temporal resolution, so it is recommended to select a subset of data to ensure reasonable inversion times.
-    * Repeat the same process for the mean surface pH and surface d13C results. Select the relevant values and save them accordingly for use in the inversion experiment.
+* Navigate to the twin_exp folder.
+* Locate the pCO2 results in the pCO2_d13c.csv file.
+* Select the desired pCO2 values and save them as twin_pco2_for_inv.csv. 
+* Keep in mind that the modeling results may have a high temporal resolution, so it is recommended to select a subset of data to ensure reasonable inversion times.
+* Repeat the same process for the mean surface pH and surface d13C results. Select the relevant values and save them accordingly for use in the inversion experiment.
     
 2.1.3. Inverse experiment (457.08s used)    
 
-    * Go to the Inverse page.    
-    From the dropdown menu, select 'pCO2 + mean surface d13c'.
-    Manually input the target file names.
+* Go to the Inverse page.    
+From the dropdown menu, select 'pCO2 + mean surface d13c'.
+Manually input the target file names.
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
 
-    * In Table 3, specify the boundary values for the Toms748 root-finding algorithm. 
-    These values represent the expected minimum and maximum degassing rates. 
-    The closer the range, the faster the experiment will run, but there is a higher chance of failure. 
-    The default values of -0.1 and 2 Gt/yr should be suitable for most applications.
+* In Table 3, specify the boundary values for the Toms748 root-finding algorithm. 
+These values represent the expected minimum and maximum degassing rates. 
+The closer the range, the faster the experiment will run, but there is a higher chance of failure. 
+The default values of -0.1 and 2 Gt/yr should be suitable for most applications.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/2914c095-10c2-45f0-b20c-6983096e272e)
 
     
     
-    * Provide a name for the experiment and run the model.
-    
-    * If you need to terminate the ongoing experiment, simply click the 'Cancel' button.
+* Provide a name for the experiment and run the model.
+
+* If you need to terminate the ongoing experiment, simply click the 'Cancel' button.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/8fda005f-e110-484e-b072-6222f2b9ecfe)
 
     
-    * If you encounter an error similar to the figure below, it means that some degassing rates exceed the default upper boundary in Table 3.
-    Adjust the values in the second and third rows of Table 3 accordingly.
+* If you encounter an error similar to the figure below, it means that some degassing rates exceed the default upper boundary in Table 3.
+Adjust the values in the second and third rows of Table 3 accordingly.
     
 ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
     
-    * Once the inverse experiment is successful, the results will be displayed.
+* Once the inverse experiment is successful, the results will be displayed.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/db0604e2-b4c4-4d76-a4e9-68c93fa41cb8)
 
  
@@ -301,20 +301,20 @@ To evaluate the performance of the inverse algorithm, an identical twin test can
 
 1. Derive the steady state y0
 
-    * Go to the Forward page.
-    * In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
-    * In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
-    * In Table 4, input './gutjahr2017.dat' in the third row.
-    * Provide a name for the experiment and run the model.
+* Go to the Forward page.
+* In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
+* In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
+* In Table 4, input './gutjahr2017.dat' in the third row.
+* Provide a name for the experiment and run the model.
         
 2. Inversion experiment (838s)
-    * Go to the Inverse page.
-    * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
-    * In Table 1, set PALEO == 1, LOADFLAG == 1
-    * In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
-    * In Table 4, input './gutjahr2017.dat'
-    * Provide a name for the experiment and run the model.
-    * Succeed! 
+* Go to the Inverse page.
+* Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
+* In Table 1, set PALEO == 1, LOADFLAG == 1
+* In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
+* In Table 4, input './gutjahr2017.dat'
+* Provide a name for the experiment and run the model.
+* Succeed! 
 
 <img width="836" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/2c7bd82d-a6c3-481f-8ae5-dc0ec13aa7f7">
 
@@ -324,21 +324,21 @@ To evaluate the performance of the inverse algorithm, an identical twin test can
 
 1. Derive the steady state y0
 
-    * Go to the Forward page.
-    * In Table 1, set PALEO == 0, LOADFLAG == 0, Save ystart == 1
-    * In Table 2, set tfinal == 1e7, pCO2_ref == 425, pCO2_initial == 449, , fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042
-    * In Table 4, input './wu2023.dat' into the third row.
-    * Provide a name for the experiment and run the model.
+* Go to the Forward page.
+* In Table 1, set PALEO == 0, LOADFLAG == 0, Save ystart == 1
+* In Table 2, set tfinal == 1e7, pCO2_ref == 425, pCO2_initial == 449, , fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042
+* In Table 4, input './wu2023.dat' into the third row.
+* Provide a name for the experiment and run the model.
         
 2. Inversion experiment (s)
-    * Go to the Inverse page.
-    * Download the 'wu_pco2.csv' and 'wu_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
-    * In Table 1, set PALEO == 0, LOADFLAG == 1
-    * In Table 2, set  pCO2_ref == 425, pCO2_initial == 449, fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042, nsi == 0.4, ncc == 0.4
-    * In table 3, set lower and higher boundary as [-0.1, 1], which will accelerate the model
-    * In Table 4, input './wu2023.dat'
-    * Provide a name for the experiment and run the model.
-    * Succeed! 
+* Go to the Inverse page.
+* Download the 'wu_pco2.csv' and 'wu_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
+* In Table 1, set PALEO == 0, LOADFLAG == 1
+* In Table 2, set  pCO2_ref == 425, pCO2_initial == 449, fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042, nsi == 0.4, ncc == 0.4
+* In table 3, set lower and higher boundary as [-0.1, 1], which will accelerate the model
+* In Table 4, input './wu2023.dat'
+* Provide a name for the experiment and run the model.
+* Succeed! 
   ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
 
 
