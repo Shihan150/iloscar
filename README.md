@@ -16,6 +16,7 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
   * [1. Create a virtual environment and run the model](#1-create-a-virtual-environment-and-run-the-model)
 - [Model description](#model-description)
   * [Model functions](#Model-functions)
+  * [Model structure](#Model-structure)
   * [Output files](#output-files)
   * [External file requirement](#external-file-requirement)
 - [Example](#example)
@@ -76,7 +77,7 @@ Succeed!
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/e5742f3d-11a9-4dff-872e-69620e491d64">
 
 
-2. Go to the iloscar main directory downloaed in the previous step. One example is shown below and you need to specify your own path.
+2. Go to the iloscar main directory downloaded in the previous step. One example is shown below and you need to specify your own path.
 
 3. Type ***conda env create -f iloscar_win.yml*** to install the iloscar environment. It may take ~1-2 mins.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/4d85dae4-7816-4496-8850-cebf2541a2b7)
@@ -94,7 +95,7 @@ Succeed!
 <br>
 
 ## Model description
-For the details of iLOSCAR, including the relevant processes, the physical meanings of parameters, model structure and derivation of equations, please refer to our paper (in preparation) and [Zeebe, 2012, GMD](https://gmd.copernicus.org/articles/5/149/2012/).
+For the details of iLOSCAR, including the relevant processes, the physical meanings of parameters, model structure, and derivation of equations, please refer to our paper (in preparation) and [Zeebe, 2012, GMD](https://gmd.copernicus.org/articles/5/149/2012/).
 
 ### Model functions 
 * Forward model
@@ -123,7 +124,7 @@ $$  fcinp(t), f\delta^{13}C(t) = argmin\sum_{i=1}^n  | {x_{model}(t_i) - x_{obs}
 
 * Smoothing function
 
-A LOWESS smoothing function is available within the module. Users have the flexibility to upload data files and manually adjust the hyperparamter that controls the windown fraction used in the LOWESS algorithm. Note that the default temporal resolution for output data is 0.2 kyr. For a comprehensive explanation of the smoothing algorithm, please refer to the following link: [LOWESS Smoothing Algorithm](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
+A LOWESS smoothing function is available within the module. Users have the flexibility to upload data files and manually adjust the hyperparameters that controls the window fraction used in the LOWESS algorithm. Note that the default temporal resolution for output data is 0.2 kyr. For a comprehensive explanation of the smoothing algorithm, please refer to the following link: [LOWESS Smoothing Algorithm](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
 
 ### Model structure
@@ -141,16 +142,16 @@ iLOSCAR
 ├── preind_steady.dat
 ```
 * Front-end  
-The web-based interface in iLOSCAR is developed upon the [Dash](https://dash.plotly.com/) Package, which provides a low-code framework for rapidly building data apps in Python. The app.py is used to activate the model and the interface. The contents on the interface is controlled by the .py files in 'pages' folder.   
+The web-based interface in iLOSCAR is developed upon the [Dash](https://dash.plotly.com/) Package, which provides a low-code framework for rapidly building data apps in Python. The app.py is used to activate the model and the interface. The contents of the interface are controlled by the .py files in the 'pages' folder.   
 * Back-end  
 The iLOSCAR_backen.py contains all the core functions to run the model, including setting up the model parameters and ODE functions, solutions for both forward and inverse model, saving the experiment results, as well as some tool functions such as solving the carbonate system from ALK and DIC.   
 * Initial y file  
 Two files (***petm_steady.dat*** and ***preind_steady.dat***) are provided, which are the initial state files from the original LOSCAR default settings.  
 
-For each experiment, users can update parameters from the front-end, which will be transfered to call the backend functions.   
+For each experiment, users can update parameters from the front-end, which will be transferred to call the backend functions.   
 
 ### Output files
-In each experiment, the model will output following data files.
+In each experiment, the model will output the following data files.
 
 | File.csv    | Unit        | Variable         |
 | ----------- | ----------- | ---------------- |
