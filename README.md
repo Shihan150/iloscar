@@ -3,7 +3,7 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
 
 When using iLOSCAR, cite as: 
   
-Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle reservoir model v2. 0.4. Geoscientific Model Development 5, 149–166. 
+Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle reservoir model v2. 0.4. Geoscientific Model Development 5, 149–166.   
 GPC paper in review.
  
  Author  
