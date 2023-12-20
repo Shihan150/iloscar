@@ -1,7 +1,8 @@
 # iLOSCAR
 A web-based interactive carbon cycle model, built upon the classic LOSCAR model. Forward and inverse mode included.  
 
-When using iLOSCAR, cite as:  
+When using iLOSCAR, cite as: 
+  
 Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle reservoir model v2. 0.4. Geoscientific Model Development 5, 149–166. 
 GPC paper in review.
  
