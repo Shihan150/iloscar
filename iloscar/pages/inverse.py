@@ -78,7 +78,7 @@ df_param_inv = pd.DataFrame(OrderedDict([
     ('Parameter', ['t0', 'tfinal', 'pCO2_ref', 'pCO2_initial',
                     'fepl', 'eph', 'rrain', 'fsh',
                     'silicate weathering0', 'carbonate weathering0',  'd13c carbonate weathering', 'd13c volcanic',
-                    'conveyor transport',  'Ca_concentration', 'Mg concentration', 'climate sensitvity', 'nsi', 'ncc']),
+                    'conveyor transport',  'Ca_concentration', 'Mg concentration', 'climate sensitivity', 'nsi', 'ncc']),
    ('Unit', ['yr', 'yr', 'uatm', 'uatm',
               '-', 'mol m-2 yr-1', '-', '-',
               '10^12 mol yr-1', '10^12 mol yr-1', 'per mil','per mil',
@@ -87,7 +87,7 @@ df_param_inv = pd.DataFrame(OrderedDict([
     ('Comment', [ 'follow the time range of target records', 'follow the time range of target records', 'pCO2 reference', 'steady-state pCO2',
             'biopump-efficiency', 'high-latitude carbon export', 'rain ratio', 'raise shelf rain relative to deep rain',
         'CaSiO3 weathering flux (initial)', 'CaCO3 weathering flux (initial)', 'd13c carbonate weathering', 'd13c volcanic degassing',
-        'thermalhaline transport', 'oceanic Ca concentration', 'oceanic Mg concentration', 'default OCN temperature change per double pCO2', 'silicate weathering exponent',
+        'thermohaline transport', 'oceanic Ca concentration', 'oceanic Mg concentration', 'default OCN temperature change per double pCO2', 'silicate weathering exponent',
         'carbonate weathering exponent'
 
     ]),
@@ -98,7 +98,7 @@ df_carbon_emission_inv = pd.DataFrame(OrderedDict([
     ('Parameter', [ 'd13c emission', 'Lower boundary in bracket for toms748 method. Absolute value equivalent to expected maximum organic burial rate',
                         'Higher boundary in barcket for toms748 method. Value equivalent to maximum degassing rate']),
     ('Unit', [ 'per mil', 'Gt/yr', 'Gt/yr']),
-    ('Comment', ['d13c of input carbon, \n required for the single version', 'Default settings can work for most applications. Adjust the value for extream case',
+    ('Comment', ['d13c of input carbon, \n required for the single version', 'Default settings can work for most applications. Adjust the value for extreme case',
     'Increase the absolute value can reduce the failure probability of experiment, but at the expense of running speed'
 ]),
 
