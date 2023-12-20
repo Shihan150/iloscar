@@ -107,8 +107,10 @@ This is the ordinary differential equation system that governs the dynamic chang
  
 * Inverse model
 
-Five inversion options are provided in the inverse model.     
-*(C emission rate over time: fcinp(t); d13C of emitted C over time: fd13C(t))*
+Five inversion options are provided in the inverse model. The aim of the inverse model is to derive the time-dependent carbon emission scenario ($fcinp(t)$) and the isotopic composition of emitted carbon ( $f\delta^{13}C(t)$, which can minimize the relative errors between observations and corresponding modeling results:  
+
+$$ fcinp(t), f\delta^{13}C(t) = argmin\sum _{i=1}^n  | {x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)} |$$     
+
 
 |Option | Input   | Output | 
 | ----------- | ----------- | ---------------- |
