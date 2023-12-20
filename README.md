@@ -99,12 +99,12 @@ For the details of iLOSCAR, including the relevant processes, the physical meani
 ### Model functions 
 * Forward model
 
-In the forward mode, a specific emission trajectory is applied as the forcing and the model will return the temporal evolution of various parameters in the global carbon cycle (see Output files section). The core part is to solve the ODE problem: 
+In the forward mode, a specific emission trajectory is applied as the forcing and the model will return the temporal evolution of various parameters in the global carbon cycle (see Output files section). The core part is to solve the ODE problem:   
 
-$$ {d\vec y \over dt} = F(t, \vec y)   $$
-
-$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
-
+$$ {d\vec y \over dt} = F(t, \vec y)   $$  
+  
+$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$  
+ 
 This is the ordinary differential equation system that governs the dynamic changes of model's state variables over time, where t is time, $\vec y$ is the vector containing vaious biogeochemical tracers, and F is the function used to calculate the derivatives of the state variables $\vec y$.
  
 * Inverse model
