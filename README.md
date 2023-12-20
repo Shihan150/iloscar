@@ -125,6 +125,30 @@ $$  fcinp(t), f\delta^{13}C(t) = argmin\sum_{i=1}^n  | {x_{model}(t_i) - x_{obs}
 
 A LOWESS smoothing function is available within the module. Users have the flexibility to upload data files and manually adjust the hyperparamter that controls the windown fraction used in the LOWESS algorithm. Note that the default temporal resolution for output data is 0.2 kyr. For a comprehensive explanation of the smoothing algorithm, please refer to the following link: [LOWESS Smoothing Algorithm](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
+
+### Model structure
+```
+iLOSCAR
+├── app.py
+├── iLOSCAR_backend.py
+├── style.py
+├── pages
+│   ├── home.py
+│   ├── forward.py
+│   ├── inverse.py
+│   ├── Smoothing.py
+├── petm_steady.dat
+├── preind_steady.dat
+```
+* Front-end  
+The web-based interface in iLOSCAR is developed upon the [Dash](https://dash.plotly.com/) Package, which provides a low-code framework for rapidly building data apps in Python. The app.py is used to activate the model and the interface. The contents on the interface is controlled by the .py files in 'pages' folder.   
+* Back-end  
+The iLOSCAR_backen.py contains all the core functions to run the model, including setting up the model parameters and ODE functions, solutions for both forward and inverse model, saving the experiment results, as well as some tool functions such as solving the carbonate system from ALK and DIC.   
+* Initial y file  
+Two files (***petm_steady.dat*** and ***preind_steady.dat***) are provided, which are the initial state files from the original LOSCAR default settings.  
+
+For each experiment, users can update parameters from the front-end, which will be transfered to call the backend functions.   
+
 ### Output files
 In each experiment, the model will output following data files.
 
