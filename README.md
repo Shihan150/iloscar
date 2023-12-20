@@ -103,16 +103,16 @@ In the forward mode, a specific emission trajectory is applied as the forcing an
  
 * Inverse model
 
-Five inversion options are provided in the inverse model.   
-*(C emission rate over time: fcinp(t); d^13^C of emitted C over time: fd^13^C(t))*
+Five inversion options are provided in the inverse model.     
+*(C emission rate over time: fcinp(t); d13C of emitted C over time: fd13C(t))*
 
 |Option | Input   | Output | 
 | ----------- | ----------- | ---------------- |
-| pCO2 | pCO~2~ proxy records | fcinp(t) |
-|  d13c | d13c proxy records | fcinp(t), needs to assume a constant d^13^c for the emission |
+| pCO2 | pCO2 proxy records | fcinp(t) |
+|  d13c | d13c proxy records | fcinp(t), needs to assume a constant d13c for the emission |
 | GSpH | Global surface pH records | fcinp(t) |
-| pCO2_d13c | pCO~2~ and mean surface d^13^C proxy records | fcinp(t) +  fd^13^C(t)|
-| pH_d13c | pH and mean surface d^13^C proxy records | fcinp(t) +  fd^13^C(t)|
+| pCO2_d13c | pCO2 and mean surface d13C proxy records | fcinp(t) +  fd13C(t)|
+| pH_d13c | pH and mean surface d13C proxy records | fcinp(t) +  fd13C(t)|
 
 * Smoothing function
 
