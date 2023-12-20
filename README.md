@@ -23,7 +23,7 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
 - [Example](#example)
   * [1. Forward model example](#1-forward-model-example)
   * [2. Inverse model example](#2-inverse-model-example)
-
+- [Common bugs](#Common-bugs)
 
 ## Install  
 
