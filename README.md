@@ -112,6 +112,7 @@ Five inversion options are provided in the inverse model. The aim of the inverse
 $$ fcinp(t), f\delta^{13}C(t) = argmin\sum _{i=1}^n  | {x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)} |$$     
 
 
+
 |Option | Input   | Output | 
 | ----------- | ----------- | ---------------- |
 | pCO2 | pCO2 proxy records | fcinp(t) |
