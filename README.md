@@ -17,8 +17,8 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
 - [Model description](#model-description)
   * [Model functions](#Model-functions)
   * [Model structure](#Model-structure)
+  * [External input files](#external-input-files)
   * [Output files](#output-files)
-  * [External file requirement](#external-file-requirement)
 - [Example](#example)
   * [1. Forward model example](#1-forward-model-example)
   * [2. Inverse model example](#2-inverse-model-example)
@@ -150,6 +150,22 @@ Two files (***petm_steady.dat*** and ***preind_steady.dat***) are provided, whic
 
 For each experiment, users can update parameters from the front-end, which will be transferred to call the backend functions.   
 
+
+
+### External input files
+Some external files are required to run the model.
+
+| Mode      | File usage| Format | Requirement
+| ----------- | ----------- | ------- | -------
+| Forward    | Initial y0   | .dat | 1 column, 140 (for modern) or 184  rows; <br /> y0 satisfies dy0/dt = F(t=t0, y0) = 0 
+|            | Emission file | .dat | When LOADFLAG == 2, two columns (age (yr) + emission mass (Gt/yr)).<br /> When LOADFLAG == 3, three columns (age (yr) + emission mass (Gt/yr)+d13c of input (per mil)).
+|            | Save yfinal  | .dat | When Save ystart == 1, y(t=tfinal) will be saved into the according |
+| Inverse | pCO2 data for inversion | .csv | 2 column with headline, age (yr) + pCO2 (ppmv)
+|          | mean surface pH data for inversion | .csv | 2 column with headline, age (yr) + pH |
+|          | mean surface d13c data for inversion | .csv | 2 column with headline, age (yr) + d13c |
+| Function | data to be smoothed | .csv | 2 column with headline, age (yr) + data |
+
+  
 ### Output files
 In each experiment, the model will output the following data files.
 
@@ -181,19 +197,6 @@ In each experiment, the model will output the following data files.
 |        Carbon_inventory |   (mol)   |  Total carbon and alkalinty in the ocean|
         
         
-
-### External file requirement
-Some external files are required to run the model.
-
-| Mode      | File usage| Format | Requirement
-| ----------- | ----------- | ------- | -------
-| Forward    | Initial y0   | .dat | 1 column, 140 (for modern) or 184  rows; <br /> y0 satisfies dy0/dt = F(t=t0, y0) = 0 
-|            | Emission file | .dat | When LOADFLAG == 2, two columns (age (yr) + emission mass (Gt/yr)).<br /> When LOADFLAG == 3, three columns (age (yr) + emission mass (Gt/yr)+d13c of input (per mil)).
-|            | Save yfinal  | .dat | When Save ystart == 1, y(t=tfinal) will be saved into the according |
-| Inverse | pCO2 data for inversion | .csv | 2 column with headline, age (yr) + pCO2 (ppmv)
-|          | mean surface pH data for inversion | .csv | 2 column with headline, age (yr) + pH |
-|          | mean surface d13c data for inversion | .csv | 2 column with headline, age (yr) + d13c |
-| Function | data to be smoothed | .csv | 2 column with headline, age (yr) + data |
 
 
 ## Example
