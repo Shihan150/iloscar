@@ -404,6 +404,10 @@ Adjust the values in the second and third rows of Table 3 accordingly.
 
 ## Common bugs
 1. The age of target records must be in year unit.
-
+2. The inversion algorithm failed to converge and the error message is similar to the figure below.
+![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
+To avoid the error, try:
+i. make sure that the initial modeling proxy value (pH, pCO2, d13c) matches the given initial proxy records. 
+ii. adjust the values in the second and third rows of Table 3 accordingly. Increasing the absolute values is a safe method, but will reduce the speed.
         
         
