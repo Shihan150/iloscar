@@ -96,7 +96,25 @@ Succeed!
 ## Model description
 For the details of iLOSCAR, including the relevant processes, the physical meanings of parameters, model structure and derivation of equations, please refer to our paper (in preparation) and [Zeebe, 2012, GMD](https://gmd.copernicus.org/articles/5/149/2012/).
 
-### Smoothing function
+### Model functions 
+* Forward model
+
+In the forward mode, a specific emission trajectory is applied as the forcing and the model will return the temporal evolution of various parameters in the global carbon cycle (see Output files section).
+ 
+* Inverse model
+
+Five inversion options are provided in the inverse model. 
+*(C emission rate over time: fcinp(t); d^13^C of emitted C over time: fd^13^C(t))*
+
+|Option | Input   | Output | 
+| pCO2 | pCO~2~ proxy records | fcinp(t) |
+|  d13c | d13c proxy records | fcinp(t), needs to assume a constant d^13^c for the emission |
+| GSpH | Global surface pH records | fcinp(t) |
+| pCO2_d13c | pCO~2~ and mean surface d^13^C proxy records | fcinp(t) +  fd^13^C(t)|
+| pH_d13c | pH and mean surface d^13^C proxy records | fcinp(t) +  fd^13^C(t)|
+
+* Smoothing function
+
 A LOWESS smoothing function is available within the module. Users have the flexibility to upload data files and manually adjust the hyperparamter that controls the windown fraction used in the LOWESS algorithm. Note that the default temporal resolution for output data is 0.2 kyr. For a comprehensive explanation of the smoothing algorithm, please refer to the following link: [LOWESS Smoothing Algorithm](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
 ### Output files
