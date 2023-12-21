@@ -408,6 +408,9 @@ Adjust the values in the second and third rows of Table 3 accordingly.
 
 
 ## Troubleshooting
+
+This section provides a summary of common issues that may arise while running the iLOSCAR model. It's important to note that this is not an exhaustive list and may be supplemented with additional information in the future. If the troubleshooting strategies outlined here do not resolve your problems, consider reaching out to shihan@tamu.edu for further assistance and discussion.  
+ 
 #### Inversion algorithm fails to converge
 If the inversion algorithm does not converge and you encounter an error message similar to the one shown in the figure below, consider the following steps to resolve the issue:
 
