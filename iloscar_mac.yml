@@ -1,21 +1,21 @@
-name: iloscar
+name: iloscar_mac
 channels:
   - defaults
 dependencies:
-  - ca-certificates=2023.01.10=hecd8cb5_0
-  - libcxx=14.0.6=h9765a3e_0
-  - libffi=3.4.4=hecd8cb5_0
-  - ncurses=6.4=hcec6c5f_0
-  - openssl=1.1.1t=hca72f7f_0
-  - pip=23.0.1=py38hecd8cb5_0
-  - python=3.8.16=h218abb5_3
-  - readline=8.2=hca72f7f_0
-  - setuptools=66.0.0=py38hecd8cb5_0
-  - sqlite=3.41.2=h6c40b1e_0
-  - tk=8.6.12=h5d9f67b_0
-  - wheel=0.38.4=py38hecd8cb5_0
-  - xz=5.4.2=h6c40b1e_0
-  - zlib=1.2.13=h4dc903c_0
+  - ca-certificates=2023.01.10
+  - libcxx=14.0.6
+  - libffi=3.4.4
+  - ncurses=6.4
+  - openssl=1.1.1t
+  - pip=23.0.1
+  - python=3.8.16
+  - readline=8.2
+  - setuptools=66.0.0
+  - sqlite=3.41.2
+  - tk=8.6.12
+  - wheel=0.38.4
+  - xz=5.4.2
+  - zlib=1.2.13
   - pip:
       - blinker==1.6.2
       - cachelib==0.9.0
@@ -56,4 +56,4 @@ dependencies:
       - tzdata==2023.3
       - werkzeug==2.3.4
       - zipp==3.15.0
-prefix: /Users/shihan/opt/anaconda3/envs/iloscar
+prefix: /Users/shihan/anaconda3/envs/iloscar-test
