@@ -31,7 +31,7 @@ layout = html.Div(children=[
     html.H2("iLOSCAR Development"),
     html.P("We have enhanced LOSCAR by developing iLOSCAR using Python, an open-source programming language. iLOSCAR offers a user-friendly web interface that enables users to interactively adjust model parameters and conduct experiments."),
     html.P([html.Label([ html.A('Examples', href=link_tutorial, target = '_blank'),  '']), ' ', ' are provided for a quick start.']),
-    html.Li(html.Span(html.I("Foward Model", style = {'fontSize':24}))),
+    html.Li(html.Span(html.I("Forward Model", style = {'fontSize':24}))),
     html.P("iLOSCAR features a forward model that emulates the original LOSCAR model. Click the 'Forward' tab to start."),
     html.Li(html.Span(html.I("Inverse Model", style = {'fontSize':24}))),
     html.P("The software also includes an inverse model which extends beyond the capabilities of the original LOSCAR. This inverse model calculates the emission trajectory constrained by proxy records in a single run. Click the 'Inverse' tab to start."),
