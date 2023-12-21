@@ -1,5 +1,5 @@
 # iLOSCAR
-A web-based interactive carbon cycle model, built upon the classic LOSCAR model. Forward and inverse mode included.  
+A web-based interactive carbon cycle model, built upon the classic LOSCAR model. Forward and inverse model are included.  
 
 When using iLOSCAR, cite as: 
   
@@ -28,7 +28,7 @@ Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle rese
 - [Example](#example)
   * [1. Forward model example](#1-forward-model-example)
   * [2. Inverse model example](#2-inverse-model-example)
-- [Common bugs](#Common-bugs)
+- [Troubleshooting](#Troubleshooting)
 
 ## Install  
 
@@ -46,7 +46,7 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 ### 1. Create a virtual environment and run the model
 
 #### Mac system
-1. Open the Terminal and go to the iloscar main directory downloaed in the previous step. One example is shown below and you need to specify your own path.
+1. Open the Terminal and go to the iloscar main directory downloaded in the previous step. One example is shown below and you need to specify your own path.
 
 <img width="478" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/8359350e-6ebc-4d94-9455-4e31128eefeb">
 <br>
@@ -161,7 +161,7 @@ For each experiment, users can update parameters from the front-end, which will 
 The LSODA (an acronym for Livermore Solver for Ordinary Differential equations, with Automatic method switching for stiff and nonstiff problems) algorithm is employed as the ODE solver, given its demonstrated stability when dealing with stiff problems, as highlighted by [Hindmarsh (1992)](https://www.osti.gov/biblio/145724). The algorithm is available in the [Python Scipy Package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html).
 
 #### TOMS 748, a Root-finding algorithm, for the inverse model  ####
-To solve the inverse problem, the TOMS 748 root-finding algorithm is applied, which uses a mixture of inverse cubic interpolation and Newton-quadratic steps to enclose zeros of contiguous univariate functions ([Alefeld et al., 1995](https://dl.acm.org/doi/10.1145/210089.210111)). This algorithm offers the advantage of a rapid convergence rate, which significantly accelerates the inversion process. Additionally, Algorithm 748 is readily available in the [Python Scipy package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.toms748.html). Note that two parameters ($a, b$) need to be given to determine the boundaries of the algorithm search interval, i.e., $f(a)\times f(b) < 0$, where f is the function ${x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)}$. In our context, $a, b$ represent the possible maximum C burial and emission rates (in Gt), respectively. Default settings are -0.5 and 5, which should work for most applications. Increase the absolute value can reduce the failure probability of the experiment, but at the expense of running speed. Therefore, users need to decide the values carefully according to their domain knowledge, to optimize the model performance.
+To solve the inverse problem, the TOMS 748 root-finding algorithm is applied, which uses a mixture of inverse cubic interpolation and Newton-quadratic steps to enclose zeros of contiguous univariate functions ([Alefeld et al., 1995](https://dl.acm.org/doi/10.1145/210089.210111)). This algorithm offers the advantage of a rapid convergence rate, which significantly accelerates the inversion process. Additionally, Algorithm 748 is readily available in the [Python Scipy package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.toms748.html). Note that two parameters ($a, b$) need to be given to determine the boundaries of the algorithm search interval, i.e., $f(a)\times f(b) < 0$, where f is the function ${x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)}$. In our context, $a, b$ represent the possible maximum C burial and emission rates (in Gt), respectively. Default settings are -0.5 and 5, which should work for most applications. Increasing the absolute value can reduce the failure probability of the experiment but at the expense of running speed. Therefore, it's important for users to carefully select these values based on their domain knowledge. This careful consideration will help optimize the model's performance, ensuring a balance between accuracy and computational efficiency. 
 
 ### External input files
 Some external files are required to run the model.
@@ -224,7 +224,7 @@ The general workflow is as follows:
     
 To assist users in familiarizing themselves with the process of running iLOSCAR in a forward manner, an example is provided.
 
-#### 1.1 Origninal PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578). 
+#### 1.1 Original PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578). 
 
 Please note that this specific implementation does not include the prolonged carbon release following the main emission event or the inferred reverse circulation described in the original study by Zeebe et al., 2009.
 
@@ -245,7 +245,7 @@ Please note that if you intend to run the default model, you can skip this part 
  ![image](https://github.com/Shihan150/iloscar/assets/57557675/fb654bff-d91a-4b0f-a294-1788638cd85e)
     
    
-    3. Turn off carbon emissions by changing 'emission pattern' to 0 in Table 3.
+    3. Turn off carbon emissions by changing the 'emission pattern' to 0 in Table 3.
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/00f621d3-d1fc-435f-bc3d-b396a66d16c7)
 
@@ -255,10 +255,10 @@ Please note that if you intend to run the default model, you can skip this part 
 
 
     
-    5. Provide a name for your experiment and run it. I name it as Zeebe2009 here.
+    5. Provide a name for your experiment and run it. I name it Zeebe2009 here.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/1171abab-39c3-4999-9415-fa96c20f1fcb)
 
-    6. The running information will be displayed in the following chunck. 
+    6. The running information will be displayed in the following chunk. 
 <img width="926" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/b32fb30d-6b34-4eeb-8a72-3d5d6c8fc83b">
 
     7. Once the integration is complete, the final steady state will be saved to the file specified in Table 4 ('petm_steady.dat' in this case). 
@@ -400,21 +400,32 @@ Adjust the values in the second and third rows of Table 3 accordingly.
 * Download the 'wu_pco2.csv' and 'wu_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
 * In Table 1, set PALEO == 0, LOADFLAG == 1
 * In Table 2, set  pCO2_ref == 425, pCO2_initial == 449, fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042, nsi == 0.4, ncc == 0.4
-* In table 3, set lower and higher boundary as [-0.1, 1], which will accelerate the model
+* In table 3, set lower and higher boundaries as [-0.1, 1], which will accelerate the model
 * In Table 4, input './wu2023.dat'
 * Provide a name for the experiment and run the model.
 * Succeed! 
   ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
 
 
-## Common bugs
-1. The age of target records must be in year unit.
-2. The inversion algorithm failed to converge and the error message is similar to the figure below.
+## Troubleshooting
+#### Inversion algorithm fails to converge
+If the inversion algorithm does not converge and you encounter an error message similar to the one shown in the figure below, consider the following steps to resolve the issue:
 
-![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)     
+i. Ensure that the initial modeling proxy values (such as pH, pCO2, d13c) are aligned with the initial proxy records provided. 
 
-To avoid the error, try:   
-i. make sure that the initial modeling proxy value (pH, pCO2, d13c) matches the given initial proxy records.   
-ii. adjust the values in the second and third rows of Table 3 accordingly. Increasing the absolute values is a safe method, but will reduce the speed.  
+ii. Modify the values in the second and third rows of Table 3 as needed. A reliable approach is to increase the absolute values of these parameters. While this adjustment is generally safe, it is important to note that it may slow down the process. This balance between accuracy and computational efficiency needs to be considered when making adjustments.
+![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
+
+#### No response from the forward model
+Normally, a forward experiment should be completed within 2 to 3 minutes, depending on your machine. However,  if the experiment takes excessively long without yielding results, it could be due to an inappropriate selection of certain parameters.  This improper parameter choice might cause instability in the model and disrupt the solution process. For instance, altering the 'fsh' parameter to 5 in the default paleo settings can prevent the model from reaching a steady state. In such situations, follow these steps for troubleshooting:
+
+
+i. Write down the parameter settings used in the current experiment.
+
+ii. Interrupt the ongoing experiment by pressing Ctrl + C in the Terminal window.
+
+iii. Restart the model by entering 'python app.py' in the Terminal window.
+
+iv. Upon restart, the model parameters will revert to their default settings. Instead of applying all the previous parameters at once, adjust them individually. This step-by-step approach should help identify which specific parameter is causing instability.
         
         
