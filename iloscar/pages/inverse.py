@@ -26,8 +26,8 @@ inv_opt = html.Div(
         'pCO2': 'pCO2' ,
         'd13c':'Mean surface ocean d13c',
         'GSpH':'Global surface pH',
-        'pCO2_d13c':'pCO2 + mean surface d13c',
-        'pH_d13c': 'pH + mean surface d13c'
+        'pCO2_d13c':'pCO2 + mean surface ocean d13c',
+        'pH_d13c': 'pH + mean surface ocean d13c'
         },
         value = 'pCO2_d13c',
         id = 'target',
