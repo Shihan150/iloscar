@@ -16,11 +16,12 @@ Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle rese
  For any questions, please contact shihan@tamu.edu
  
 ---
+- [File structure](#File-structure)
 - [Install](#install)
   * [0. Anaconda install](#0-anaconda-install)
   * [1. Create a virtual environment and run the model](#1-create-a-virtual-environment-and-run-the-model)
 - [Model description](#model-description)
-  * [File structure](#File-structure)
+  
   * [Model functions](#Model-functions)
   * [Model structure](#Model-structure)
   * [Numeric algorithms](#Numeric-algorithms)
@@ -30,6 +31,25 @@ Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle rese
   * [1. Forward model example](#1-forward-model-example)
   * [2. Inverse model example](#2-inverse-model-example)
 - [Troubleshooting](#Troubleshooting)
+
+### File structure
+```
+├── dat
+├── iLOSCAR
+├── Anaconda_install.md
+├── README.md
+├── README.pdf
+├── iloscar_mac.yml
+├── iloscar_win.yml
+```
+The ***dat folder*** contains the data that can be used to replicate the experiments in our GPC paper.
+
+The ***iLOSCAR folder*** contains the main function of our model, which will be introduced later in this tutorial(https://github.com/Shihan150/iloscar/tree/main?tab=readme-ov-file#Model-structure).
+
+The files ***Anaconda_install.md***, ***README.md***, and ***README.pdf*** contain comprehensive tutorials on installing the model, setting up and running experiments, and troubleshooting common issues.
+
+The files ***iloscar_mac.yml*** and ***iloscar_win.yml*** are required to create a virtual environment using Anaconda, which is necessary to run the model.
+
 
 ## Install  
 
@@ -105,23 +125,6 @@ Succeed!
 For the details of iLOSCAR, including the relevant processes, the physical meanings of parameters, model structure, and derivation of equations, please refer to our paper (in preparation) and [Zeebe, 2012, GMD](https://gmd.copernicus.org/articles/5/149/2012/).
 
 ### Model functions 
-#### File structure
-```
-├── dat
-├── iLOSCAR
-├── Anaconda_install.md
-├── README.md
-├── README.pdf
-├── iloscar_mac.yml
-├── iloscar_win.yml
-```
-The ***dat folder*** contains the data that can be used to replicate the experiments in our GPC paper.
-
-The ***iLOSCAR folder*** contains the main function of our model, which will be introduced in the next section.
-
-The files ***Anaconda_install.md***, ***README.md*** and ***README.pdf*** contain comprehensive tutorials on installing the model, setting up and running experiments, and troubleshooting common issues.
-
-The files ***iloscar_mac.yml*** and ***iloscar_win.yml*** are required to create a virtual environment using anaconda, which is necessary to run the model.
 
 
 #### Forward model ####
