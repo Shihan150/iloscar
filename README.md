@@ -44,7 +44,7 @@ Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle rese
 ```
 The ***dat folder*** contains the data that can be used to replicate the experiments in our GPC paper.
 
-The ***iLOSCAR folder*** contains the main function of our model, which will be introduced later in this tutorial(https://github.com/Shihan150/iloscar/tree/main?tab=readme-ov-file#Model-structure).
+The ***iLOSCAR folder*** contains the main function of our model, which will be introduced [later in this tutorial](/iloscar/tree/main?tab=readme-ov-file#Model-structure).
 
 The files ***Anaconda_install.md***, ***README.md***, and ***README.pdf*** contain comprehensive tutorials on installing the model, setting up and running experiments, and troubleshooting common issues.
 
