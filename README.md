@@ -20,7 +20,7 @@ Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle rese
   * [0. Anaconda install](#0-anaconda-install)
   * [1. Create a virtual environment and run the model](#1-create-a-virtual-environment-and-run-the-model)
 - [Model description](#model-description)
-  * [File structure] (#File-structure)
+  * [File structure](#File-structure)
   * [Model functions](#Model-functions)
   * [Model structure](#Model-structure)
   * [Numeric algorithms](#Numeric-algorithms)
