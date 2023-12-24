@@ -437,6 +437,7 @@ Adjust the values in the second and third rows of Table 3 accordingly.
 | Mac | Apple M1 8 cores @3.2 GHz  | KGB1| 7  | GPC paper|
 | Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores | Gutjahr2017|12.7  | User|
 
+
 ## Troubleshooting
 
 This section provides a summary of common issues that may arise while running the iLOSCAR model. It's important to note that this is not an exhaustive list and may be supplemented with additional information in the future. If the troubleshooting strategies outlined here do not resolve your problems, consider reaching out to shihan@tamu.edu for further assistance and discussion.  
