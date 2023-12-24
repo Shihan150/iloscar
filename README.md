@@ -30,6 +30,7 @@ Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle rese
 - [Example](#example)
   * [1. Forward model example](#1-forward-model-example)
   * [2. Inverse model example](#2-inverse-model-example)
+- [Benchmark](#Benchmark)
 - [Troubleshooting](#Troubleshooting)
 
 ### File structure
