@@ -435,7 +435,7 @@ Adjust the values in the second and third rows of Table 3 accordingly.
 | ----------- | ----------- | ---------------- |---------------- |---------------- |
 | Mac | Apple M1 8 cores @3.2 GHz  | PTB| 13.6  | GPC paper|
 | Mac | Apple M1 8 cores @3.2 GHz  | KGB1| 7  | GPC paper|
-| Windows 11 Pro x64 | Apple M1 8 cores @3.2 GHz  | Intel Core i7-9700 CPU @ 3GHz with 8 cores | 12.7  | User|
+| Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores | Gutjahr2017|12.7  | User|
 
 ## Troubleshooting
 
