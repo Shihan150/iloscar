@@ -431,11 +431,17 @@ Adjust the values in the second and third rows of Table 3 accordingly.
   ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
 
 ## Benchmark
-|OS	| Processor | Experiment   | Time (minutes)| Source|
-| ----------- | ----------- | ---------------- |---------------- |---------------- |
-| Mac | Apple M1 8 cores @3.2 GHz  | PTB| 13.6  | GPC paper|
-| Mac | Apple M1 8 cores @3.2 GHz  | KGB1| 7  | GPC paper|
-| Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores | Gutjahr2017|12.7  | User|
+We welcome the contribution from various operation systems and processors.  
+|Experiment  |OS	| Processor  | Time (seconds)| Source|
+| ----------- | ----------- | ---------------- | ----------- | ---------------- |
+| 1.1 Paleo steady state tuning|Mac | Apple M1 8 cores @3.2 GHz  |  46  | This tutorial|
+| 1.1 Paleo state tuning|Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores  |  61  | User|
+| 1.1  Paleo perturbation| Mac | Apple M1 8 cores @3.2 GHz  |  10  | This tutorial|
+| 1.1 Paelo perturbation|Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores  |  3  | User|
+| 2.2 PETM Gutjahr2017 | Mac | Apple M1 8 cores @3.2 GHz  |  838  | This tutorial|
+| 2.2 PETM Gutjahr2017 | Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores  |  760  | User|
+| 2.3 PTB Wu2023 | Mac | Apple M1 8 cores @3.2 GHz  |  816  | This tutorial|
+
 
 
 ## Troubleshooting
