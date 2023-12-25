@@ -39,7 +39,7 @@ Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle rese
 ├── iLOSCAR
 ├── Anaconda_install.md
 ├── README.md
-├── README.pdf
+├── iLOSCAR_tutorial.pdf
 ├── iloscar_mac.yml
 ├── iloscar_win.yml
 ```
@@ -47,7 +47,7 @@ The ***dat folder*** contains the data that can be used to replicate the experim
 
 The ***iLOSCAR folder*** contains the main function of our model, which will be introduced [later in this tutorial](https://github.com/Shihan150/iloscar/blob/main/README.md#Model-structure).
 
-The files ***Anaconda_install.md***, ***README.md***, and ***README.pdf*** contain comprehensive tutorials on installing the model, setting up and running experiments, and troubleshooting common issues.
+The files ***Anaconda_install.md***, ***README.md***, and ***iLOSCAR_tutorial.pdf*** contain comprehensive tutorials on installing the model, setting up and running experiments, and troubleshooting common issues.
 
 The files ***iloscar_mac.yml*** and ***iloscar_win.yml*** are required to create a virtual environment using Anaconda, which is necessary to run the model.
 
