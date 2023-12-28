@@ -435,7 +435,8 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
 * In Step 3 table, set lower and higher boundaries as [-0.1, 1], which will accelerate the model
 * In Step 4 table, input './wu2023.dat'
 * Provide a name for the experiment and run the model.
-* Succeed! 
+* Succeed!  
+
   ![image](https://github.com/Shihan150/iloscar/assets/57557675/82caea86-5f0c-4027-936b-ddc86da7c466)
 
 
