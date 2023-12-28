@@ -138,7 +138,7 @@ This is the ODE system that governs the dynamic changes of the model's state var
  
 #### Inverse model ####
 
-Five inversion options are provided in the inverse model. The aim of the inverse model is to derive the time-dependent carbon emission scenario ($\vec y$) and the isotopic composition of emitted carbon ( $f\delta^{13}C(t)$) by minimizing the relative errors between observations and corresponding modeling results:  
+Five inversion options are provided in the inverse model. The aim of the inverse model is to derive the time-dependent carbon emission scenario ($fcinp$) and the isotopic composition of emitted carbon ( $f\delta^{13}C(t)$) by minimizing the relative errors between observations and corresponding modeling results:  
 
 $$  fcinp(t), f\delta^{13}C(t) = argmin\sum_{i=1}^n  | {x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)} |   $$  
 
