@@ -4,7 +4,7 @@ This tutorial is for installing Anaconda on your machine. It is highly suggestte
 
 ## Mac system
 1. Download from the [anaconda website](https://www.anaconda.com/products/individual).
-<img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/9352970a-d053-4121-b552-5d65e5ddc574">
+<img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/9352970a-d053-4121-b552-5d65e5ddc574">  
 \n.        
 2. Double-click to install. Generally, just click 'allow' or 'continue' when proceeding.
 <img width="836" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/1953e53d-5d3f-4026-9e27-e0befe34f46f">
