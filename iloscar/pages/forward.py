@@ -62,7 +62,7 @@ df_carbon_emission = pd.DataFrame(OrderedDict([
 ]))
 
 df_file = pd.DataFrame(OrderedDict([
-    ('File name', ['./preind_steady.dat', './pulse_emi.dat', './preind_steady.dat']),
+    ('File name', ['./preind_steady.dat', '../dat/pulse_emi.dat', './preind_steady.dat']),
     ('Parameter', ['Initial steady state file name',
                    'Time-resolved carbon input ',
                    'File to save the final modeling results']),
