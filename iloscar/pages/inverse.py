@@ -31,7 +31,7 @@ inv_opt = html.Div(
         },
         value = 'pCO2_d13c',
         id = 'target',
-        style = {'fontSize':18, "margin-left": "4rem","margin-right": "-5rem" , 'width':250})),]),
+        style = {'fontSize':16, "margin-left": "4rem","margin-right": "-5rem" , 'width':250})),]),
 
         dbc.Row(html.Br()),
 
