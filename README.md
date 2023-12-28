@@ -259,7 +259,7 @@ Please note that if you intend to run the default model for the modern and paleo
 
 
 
-    2. In Step 1 table, set the PALEO parameter to '1', LOADFLAG to '0', and Save ystart to '1'.
+  2. In Step 1 table, set the PALEO parameter to '1', LOADFLAG to '0', and Save ystart to '1'.
     The model parameters in Step 2 table will adjust automatically to the palaeo settings.
     Save ystart determines if the model will export the y values at t=tfinal. 
     The export file name can be manually specified in Step 4 table. In this example, we use the 'petm_steady.dat'.
@@ -268,34 +268,34 @@ Please note that if you intend to run the default model for the modern and paleo
  ![image](https://github.com/Shihan150/iloscar/assets/57557675/fb654bff-d91a-4b0f-a294-1788638cd85e)
     
    
-    3. Turn off carbon emissions by changing the 'emission pattern' to 0 in Step 3 table.
+  3. Turn off carbon emissions by changing the 'emission pattern' to 0 in Step 3 table.
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/00f621d3-d1fc-435f-bc3d-b396a66d16c7)
 
 
-    4. Modify 'tfinal' to '2e7' in Step 2 table.
+  4. Modify 'tfinal' to '2e7' in Step 2 table.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/362a0071-4355-4f7d-a917-fba1570f967a)
 
 
     
-    5. Provide a name for your experiment and run it. I name it Zeebe2009 here.
+  5. Provide a name for your experiment and run it. I name it Zeebe2009 here.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/1171abab-39c3-4999-9415-fa96c20f1fcb)
 
-    6. The running information will be displayed in the following chunk. 
+  6. The running information will be displayed in the following chunk. 
 <img width="926" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/b32fb30d-6b34-4eeb-8a72-3d5d6c8fc83b">
 
-    7. Once the integration is complete, the final steady state will be saved to the file specified in Step 4 table ('petm_steady.dat' in this case). 
+  7. Once the integration is complete, the final steady state will be saved to the file specified in Step 4 table ('petm_steady.dat' in this case). 
     The exported file can be used as the initial y0 for perturbation experiments later.
 <img width="794" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/dba35d27-b377-4943-8c7c-05f95377fbb3">
 
 ##### Perturbation experiment
-    1. Stay on the same page. In Step 1 table, set LOADFALG  to '1' and Save ystart to '0'.
+  1. Stay on the same page. In Step 1 table, set LOADFALG  to '1' and Save ystart to '0'.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/0481554b-a6db-49e8-8162-25faa08cbe83)
 
-    2. In Step 2 table, change 'tfinal' to '2e5'.
+  2. In Step 2 table, change 'tfinal' to '2e5'.
  ![image](https://github.com/Shihan150/iloscar/assets/57557675/d08149a5-d8c1-47db-ac80-42b0db5e3e00)
     
-    3. Select the carbon emission scenario in Step 3 table. In this example, set:
+  3. Select the carbon emission scenario in Step 3 table. In this example, set:
     'emission pattern' == 1, 'emission amount' == 3000, 
     'd13c emission' == -55, 'emission start' == 0, 
     'emission duration' == 6000.
@@ -304,13 +304,13 @@ Please note that if you intend to run the default model for the modern and paleo
 
 
     
-    4. Run the model. 
+  4. Run the model. 
     Optionally, you can click the 'Clean the output' button to clear the experiment information from the previous run. 
     However, this step is optional, and you can proceed to run the next experiment directly.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/96f94b67-62ed-4d99-8ddf-2c3f33178344)
 
 
-    6. Once the integration is complete, the modeling results will be saved in the exp_name folder (e.g., 'Zeebe2009').
+  5. Once the integration is complete, the modeling results will be saved in the exp_name folder (e.g., 'Zeebe2009').
     The folder will be located in the same directory where you ran your Python code. 
     Modeling mean surface DIC, ALK, pH and d13c, pCO2, and CCD for each ocean basin will be displayed when integration succeeds. 
 
