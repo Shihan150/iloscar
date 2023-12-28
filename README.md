@@ -4,7 +4,7 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
 When using iLOSCAR, cite as: 
   
 Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle reservoir model v2.0.4. Geoscientific Model Development 5, 149–166.   
-(GPC paper in review.)
+Li, et al., in review, iLOSCAR: interactive Long-term Ocean-atmosphere-Sediment CArbon cycle Reservoir Model v1.0.
  
  Author  
  Shihan Li | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA
@@ -45,19 +45,19 @@ Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle rese
 ```
 The ***dat folder*** contains the data that can be used to replicate the experiments in our GPC paper.
 
-The ***iLOSCAR folder*** contains the main function of our model, which will be introduced [later in this tutorial](https://github.com/Shihan150/iloscar/blob/main/README.md#Model-structure).
+The ***iLOSCAR folder*** contains the main functions of our model, which will be introduced [later in this tutorial](https://github.com/Shihan150/iloscar/blob/main/README.md#Model-structure).
 
 The files ***Anaconda_install.md***, ***README.md***, and ***iLOSCAR_tutorial.pdf*** contain comprehensive tutorials on installing the model, setting up and running experiments, and troubleshooting common issues.
 
-The files ***iloscar_mac.yml*** and ***iloscar_win.yml*** are required to create a virtual environment using Anaconda, which is necessary to run the model.
+The files ***iloscar_mac.yml*** and ***iloscar_win.yml*** are used to create a virtual environment using Anaconda for running the model.
 
 
 ## Install  
 
 
-***To successfully install iLOSCAR, please follow the tutorial provided. Note that the 'pip' command installation method is not effective in this case.***
+***To successfully install iLOSCAR, please follow the tutorial provided.***
 
-To avoid the potential inconvenience caused by the Python package inconsistency, we highly recommend downloading the code directly from <a href="https://github.com/Shihan150/iloscar" target='_blank'>https://github.com/Shihan150/iloscar</a> and setting up an Anaconda virtual environment to run iLOSCAR. 
+To avoid the potential Python package inconsistency, we highly recommend downloading the code directly from <a href="https://github.com/Shihan150/iloscar" target='_blank'>https://github.com/Shihan150/iloscar</a> (see below) and setting up an Anaconda virtual environment before running iLOSCAR. 
 
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/76247891-d631-47bf-82b5-abe3bf14ff92)
 <br>
