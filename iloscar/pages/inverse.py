@@ -94,7 +94,7 @@ df_param_inv = pd.DataFrame(OrderedDict([
 ]))
 
 df_carbon_emission_inv = pd.DataFrame(OrderedDict([
-    ('Value', [-55, -0.1, 2]),
+    ('Value', [-55, -0.5, 5]),
     ('Parameter', [ 'd13c emission', 'Lower boundary in bracket for toms748 method. Absolute value equivalent to expected maximum organic burial rate',
                         'Higher boundary in barcket for toms748 method. Value equivalent to maximum degassing rate']),
     ('Unit', [ 'per mil', 'Gt/yr', 'Gt/yr']),
