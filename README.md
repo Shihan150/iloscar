@@ -134,7 +134,7 @@ In the forward mode, a specific emission trajectory is applied as the forcing an
 
 $$ {d\vec y \over dt} = F(t, \vec y)   $$  
  
-This is the ODE system that governs the dynamic changes of the model's state variables over time, where t is time, $\vec y$ is the vector containing vaious biogeochemical tracers, and F is the function used to calculate the derivatives of the state variables $\vec y$.
+This is the ODE system that governs the dynamic changes of the model's state variables over time, where t is time, $\vec y$ is the vector containing various biogeochemical tracers, and F is the function used to calculate the derivatives of the state variables $\vec y$.
  
 #### Inverse model ####
 
