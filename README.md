@@ -185,7 +185,7 @@ For each experiment, users can update parameters from the front-end, which will 
 The LSODA (an acronym for Livermore Solver for Ordinary Differential equations, with Automatic method switching for stiff and nonstiff problems) algorithm is employed as the ODE solver, given its demonstrated stability when dealing with stiff problems, as highlighted by [Hindmarsh (1992)](https://www.osti.gov/biblio/145724). The algorithm is available in the [Python Scipy Package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html).
 
 #### TOMS 748, a Root-finding algorithm, for the inverse model  ####
-To solve the inverse problem, the TOMS 748 root-finding algorithm is applied, which uses a mixture of inverse cubic interpolation and Newton-quadratic steps to enclose zeros of contiguous univariate functions ([Alefeld et al., 1995](https://dl.acm.org/doi/10.1145/210089.210111)). This algorithm offers the advantage of a rapid convergence rate, which significantly accelerates the inversion process. Additionally, Algorithm 748 is readily available in the [Python Scipy package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.toms748.html). Note that two parameters ($a, b$) need to be given to determine the boundaries of the algorithm search interval, i.e., $f(a)\times f(b) < 0$, where f is the function ${x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)}$. In our context, $a, b$ represent the potential minimum and maximum emission rates (in Gt), respectively. When $a$ is negative, it represents the carbon burial rate. Default settings are -0.5 and 5, which should work for most applications. Increasing the absolute value can reduce the failure probability of the experiment but at the expense of running time. Therefore, it's important for users to carefully select these values based on their domain knowledge. Careful consideration in this regard will help optimize the model's performance, ensuring a balance between accuracy and computational efficiency. 
+To solve the inverse problem, the TOMS 748 root-finding algorithm is applied, which uses a mixture of inverse cubic interpolation and Newton-quadratic steps to enclose zeros of contiguous univariate functions ([Alefeld et al., 1995](https://dl.acm.org/doi/10.1145/210089.210111)). This algorithm offers the advantage of a rapid convergence rate, which significantly accelerates the inversion process. Additionally, Algorithm 748 is readily available in the [Python Scipy package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.toms748.html). Note that two parameters ($a, b$) need to be given to determine the boundaries of the algorithm search interval, i.e., $f(a)\times f(b) < 0$, where f is the function ${x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)}$. In our context, $a, b$ represent the potential minimum and maximum emission rates (in Gt), respectively. When $a$ is negative, it represents the carbon burial rate. Default settings are -0.1 and 2, which should work for most applications. Increasing the absolute value can reduce the failure probability of the experiment but at the expense of running time. Therefore, it's important for users to carefully select these values based on their domain knowledge. Careful consideration in this regard will help optimize the model's performance, ensuring a balance between accuracy and computational efficiency. 
 
 ### External input files
 Some external files are required to run the model.
@@ -395,7 +395,7 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
 * In Step 4 table, input './gutjahr2017.dat' in the third row.
 * Provide a name for the experiment and run the model.
         
-2. Inversion experiment (838s)
+2. Inversion experiment
 * Go to the Inverse page.
 * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
 * In Step 1 table, set PALEO == 1, LOADFLAG == 1
@@ -418,7 +418,7 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
 * In Step 4 table, input './wu2023.dat' into the third row.
 * Provide a name for the experiment and run the model.
         
-2. Inversion experiment (s)
+2. Inversion experiment 
 * Go to the Inverse page.
 * Download the 'wu_pco2.csv' and 'wu_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
 * In Step 1 table, set PALEO == 0, LOADFLAG == 1
@@ -430,11 +430,11 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
   ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
 
 ## Benchmark
-We welcome the contribution from various operation systems and processors.  
+We welcome contribution from various operation systems and processors.  
 |Experiment  |OS	| Processor  | Time (seconds)| Source|
 | ----------- | ----------- | ---------------- | ----------- | ---------------- |
 | 1.1 Paleo steady state tuning|Mac | Apple M1 8 cores @3.2 GHz  |  46  | This tutorial|
-| 1.1 Paleo state tuning|Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores  |  61  | User|
+| 1.1 Paleo steady state tuning|Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores  |  61  | User|
 | 1.1  Paleo perturbation| Mac | Apple M1 8 cores @3.2 GHz  |  10  | This tutorial|
 | 1.1 Paelo perturbation|Windows 11 Pro x64 | Intel Core i7-9700 CPU @ 3GHz with 8 cores  |  3  | User|
 | 2.2 PETM Gutjahr2017 | Mac | Apple M1 8 cores @3.2 GHz  |  838  | This tutorial|
@@ -446,14 +446,6 @@ We welcome the contribution from various operation systems and processors.
 ## Troubleshooting
 
 This section provides a summary of common issues that may arise while running the iLOSCAR model. It's important to note that this is not an exhaustive list and may be supplemented with additional information in the future. If the troubleshooting strategies outlined here do not resolve your problems, consider reaching out to shihan@tamu.edu for further assistance and discussion.  
- 
-#### Inversion algorithm fails to converge
-If the inversion algorithm does not converge and you encounter an error message similar to the one shown in the figure below, consider the following steps to resolve the issue:
-
-i. Ensure that the initial modeling proxy values (such as pH, pCO2, d13c) are aligned with the initial proxy records provided. 
-
-ii. Modify the values in the second and third rows of Step 3 table as needed. A reliable approach is to increase the absolute values of these parameters. While this adjustment is generally safe, it is important to note that it may slow down the process. This balance between accuracy and computational efficiency needs to be considered when making adjustments.
-![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
 
 #### No response from the forward model
 Normally, a forward experiment should be completed within 2 to 3 minutes, depending on your machine. However,  if the experiment takes excessively long without yielding results, it could be due to an inappropriate selection of certain parameters.  This improper parameter choice might cause instability in the model and disrupt the solution process. For instance, altering the 'fsh' parameter to 5 in the default paleo settings can prevent the model from reaching a steady state. In such situations, follow these steps for troubleshooting:
@@ -467,4 +459,14 @@ iii. Restart the model by entering 'python app.py' in the Terminal window.
 
 iv. Upon restart, the model parameters will revert to their default settings. Instead of applying all the previous parameters at once, adjust them individually. This step-by-step approach should help identify which specific parameter is causing instability.
         
+ 
+#### Inversion algorithm fails to converge
+If the inversion algorithm does not converge and you encounter an error message similar to the one shown in the figure below, consider the following steps to resolve the issue:
+
+i. Ensure that the initial modeling proxy values (such as pH, pCO2, d13c) are aligned with the initial proxy records provided. 
+
+ii. Modify the values in the second and third rows of Step 3 table as needed. A reliable approach is to increase the absolute values of these parameters. While this adjustment is generally safe, it is important to note that it may slow down the process. This balance between accuracy and computational efficiency needs to be considered when making adjustments.
+![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
+
+
         
