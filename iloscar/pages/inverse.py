@@ -1195,7 +1195,7 @@ def update_figure(data, exp_name, dict1):
                     ticks = 'outside', linecolor ='#9467BD',
                     linewidth = 2, secondary_y = False
                 )
-                fig.update_yaxes(title_text = 'd13C of emission', color = '#FF7F0E',
+                fig.update_yaxes(title_text = 'd13C of emission (per mil)', color = '#FF7F0E',
                                  row =3, col=1,
                                  showgrid = True, zeroline = True, showline = True,
                                     ticks = 'outside', linecolor ='#FF7F0E',
