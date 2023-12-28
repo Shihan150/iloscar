@@ -339,7 +339,7 @@ To evaluate the performance of the inverse algorithm, an identical twin test can
 * Set the 'emission pattern' to 3 in Step 3 table, and input 'pulse_emi.dat' in the second row of Step 4 table. 
 Note that the file name should be provided as a relative path.
 
-* 'puluse_emi.dat' file represents two emission events:  
+* 'pulse_emi.dat' file represents two emission events:  
 a fast and short event (3000 Gt in 3 kyr) and a slow and long event (10000 Gt in 35 kyr).  
  This dataset serves as an excellent example for checking the performance of the inversion algorithm. 
 
