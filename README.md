@@ -448,7 +448,7 @@ We welcome contribution from various operation systems and processors.
 This section provides a summary of common issues that may arise while running the iLOSCAR model. It's important to note that this is not an exhaustive list and may be supplemented with additional information in the future. If the troubleshooting strategies outlined here do not resolve your problems, consider reaching out to shihan@tamu.edu for further assistance and discussion.  
 
 #### No response from the forward model
-Normally, a forward experiment should be completed within 2 to 3 minutes, depending on your machine. However,  if the experiment takes excessively long without yielding results, it could be due to an inappropriate selection of certain parameters.  This improper parameter choice might cause instability in the model and disrupt the solution process. For instance, altering the 'fsh' parameter to 5 in the default paleo settings can prevent the model from reaching a steady state. In such situations, follow these steps for troubleshooting:
+Normally, a forward experiment should be completed within 2 to 3 minutes, depending on your machine. However,  if the experiment takes an excessively long time without yielding results, it could be due to an inappropriate selection of certain parameters.  This improper parameter choice might cause instability in the model and disrupt the solution process. For instance, altering the 'fsh' parameter to 10 in the default paleo settings can prevent the model from reaching a steady state. In such situations, follow these steps for troubleshooting:
 
 
 i. Write down the parameter settings used in the current experiment.
