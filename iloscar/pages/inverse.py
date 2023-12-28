@@ -95,7 +95,7 @@ df_param_inv = pd.DataFrame(OrderedDict([
 
 df_carbon_emission_inv = pd.DataFrame(OrderedDict([
     ('Value', [-55, -0.1, 2]),
-    ('Parameter', [ 'd13c emission', 'Lower boundary in bracket for toms748 method. Value equivalent to expected minimum carbon degassing rate. Negative values represent organic carbon burial',
+    ('Parameter', [ 'd13c emission', 'Lower boundary in bracket for toms748 method. Value equivalent to expected minimum carbon degassing rate. Negative value represents organic carbon burial',
                         'Higher boundary in bracket for toms748 method. Value equivalent to maximum degassing rate']),
     ('Unit', [ 'per mil', 'Gt/yr', 'Gt/yr']),
     ('Comment', ['d13c of input carbon, \n required for the single version', 'Default settings can work for most applications. Adjust the value for extreme case',
