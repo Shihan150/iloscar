@@ -91,7 +91,8 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 5. Type ***python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) in your browser to run the model. It may take several to tens of seconds, depending on your machine.
 
 <img width="387" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/eca0100f-7c9e-4fa8-a455-57d8ee86cc6e">
-<img width="1844" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/99778982-9208-47d6-a1a9-7da45d5c6747">   
+<img width="1839" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/d345d9c5-c5ff-4404-bf33-6ab708da7003">
+
 Succeed!
 
 <br>
@@ -255,7 +256,8 @@ Please note that this specific implementation does not include the prolonged car
 Please note that if you intend to run the default model for the modern and paleo setup, you can skip this part as the initial steady-state y0 values are already provided in our package (preind_steady.dat and petm_steady.dat), which can be used directly.
 
   1. Go to the Forward page   
-![image](https://github.com/Shihan150/iloscar/assets/57557675/1a9ea74e-718d-482b-984e-ad074916be60)
+![image](https://github.com/Shihan150/iloscar/assets/57557675/2f6984a8-06fc-41cf-a78f-93232b449aee)
+
 
 
 
@@ -300,7 +302,8 @@ Please note that if you intend to run the default model for the modern and paleo
     'd13c emission' == -55, 'emission start' == 0, 
     'emission duration' == 6000.
     
-![image](https://github.com/Shihan150/iloscar/assets/57557675/ca30ed7c-a9f4-4c4f-a9a7-1af2471b9100)
+![image](https://github.com/Shihan150/iloscar/assets/57557675/9ab1951a-0752-47eb-88e1-8793ccb0970e)
+
 
 
     
@@ -352,19 +355,21 @@ a fast and short event (3000 Gt in 3 kyr) and a slow and long event (10000 Gt in
 * Keep in mind that the modeling results may have a high temporal resolution, so it is recommended to select a subset of data to ensure reasonable inversion times.
 * Repeat the same process for the mean surface pH and surface d13C results. Select the relevant values and save them accordingly for use in the inversion experiment.
     
-2.1.3. Inverse experiment (457.08s used)    
+2.1.3. Inverse experiment     
 
 * Go to the Inverse page.    
 From the dropdown menu, select 'pCO2 + mean surface d13c'.
 Manually input the target file names.
     
-![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
+![image](https://github.com/Shihan150/iloscar/assets/57557675/9fc36a6d-31d7-4f84-a883-85d030800772)
+
 
 * In Step 3 table, specify the boundary values for the Toms748 root-finding algorithm. 
 These values represent the expected minimum and maximum degassing rates. 
 The closer the range, the faster the experiment will run, but there is a higher chance of failure. 
 The default values of -0.1 and 2 Gt/yr should be suitable for most applications.
-![image](https://github.com/Shihan150/iloscar/assets/57557675/2914c095-10c2-45f0-b20c-6983096e272e)
+<img width="858" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/a75b26c8-33d2-4b80-890e-202a43095a4f">
+
 
     
     
