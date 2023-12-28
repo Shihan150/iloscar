@@ -106,7 +106,7 @@ Succeed!
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/e5742f3d-11a9-4dff-872e-69620e491d64">
 
 
-2. Go to the iloscar main directory downloaded in the previous step. One example is shown below and you need to specify your own path.
+2. Go to the iloscar main directory downloaded in the previous step. One example is shown below by typing ***cd C:\Users\kaway\iloscar-main***. You need to specify your own path.
 
 3. Type ***conda env create -f iloscar_win.yml*** to install the iloscar environment. It may take ~1-2 mins.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/4d85dae4-7816-4496-8850-cebf2541a2b7)
@@ -389,7 +389,7 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
 ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
     
 * Once the inverse experiment is successful, the results will be displayed.
-![image](https://github.com/Shihan150/iloscar/assets/57557675/db0604e2-b4c4-4d76-a4e9-68c93fa41cb8)
+![image](https://github.com/Shihan150/iloscar/assets/57557675/cc282a32-c8b5-4230-8a6a-7e63dd8687f9)
 
  
  
