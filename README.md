@@ -185,20 +185,20 @@ For each experiment, users can update parameters from the front-end, which will 
 The LSODA (an acronym for Livermore Solver for Ordinary Differential equations, with Automatic method switching for stiff and nonstiff problems) algorithm is employed as the ODE solver, given its demonstrated stability when dealing with stiff problems, as highlighted by [Hindmarsh (1992)](https://www.osti.gov/biblio/145724). The algorithm is available in the [Python Scipy Package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html).
 
 #### TOMS 748, a Root-finding algorithm, for the inverse model  ####
-To solve the inverse problem, the TOMS 748 root-finding algorithm is applied, which uses a mixture of inverse cubic interpolation and Newton-quadratic steps to enclose zeros of contiguous univariate functions ([Alefeld et al., 1995](https://dl.acm.org/doi/10.1145/210089.210111)). This algorithm offers the advantage of a rapid convergence rate, which significantly accelerates the inversion process. Additionally, Algorithm 748 is readily available in the [Python Scipy package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.toms748.html). Note that two parameters ($a, b$) need to be given to determine the boundaries of the algorithm search interval, i.e., $f(a)\times f(b) < 0$, where f is the function ${x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)}$. In our context, $a, b$ represent the possible maximum C burial and emission rates (in Gt), respectively. Default settings are -0.5 and 5, which should work for most applications. Increasing the absolute value can reduce the failure probability of the experiment but at the expense of running speed. Therefore, it's important for users to carefully select these values based on their domain knowledge. This careful consideration will help optimize the model's performance, ensuring a balance between accuracy and computational efficiency. 
+To solve the inverse problem, the TOMS 748 root-finding algorithm is applied, which uses a mixture of inverse cubic interpolation and Newton-quadratic steps to enclose zeros of contiguous univariate functions ([Alefeld et al., 1995](https://dl.acm.org/doi/10.1145/210089.210111)). This algorithm offers the advantage of a rapid convergence rate, which significantly accelerates the inversion process. Additionally, Algorithm 748 is readily available in the [Python Scipy package](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.toms748.html). Note that two parameters ($a, b$) need to be given to determine the boundaries of the algorithm search interval, i.e., $f(a)\times f(b) < 0$, where f is the function ${x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)}$. In our context, $a, b$ represent the potential minimum and maximum emission rates (in Gt), respectively. When $a$ is negative, it represents the carbon burial rate. Default settings are -0.5 and 5, which should work for most applications. Increasing the absolute value can reduce the failure probability of the experiment but at the expense of running time. Therefore, it's important for users to carefully select these values based on their domain knowledge. Careful consideration in this regard will help optimize the model's performance, ensuring a balance between accuracy and computational efficiency. 
 
 ### External input files
 Some external files are required to run the model.
 
 | Mode      | File usage| Format | Requirement
 | ----------- | ----------- | ------- | -------
-| Forward    | Initial y0   | .dat | 1 column, 140 (for modern) or 184  rows; <br /> y0 satisfies dy0/dt = F(t=t0, y0) = 0 
+| Forward    | Initial y0   | .dat | 1 column, 140 (for modern) or 184  rows (for paleo); <br /> y0 satisfies dy0/dt = F(t=t0, y0) = 0 
 |            | Emission file | .dat | When LOADFLAG == 2, two columns (age (yr) + emission mass (Gt/yr)).<br /> When LOADFLAG == 3, three columns (age (yr) + emission mass (Gt/yr)+d13c of input (per mil)).
-|            | Save yfinal  | .dat | When Save ystart == 1, y(t=tfinal) will be saved into the specified .dat file |
-| Inverse | pCO2 data for inversion | .csv | 2 column with headline, age (yr) + pCO2 (ppmv)
-|          | mean surface pH data for inversion | .csv | 2 column with headline, age (yr) + pH |
-|          | mean surface d13c data for inversion | .csv | 2 column with headline, age (yr) + d13c |
-| Function | data to be smoothed | .csv | 2 column with headline, age (yr) + data |
+|            | Save yfinal  | .dat | When auto-spinning the model to the steady state (i.e., 'Save ystart' in the Table == 1), <br /> y(t=tfinal) will be saved into the specified .dat file |
+| Inverse | pCO2 data for inversion | .csv | 2 columns with headline, age (yr) + pCO2 (ppmv)
+|          | mean surface pH data for inversion | .csv | 2 columns with headline, age (yr) + pH |
+|          | mean surface d13c data for inversion | .csv | 2 columns with headline, age (yr) + d13c (per mil) |
+| Function | data to be smoothed | .csv | 2 columns with headline, age (yr) + data |
 
   
 ### Output files
@@ -206,75 +206,74 @@ In each experiment, the model will output the following data files.
 
 | File.csv    | Unit        | Variable         |
 | ----------- | ----------- | ---------------- |
-| tcb    |  (deg C)  | OCN temperature|
+| tcb    |  (deg C)  | Ocean (OCN) temperature|
 | dic    |   (mmol/kg) | OCN total dissolved inorganic carbon|
 |  alk    |  (mmol/kg)| OCN total alkalinity|
 |  po4   |    (umol/kg)| OCN phosphate|
 |  dox   |    (mol/m3) | OCN dissolved oxygen|
 |   dicc  |    (mmol/kg) |OCN DIC-13|
 |  d13c   |   (per mil)| OCN delta13C(DIC)|
-|  d13ca   |  (per mil) |ATM delta13C(atmosphere)|
-|   pco2a_d13c   |  (ppmv, per mil)   | ATM atmospheric pCO2 and d13c|
+|   pco2a_d13c   |  (ppmv, per mil)   | Atmospheric pCO2 and d13c|
 |    co3      | (umol/kg) |OCN carbonate ion concentration|
 |   ph      |  (-)      | OCN pH (total scale)|
 |    pco2ocn |  (uatm)   | OCN ocean pCO2|
 |    omegaclc | (-)     |  OCN calcite saturation state|
 |    omegaarg | (-)     |  OCN aragonite saturation state|
-|     fca     |  (-)    |   SED calcite content Atlantic|
-|    fci    |   (-)     |  SED calcite content Indian|
-|    fcp     |  (-)     |  SED calcite content Pacific|
-|    fct     |  (-)     |  SED calcite content Tethys (PALEO only)|
-|    ccda   |   (m)     |  SED calcite compens. depth Atlantic|
-|    ccdi   |   (m)     |  SED calcite compens. depth Indian|
-|    ccdp   |   (m)     |  SED calcite compens. depth Pacific|
-|     ccdt    |  (m)     |  SED calcite compens. depth Tethys (PALEO only)|
-| Surface_dic_alk_d13c_ph | (-) |  Mean OCN surface DIC, ALK, d13c, and pH|
-|        Carbon_inventory |   (mol)   |  Total carbon and alkalinty in the ocean|
+|     fca     | weight %   |   Sediment (SED) calcite content of Atlantic Ocean|
+|    fci    |   weight %       |  SED calcite content of Indian Ocean|
+|    fcp     |  weight %      |  SED calcite content of Pacific Ocean|
+|    fct     |  weight %     |  SED calcite content Tethys (PALEO model version only)|
+|    ccda   |   (m)     |  SED calcite compensation depth Atlantic|
+|    ccdi   |   (m)     |  SED calcite compensation depth Indian|
+|    ccdp   |   (m)     |  SED calcite compensation depth Pacific|
+|     ccdt    |  (m)     |  SED calcite compensation depth Tethys (PALEO model version only)|
+| Surface_dic_alk_d13c_ph | (mmol/kg, mmol/kg, per mil, -) |  Mean OCN surface DIC, ALK, d13c, and pH|
+|        Carbon_inventory |   (mol)   |  Total carbon and alkalinity in the ocean|
         
         
 
 
 ## Example
-(Example data files could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat).).    
+(Example data files could be downloaded [here](https://github.com/Shihan150/iloscar/tree/main/dat)).    
 
 For all tables, the first column can be adjusted manually.
 
 ### 1. Forward model example
 The general workflow is as follows:   
-    1. Select the desired version in Table 1;    
-    2. Tune relevant parameters in Table 2 and turn off the carbon emission in Table 3;   
-    3. Change the t0 and tfinal in Table 3 and spin up the model for 2 Ma. Check if the steady state is achieved;  
-    4. Utilize the final steady state achieved in the previous step as the initial condition (y0). Enable the carbon emissions and run the model.  
+    1. Select the desired version in Step 1 table;    
+    2. Tune relevant parameters in Step 2 table and turn off the carbon emission in Step 3 table;   
+    3. Change the t0 and tfinal in Step 3 table and spin up the model for 2e7 years. Check if the steady state is achieved;  
+    4. Utilize the final steady state achieved in the previous step as the initial condition (y0). Enable the carbon emissions in Step 3 table and run the model.  
     
-To assist users in familiarizing themselves with the process of running iLOSCAR in a forward manner, an example is provided.
+To assist users in becoming familiar withthe process of running iLOSCAR in a forward manner, an example is provided.
 
 #### 1.1 Original PETM example from [Zeebe et al., 2009](https://www.nature.com/articles/ngeo578). 
 
-Please note that this specific implementation does not include the prolonged carbon release following the main emission event or the inferred reverse circulation described in the original study by Zeebe et al., 2009.
+Please note that this specific implementation does not include the prolonged carbon release following the main emission event or the inferred reverse circulation adopted in the original study by Zeebe et al., 2009.
 
 ##### Tuning the steady state
-Please note that if you intend to run the default model, you can skip this part as the initial y0 values are provided in our package (preind_steady.dat and petm_steady.dat), which can be used directly.
+Please note that if you intend to run the default model for the modern and paleo setup, you can skip this part as the initial steady-state y0 values are already provided in our package (preind_steady.dat and petm_steady.dat), which can be used directly.
 
-    1. Go to the Forward page   
+  1. Go to the Forward page   
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/1a9ea74e-718d-482b-984e-ad074916be60)
 
 
 
-    2. Set the PALEO parameter to '1', LOADFLAG to '0', and Save ystart to '1'.
-    The model parameters in Table 2 will adjust automatically to the palaeo settings.
+    2. In Step 1 table, set the PALEO parameter to '1', LOADFLAG to '0', and Save ystart to '1'.
+    The model parameters in Step 2 table will adjust automatically to the palaeo settings.
     Save ystart determines if the model will export the y values at t=tfinal. 
-    The export file name can be manually specified in Table 4. In this example, we use the 'petm_steady.dat'.
+    The export file name can be manually specified in Step 4 table. In this example, we use the 'petm_steady.dat'.
     
     
  ![image](https://github.com/Shihan150/iloscar/assets/57557675/fb654bff-d91a-4b0f-a294-1788638cd85e)
     
    
-    3. Turn off carbon emissions by changing the 'emission pattern' to 0 in Table 3.
+    3. Turn off carbon emissions by changing the 'emission pattern' to 0 in Step 3 table.
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/00f621d3-d1fc-435f-bc3d-b396a66d16c7)
 
 
-    4. Modify 'tfinal' to '2e7' in Table 2.
+    4. Modify 'tfinal' to '2e7' in Step 2 table.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/362a0071-4355-4f7d-a917-fba1570f967a)
 
 
@@ -285,18 +284,18 @@ Please note that if you intend to run the default model, you can skip this part 
     6. The running information will be displayed in the following chunk. 
 <img width="926" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/b32fb30d-6b34-4eeb-8a72-3d5d6c8fc83b">
 
-    7. Once the integration is complete, the final steady state will be saved to the file specified in Table 4 ('petm_steady.dat' in this case). 
+    7. Once the integration is complete, the final steady state will be saved to the file specified in Step 4 table ('petm_steady.dat' in this case). 
     The exported file can be used as the initial y0 for perturbation experiments later.
 <img width="794" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/dba35d27-b377-4943-8c7c-05f95377fbb3">
 
 ##### Perturbation experiment
-    1. Stay on the same page. In table 1, set LOADFALG  to '1' and Save ystart to '0'.
+    1. Stay on the same page. In Step 1 table, set LOADFALG  to '1' and Save ystart to '0'.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/0481554b-a6db-49e8-8162-25faa08cbe83)
 
-    2. In table 2, change 'tfinal' to '2e5'.
+    2. In Step 2 table, change 'tfinal' to '2e5'.
  ![image](https://github.com/Shihan150/iloscar/assets/57557675/d08149a5-d8c1-47db-ac80-42b0db5e3e00)
     
-    3. Select the carbon emission scenario in Table 3. In this example, set:
+    3. Select the carbon emission scenario in Step 3 table. In this example, set:
     'emission pattern' == 1, 'emission amount' == 3000, 
     'd13c emission' == -55, 'emission start' == 0, 
     'emission duration' == 6000.
@@ -331,10 +330,10 @@ To evaluate the performance of the inverse algorithm, an identical twin test can
 
 2.1.1. Preliminary run  
 
-* In the Forward page, maintain all the default settings in Table 1 and 2, except for setting 'tfinal' to '4e4'.   
+* In the Forward page, maintain all the default settings in Step 1 table and 2, except for setting 'tfinal' to '4e4'.   
 
 
-* Set the 'emission pattern' to 3 in Table 3, and input 'pulse_emi.dat' in the second row of Table 4. 
+* Set the 'emission pattern' to 3 in Step 3 table, and input 'pulse_emi.dat' in the second row of Step 4 table. 
 Note that the file name should be provided as a relative path.
 
 * 'puluse_emi.dat' file represents two emission events:  
@@ -361,7 +360,7 @@ Manually input the target file names.
     
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/abc338e4-00df-4eee-8ef0-35a53e87289d)
 
-* In Table 3, specify the boundary values for the Toms748 root-finding algorithm. 
+* In Step 3 table, specify the boundary values for the Toms748 root-finding algorithm. 
 These values represent the expected minimum and maximum degassing rates. 
 The closer the range, the faster the experiment will run, but there is a higher chance of failure. 
 The default values of -0.1 and 2 Gt/yr should be suitable for most applications.
@@ -375,8 +374,8 @@ The default values of -0.1 and 2 Gt/yr should be suitable for most applications.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/8fda005f-e110-484e-b072-6222f2b9ecfe)
 
     
-* If you encounter an error similar to the figure below, it means that some degassing rates exceed the default upper boundary in Table 3.
-Adjust the values in the second and third rows of Table 3 accordingly.
+* If you encounter an error similar to the figure below, it means that some degassing rates exceed the default upper boundary in Step 3 table.
+Adjust the values in the second and third rows of Step 3 table accordingly.
     
 ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
     
@@ -391,17 +390,17 @@ Adjust the values in the second and third rows of Table 3 accordingly.
 1. Derive the steady state y0
 
 * Go to the Forward page.
-* In Table 1, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
-* In Table 2, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
-* In Table 4, input './gutjahr2017.dat' in the third row.
+* In Step 1 table, set PALEO == 1, LOADFLAG == 0, Save ystart == 1
+* In Step 2 table, set tfinal == 1e7, pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
+* In Step 4 table, input './gutjahr2017.dat' in the third row.
 * Provide a name for the experiment and run the model.
         
 2. Inversion experiment (838s)
 * Go to the Inverse page.
 * Download the 'Gutjahr_pH.csv' and 'Gutjahr_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
-* In Table 1, set PALEO == 1, LOADFLAG == 1
-* In Table 2, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
-* In Table 4, input './gutjahr2017.dat'
+* In Step 1 table, set PALEO == 1, LOADFLAG == 1
+* In Step 2 table, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
+* In Step 4 table, input './gutjahr2017.dat'
 * Provide a name for the experiment and run the model.
 * Succeed! 
 
@@ -414,18 +413,18 @@ Adjust the values in the second and third rows of Table 3 accordingly.
 1. Derive the steady state y0
 
 * Go to the Forward page.
-* In Table 1, set PALEO == 0, LOADFLAG == 0, Save ystart == 1
-* In Table 2, set tfinal == 1e7, pCO2_ref == 425, pCO2_initial == 449, , fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042
-* In Table 4, input './wu2023.dat' into the third row.
+* In Step 1 table, set PALEO == 0, LOADFLAG == 0, Save ystart == 1
+* In Step 2 table, set tfinal == 1e7, pCO2_ref == 425, pCO2_initial == 449, , fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042
+* In Step 4 table, input './wu2023.dat' into the third row.
 * Provide a name for the experiment and run the model.
         
 2. Inversion experiment (s)
 * Go to the Inverse page.
 * Download the 'wu_pco2.csv' and 'wu_d13c.csv' from the [link](https://github.com/Shihan150/iloscar/tree/main/dat).
-* In Table 1, set PALEO == 0, LOADFLAG == 1
-* In Table 2, set  pCO2_ref == 425, pCO2_initial == 449, fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042, nsi == 0.4, ncc == 0.4
-* In table 3, set lower and higher boundaries as [-0.1, 1], which will accelerate the model
-* In Table 4, input './wu2023.dat'
+* In Step 1 table, set PALEO == 0, LOADFLAG == 1
+* In Step 2 table, set  pCO2_ref == 425, pCO2_initial == 449, fsh == 5, silicate weathering0 = 12, carbonate weathering0 = 17, d13c volcanic == -1.3, ca concentration == 0.013, mg concentration == 0.042, nsi == 0.4, ncc == 0.4
+* In Step 3 table, set lower and higher boundaries as [-0.1, 1], which will accelerate the model
+* In Step 4 table, input './wu2023.dat'
 * Provide a name for the experiment and run the model.
 * Succeed! 
   ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
@@ -453,7 +452,7 @@ If the inversion algorithm does not converge and you encounter an error message 
 
 i. Ensure that the initial modeling proxy values (such as pH, pCO2, d13c) are aligned with the initial proxy records provided. 
 
-ii. Modify the values in the second and third rows of Table 3 as needed. A reliable approach is to increase the absolute values of these parameters. While this adjustment is generally safe, it is important to note that it may slow down the process. This balance between accuracy and computational efficiency needs to be considered when making adjustments.
+ii. Modify the values in the second and third rows of Step 3 table as needed. A reliable approach is to increase the absolute values of these parameters. While this adjustment is generally safe, it is important to note that it may slow down the process. This balance between accuracy and computational efficiency needs to be considered when making adjustments.
 ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
 
 #### No response from the forward model
