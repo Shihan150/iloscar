@@ -436,7 +436,8 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
 * In Step 4 table, input './wu2023.dat'
 * Provide a name for the experiment and run the model.
 * Succeed! 
-![image](https://github.com/Shihan150/iloscar/assets/57557675/2c9c28b0-c7c0-4d9a-8f26-683024746948)
+![image](https://github.com/Shihan150/iloscar/assets/57557675/731b3aed-5953-4a66-8e8c-7282087d5117)
+
 
 
 ## Benchmark
