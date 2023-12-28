@@ -291,6 +291,8 @@ Please note that if you intend to run the default model for the modern and paleo
 <img width="794" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/dba35d27-b377-4943-8c7c-05f95377fbb3">
 
 ##### Perturbation experiment
+The above steps are to set up the initial steady state before a geologic event. Now we will simulate the perturbation driven by the carbon injection. 
+
   1. Stay on the same page. In Step 1 table, set LOADFALG  to '1' and Save ystart to '0'.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/0481554b-a6db-49e8-8162-25faa08cbe83)
 
@@ -309,7 +311,8 @@ Please note that if you intend to run the default model for the modern and paleo
     
   4. Run the model. 
     Optionally, you can click the 'Clean the output' button to clear the experiment information from the previous run. 
-    However, this step is optional, and you can proceed to run the next experiment directly.
+    However, this step is optional, You can directly create a new perturbation scenario with the same initial state and run the next experiment.
+
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/96f94b67-62ed-4d99-8ddf-2c3f33178344)
 
 
@@ -323,7 +326,7 @@ Please note that if you intend to run the default model for the modern and paleo
 ### 2. Inverse model example
 The general workflow for the inverse model is as follows:  
 1. Tune the parameters and obtain the initial steady state y0 using the forward model page.
-2. Go to the inverse model page and specify the file names that contain the target records.
+2. Go to the inverse model page and specify the file names that contain the proxy records.
 3. Adjust the parameters based on the tuning results obtained from the forward model.
 4. Run the inverse model.
 
@@ -353,7 +356,7 @@ a fast and short event (3000 Gt in 3 kyr) and a slow and long event (10000 Gt in
 * Navigate to the twin_exp folder.
 * Locate the pCO2 results in the pCO2_d13c.csv file.
 * Select the desired pCO2 values and save them as twin_pco2_for_inv.csv. 
-* Keep in mind that the modeling results may have a high temporal resolution, so it is recommended to select a subset of data to ensure reasonable inversion times.
+* Keep in mind that the forward modeling results may have a high temporal resolution (thus a lot of data points), so it is recommended to select a subset of data to ensure reasonable inversion times.
 * Repeat the same process for the mean surface pH and surface d13C results. Select the relevant values and save them accordingly for use in the inversion experiment.
     
 2.1.3. Inverse experiment     
@@ -367,7 +370,7 @@ Manually input the target file names.
 
 * In Step 3 table, specify the boundary values for the Toms748 root-finding algorithm. 
 These values represent the expected minimum and maximum degassing rates. 
-The closer the range, the faster the experiment will run, but there is a higher chance of failure. 
+The narrower the range, the faster the experiment will run, but there is a higher chance of failure. 
 The default values of -0.1 and 2 Gt/yr should be suitable for most applications.
 <img width="858" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/a75b26c8-33d2-4b80-890e-202a43095a4f">
 
@@ -436,7 +439,7 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
   ![image](https://user-images.githubusercontent.com/57557675/232583038-0837c29a-9568-4e22-8159-f001b92a6341.png)
 
 ## Benchmark
-We welcome contribution from various operation systems and processors.  
+We welcome contributions from various operation systems and processors.  
 |Experiment  |OS	| Processor  | Time (seconds)| Source|
 | ----------- | ----------- | ---------------- | ----------- | ---------------- |
 | 1.1 Paleo steady state tuning|Mac | Apple M1 8 cores @3.2 GHz  |  46  | This tutorial|
