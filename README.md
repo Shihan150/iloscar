@@ -68,7 +68,7 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 ### 1. Create a virtual environment and run the model
 
 #### Mac system
-1. Open the Terminal and go to the iloscar main directory downloaded in the previous step. One example is shown below and you need to specify your own path.
+1. Open the Terminal and go to the iloscar main directory downloaded in the previous step. One example is shown below and you need to specify your own path (the part after "cd"). You can learn more about navigating files and directories [here](https://docs.ycrc.yale.edu/PIL/02-filedir/).
 
 <img width="478" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/8359350e-6ebc-4d94-9455-4e31128eefeb">
 <br>
@@ -83,7 +83,7 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 <img width="434" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/e38d5d20-9da2-4889-88da-fdee7b4c940a">
 <br>
 
-4. Go to the code file by typing ***cd iloscar*** 
+4. Go to the iloscar coding directory by typing ***cd iloscar*** 
 
 <img width="365" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/424b2eeb-a9aa-4b74-a179-265bd576845e">
 <br>
@@ -114,7 +114,7 @@ Succeed!
 4. Type ***conda activate iloscar***
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/30bf756c-7ef8-4c92-90c5-d3164c91d952)
 
-5. Type ***python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) in your browser to run the model.
+5. Type ***python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) in your browser to run the model. It may take several to tens of seconds, depending on your machine.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/2e28f0cf-8c84-4e21-9ab0-cab5edd5e642)
 
 Succeed!
@@ -123,22 +123,22 @@ Succeed!
 <br>
 
 ## Model description
-For the details of iLOSCAR, including the relevant processes, the physical meanings of parameters, model structure, and derivation of equations, please refer to our paper (in preparation) and [Zeebe, 2012, GMD](https://gmd.copernicus.org/articles/5/149/2012/).
+For details iLOSCAR, including the relevant processes, the physical meanings of parameters, model structure, and derivation of equations, please refer to our paper (in review) and [Zeebe, 2012, GMD](https://gmd.copernicus.org/articles/5/149/2012/).
 
 ### Model functions 
 
 
 #### Forward model ####
 
-In the forward mode, a specific emission trajectory is applied as the forcing and the model will return the temporal evolution of various parameters in the global carbon cycle (see Output files section). The core part is to solve the ODE problem:   
+In the forward mode, a specific emission trajectory is applied as the forcing and the model will return the temporal evolution of various parameters in the global carbon cycle (see Output files section). The core part is to solve the Ordinary Differential Equation (ODE) problem:   
 
 $$ {d\vec y \over dt} = F(t, \vec y)   $$  
  
-This is the ordinary differential equation system that governs the dynamic changes of the model's state variables over time, where t is time, $\vec y$ is the vector containing vaious biogeochemical tracers, and F is the function used to calculate the derivatives of the state variables $\vec y$.
+This is the ODE system that governs the dynamic changes of the model's state variables over time, where t is time, $\vec y$ is the vector containing vaious biogeochemical tracers, and F is the function used to calculate the derivatives of the state variables $\vec y$.
  
 #### Inverse model ####
 
-Five inversion options are provided in the inverse model. The aim of the inverse model is to derive the time-dependent carbon emission scenario ($fcinp(t)$) and the isotopic composition of emitted carbon ( $f\delta^{13}C(t)$, which can minimize the relative errors between observations and corresponding modeling results:  
+Five inversion options are provided in the inverse model. The aim of the inverse model is to derive the time-dependent carbon emission scenario ($fcinp(t)$) and the isotopic composition of emitted carbon ( $f\delta^{13}C(t))$ by minimizing the relative errors between observations and corresponding modeling results:  
 
 $$  fcinp(t), f\delta^{13}C(t) = argmin\sum_{i=1}^n  | {x_{model}(t_i) - x_{obs}(t_i) \over x_{obs}(t_i)} |   $$  
 
