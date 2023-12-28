@@ -345,7 +345,8 @@ a fast and short event (3000 Gt in 3 kyr) and a slow and long event (10000 Gt in
 
 * Provide a name for the experiment and run it.
     
-![image](https://user-images.githubusercontent.com/57557675/232114536-3d65cadb-fcea-45e9-9e52-c1cbb66c1bae.png)
+<img width="1052" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/b2fd9071-bb9f-4a85-b9c9-68946cbf3b57">
+
 
 2.1.2. Prepare data for inversion   
 
