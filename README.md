@@ -154,7 +154,7 @@ $$  fcinp(t), f\delta^{13}C(t) = argmin\sum_{i=1}^n  | {x_{model}(t_i) - x_{obs}
 
 #### Smoothing function ####
 
-A LOWESS smoothing function is available within the module. Users have the flexibility to upload data files and manually adjust the hyperparameters that controls the window fraction used in the LOWESS algorithm. Note that the default temporal resolution for output data is 0.2 kyr. For a comprehensive explanation of the smoothing algorithm, please refer to the following link: [LOWESS Smoothing Algorithm](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
+A LOWESS smoothing function is available within the module. Users have the flexibility to upload data files and manually adjust the hyperparameters that control the fraction of the data used when estimating each y-value in LOWESS algorithm. Note that the default temporal resolution for output data is 0.2 kyr. For a comprehensive explanation of the smoothing algorithm, please refer to the following link: [LOWESS Smoothing Algorithm](https://www.statsmodels.org/dev/generated/statsmodels.nonparametric.smoothers_lowess.lowess.html). 
 
 
 ### Model structure
@@ -172,9 +172,9 @@ iLOSCAR
 ├── preind_steady.dat
 ```
 #### Front-end  ####
-The web-based interface in iLOSCAR is developed upon the [Dash](https://dash.plotly.com/) Package, which provides a low-code framework for rapidly building data apps in Python. The app.py is used to activate the model and the interface. The contents of the interface are controlled by the .py files in the 'pages' folder.   
+The web-based interface in iLOSCAR is developed upon the [Dash](https://dash.plotly.com/) Package, which provides a low-code framework for rapidly building data apps in Python. The app.py is used to activate the model and the interface. The contents of the interface are controlled by the .py files in the 'pages' folder and their format is controlled by the style.py.  
 #### Back-end  ####
-The iLOSCAR_backen.py contains all the core functions to run the model, including setting up the model parameters and ODE functions, solutions for both forward and inverse model, saving the experiment results, as well as some tool functions such as solving the carbonate system from ALK and DIC.   
+The iLOSCAR_backen.py contains all the core functions to run the model, including setting up the model parameters and ODE functions, solutions for both forward and inverse models, saving the experiment results, as well as some tool functions such as solving the carbonate system from alkalinity (ALK) and dissolved inorganic carbon (DIC).   
 #### Initial y file  ####
 Two files (***petm_steady.dat*** and ***preind_steady.dat***) are provided, which are the initial state files from the original LOSCAR default settings.  
 
