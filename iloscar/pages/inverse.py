@@ -31,7 +31,7 @@ inv_opt = html.Div(
         },
         value = 'pCO2_d13c',
         id = 'target',
-        style = {'fontSize':16, "margin-left": "4rem","margin-right": "-5rem" , 'width':250})),]),
+        style = {'fontSize':16, "margin-left": "3rem","margin-right": "-5rem" , 'width':250})),]),
 
         dbc.Row(html.Br()),
 
@@ -95,7 +95,7 @@ df_param_inv = pd.DataFrame(OrderedDict([
 
 df_carbon_emission_inv = pd.DataFrame(OrderedDict([
     ('Value', [-55, -0.1, 2]),
-    ('Parameter', [ 'd13c emission', 'Lower boundary in bracket for toms748 method. Value equivalent to expected minimum carbon degassing rate. Negative value represents organic carbon burial',
+    ('Parameter', [ 'd13c emission', 'Lower boundary in bracket for toms748 method. Value equivalent to expected minimum carbon degassing rate. Negative values represent organic carbon burial',
                         'Higher boundary in bracket for toms748 method. Value equivalent to maximum degassing rate']),
     ('Unit', [ 'per mil', 'Gt/yr', 'Gt/yr']),
     ('Comment', ['d13c of input carbon, \n required for the single version', 'Default settings can work for most applications. Adjust the value for extreme case',
@@ -732,7 +732,7 @@ def update_progress(set_progress,key, data):
     if key:
         return [], [], []
     else:
-        
+
         temp = init_start(data)
         return model_run(set_progress)
 
@@ -873,7 +873,7 @@ def update_figure(data, exp_name, dict1):
                                     linewidth = 2, ticks = 'inside',
                                     tickfont = dict( color = 'rgb(82,82,82)'))
 
-                fig.update_yaxes(title_text = 'Surface d13c', row =1, col=1,
+                fig.update_yaxes(title_text = 'Surface d13c (per mil)', row =1, col=1,
                                  showgrid = True, zeroline = True, showline = True,
                                     ticks = 'outside', linecolor = 'rgb(204,204,204)',
                                     linewidth = 2
@@ -1061,7 +1061,7 @@ def update_figure(data, exp_name, dict1):
                                     linewidth = 2
                                 )
 
-                fig.update_yaxes(title_text = 'd13C (per mil)', row =2, col=1,
+                fig.update_yaxes(title_text = 'Surface d13C (per mil)', row =2, col=1,
                                  showgrid = True, zeroline = True, showline = True,
                                     ticks = 'outside', linecolor = 'rgb(204,204,204)',
                                     linewidth = 2)
@@ -1072,7 +1072,7 @@ def update_figure(data, exp_name, dict1):
                     ticks = 'outside', linecolor ='#9467BD',
                     linewidth = 2, secondary_y = False
                 )
-                fig.update_yaxes(title_text = 'd13C of emission', color = '#FF7F0E',
+                fig.update_yaxes(title_text = 'd13C of emission (per mil)', color = '#FF7F0E',
                                  row =3, col=1,
                                  showgrid = True, zeroline = True, showline = True,
                                     ticks = 'outside', linecolor ='#FF7F0E',
@@ -1184,7 +1184,7 @@ def update_figure(data, exp_name, dict1):
                                     linewidth = 2
                                 )
 
-                fig.update_yaxes(title_text = 'd13C (per mil)', row =2, col=1,
+                fig.update_yaxes(title_text = 'Surface d13C (per mil)', row =2, col=1,
                                  showgrid = True, zeroline = True, showline = True,
                                     ticks = 'outside', linecolor = 'rgb(204,204,204)',
                                     linewidth = 2)
