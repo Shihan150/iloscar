@@ -437,6 +437,8 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
 * Provide a name for the experiment and run the model.
 * Succeed! 
 
+<img width="400" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/6dba92a5-f5bf-4c04-a3c3-07060cb546b8">
+
 
 
 
