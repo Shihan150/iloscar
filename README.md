@@ -76,17 +76,17 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 
 2. Type ***conda env create -f iloscar_mac.yml*** to install the iloscar environment. It may take ~1 - 5 min.
 
-<img width="460" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/98e28f3a-121b-4b64-949b-e01100a64981">
+<img width="479" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/328bf928-994a-4378-b9f3-8cfb30582c3b">
 <br>
 
 3. Type ***conda activate iloscar***
 
-<img width="434" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/e38d5d20-9da2-4889-88da-fdee7b4c940a">
+<img width="394" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/e41e376c-aa75-4b36-90dd-efd0f102e1df">
 <br>
 
 4. Go to the iloscar coding directory by typing ***cd iloscar*** 
 
-<img width="365" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/424b2eeb-a9aa-4b74-a179-265bd576845e">
+<img width="352" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/7968d5b8-f117-475f-b61a-9de921ab9c63">
 <br>
 
 5. Type ***python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) in your browser to run the model. It may take several to tens of seconds, depending on your machine.
