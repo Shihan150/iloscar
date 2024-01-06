@@ -1,6 +1,9 @@
 # Anaconda installment
 
-This tutorial is for installing Anaconda on your machine. It is highly suggestted that your machine has at least 4GB storage space for the installation of Anaconda.
+This tutorial is for installing Anaconda on your machine. You have two options: Anaconda Distribution or Miniconda. 
+  
+
+It is highly suggested that your machine has at least 4GB storage space for the installation of Anaconda.
 
 ## Mac system
 1. Download from the [anaconda website](https://www.anaconda.com/products/individual).
