@@ -1,4 +1,4 @@
-name: iloscar_mac
+name: iloscar
 channels:
   - defaults
 dependencies:
