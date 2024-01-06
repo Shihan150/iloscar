@@ -70,7 +70,8 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 #### Mac system
 1. Open the Terminal and go to the iloscar main directory downloaded in the previous step. One example is shown below and you need to specify your own path (the part after "cd"). You can learn more about navigating files and directories [here](https://docs.ycrc.yale.edu/PIL/02-filedir/).
 
-<img width="478" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/8359350e-6ebc-4d94-9455-4e31128eefeb">
+<img width="394" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/3eaeb9bb-acb4-49e9-9b2e-0156c1c04677">
+
 <br>
 
 2. Type ***conda env create -f iloscar_mac.yml*** to install the iloscar environment. It may take ~1 - 5 min.
