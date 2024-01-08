@@ -1,6 +1,6 @@
 # Anaconda installment
 
-To install Anaconda on your machine, you have two options: Anaconda Distribution and Miniconda. The installation processes are similar and both support running the iLOSCAR program, but they have some key differences. Here's a brief overview to help users decide which to install.
+To install Anaconda on your machine, you have two options: Anaconda Distribution and Miniconda. The installation processes are similar and both support running the iLOSCAR program, but they have some key differences. Here's a brief overview to help users decide which to install. 
   
 |  | Anaconda Distribution | Miniconda |
 | ---         |     ---      |          --- |
@@ -58,5 +58,8 @@ Succeed!
 ## Linux
 If you have a Linux machine, here is the [link](https://docs.anaconda.com/anaconda/install/linux/) for installment tutorials.
 
+## Revert the terminal prompt changes caused by the Anaconda installation
+After installing Anaconda or Miniconda, you might notice that Conda modifies the terminal prompt to indicate the active environment. This feature is designed to help users keep track of the environment they are working in, but if you prefer not to have this modification, you can reverse or remove it.
 
+To revert this change, please refer to a [detailed tutorial] (https://saturncloud.io/blog/how-to-remove-base-from-terminal-prompt-after-updating-conda-a-guide/).
 
