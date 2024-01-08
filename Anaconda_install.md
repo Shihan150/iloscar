@@ -4,7 +4,7 @@ To install Anaconda on your machine, you have two options: Anaconda Distribution
   
 |  | Anaconda Distribution | Miniconda |
 | ---         |     ---      |          --- |
-| Pre-installed packages   | Full Package: Python + Conda package manager + a large collection of pre-installed packages     | Python + Conda package manager    |
+| Pre-installed packages   | Python + Conda package manager + a large collection of pre-installed packages     | Python + Conda package manager    |
 | Disk space     | 3 GB       | 400 MB      |
 | Interface     | A graphical user interface (Navigator) + Command-line interface       | Command-line interface      |
 
