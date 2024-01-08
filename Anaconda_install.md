@@ -1,12 +1,18 @@
 # Anaconda installment
 
-This tutorial is for installing Anaconda on your machine. You have two options: Anaconda Distribution or Miniconda. 
+To install Anaconda on your machine, you have two options: Anaconda Distribution and Miniconda. The installation processes are similar and both support running the iLOSCAR program, but they have some key differences. Here's a brief overview to help users decide which to install.
   
+|  | Anaconda Distribution | Miniconda |
+| :---         |     :---:      |          ---: |
+| Pre-installed packages   | Full Package: Python + Conda package manager + a large collection of pre-installed packages     | Python + Conda package manager    |
+| Disk space     | 3 GB       | 400 MB      |
+| Interface     | A graphical user interface (Navigator) + Command-line interface       | Command-line interface      |
 
-It is highly suggested that your machine has at least 4GB storage space for the installation of Anaconda.
+
 
 ## Mac system
-1. Download from the [anaconda website](https://www.anaconda.com/products/individual).
+
+1. Download the installer for [Anaconda Distribution](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/).
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/9352970a-d053-4121-b552-5d65e5ddc574">  
 \n.        
 2. Double-click to install. Generally, just click 'allow' or 'continue' when proceeding.
@@ -27,7 +33,7 @@ Succeed!
 
 
 ## Windows 10
-1. Download from the [anaconda website](https://www.anaconda.com/products/individual).
+1. Download the installer for [Anaconda Distribution](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/).
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/6a6621d8-503d-443f-8f81-862cb34eb04c">  
 
 
