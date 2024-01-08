@@ -3,7 +3,7 @@
 To install Anaconda on your machine, you have two options: Anaconda Distribution and Miniconda. The installation processes are similar and both support running the iLOSCAR program, but they have some key differences. Here's a brief overview to help users decide which to install.
   
 |  | Anaconda Distribution | Miniconda |
-| ---         |     :---:      |          --- |
+| ---         |     ---      |          --- |
 | Pre-installed packages   | Full Package: Python + Conda package manager + a large collection of pre-installed packages     | Python + Conda package manager    |
 | Disk space     | 3 GB       | 400 MB      |
 | Interface     | A graphical user interface (Navigator) + Command-line interface       | Command-line interface      |
