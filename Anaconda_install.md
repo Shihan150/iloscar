@@ -14,7 +14,9 @@ To install Anaconda on your machine, you have two options: Anaconda Distribution
 
 1. Download the installer for [Anaconda Distribution](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/).
 <img width="960" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/9352970a-d053-4121-b552-5d65e5ddc574">  
-\n.        
+
+
+
 2. Double-click to install. Generally, just click 'allow' or 'continue' when proceeding.
 <img width="836" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/1953e53d-5d3f-4026-9e27-e0befe34f46f">
 <img width="830" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/b970bfbb-50ad-4e9c-b3b1-d6077814356c">
@@ -27,6 +29,7 @@ To install Anaconda on your machine, you have two options: Anaconda Distribution
 <img width="618" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/4c03ab32-435f-48a5-a932-30ca45e5333f">
 <img width="720" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/005eebd9-5f8d-49ac-b67e-345248059bd0">
 <img width="718" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/8336901a-2979-4a2f-85b4-4a96552a8e42">
+
 
 Succeed!
 
