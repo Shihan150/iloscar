@@ -63,7 +63,7 @@ To avoid the potential Python package inconsistency, we highly recommend downloa
 <br>
 
 ### 0. Anaconda install  
-Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/blob/main/Anaconda_install.md) file for detailed instructions on installing Anaconda. If you already have Anaconda installed, you can proceed to the next step.
+Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/blob/main/Anaconda_install.md) file for detailed instructions on installing Anaconda. Two options including Anaconda Distribution and Miniconda are provided in the tutorial. If you already have Anaconda installed, you can proceed to the next step.
 
 ### 1. Create a virtual environment and run the model
 
@@ -119,7 +119,7 @@ Succeed!
 5. Type ***python app.py*** and open [http://127.0.0.1:7777/](http://127.0.0.1:7777/) in your browser to run the model. It may take several to tens of seconds, depending on your machine.
 ![image](https://github.com/Shihan150/iloscar/assets/57557675/2e28f0cf-8c84-4e21-9ab0-cab5edd5e642)
 
-Succeed!
+Success!
 <br>
 <br>
 <br>
@@ -413,7 +413,7 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
 * In Step 2 table, set pCO2_ref == 834, pCO2_initial == 834, silicate weathering0 = 7.5, carbonate weathering0 = 17.5, d13c volcanic == -1.5
 * In Step 4 table, input './gutjahr2017.dat'
 * Provide a name for the experiment and run the model.
-* Succeed! 
+* Success! 
 
 <img width="836" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/2c7bd82d-a6c3-481f-8ae5-dc0ec13aa7f7">
 
@@ -437,7 +437,7 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
 * In Step 3 table, set lower and higher boundaries as [-0.1, 1], which will accelerate the model
 * In Step 4 table, input './wu2023.dat'
 * Provide a name for the experiment and run the model.
-* Succeed! 
+* Success! 
 
 <img width="400" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/6dba92a5-f5bf-4c04-a3c3-07060cb546b8">
 
