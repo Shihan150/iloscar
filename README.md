@@ -94,7 +94,7 @@ Please refer to the [Anaconda_install.md](https://github.com/Shihan150/iloscar/b
 <img width="387" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/eca0100f-7c9e-4fa8-a455-57d8ee86cc6e">
 <img width="1839" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/d345d9c5-c5ff-4404-bf33-6ab708da7003">
 
-Succeed!
+Success!
 
 <br>
 <br>
