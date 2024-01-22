@@ -49,8 +49,8 @@ import platform
 
 
 
-
-
+ODE_SOLVER = 'LSODA'
+# ODE_SOLVER = 'BDF'
 
 def init_start(params):
     # input: front-end user input
@@ -284,22 +284,22 @@ def model_run(set_progress):
 
 
         if platform.system() == 'Windows':
-            ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA')
+            ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = ODE_SOLVER)
 
             if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 5e2)
+                ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =  solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = 1e2)
+                    ysol =  solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
         else:
             first_step = None
-            ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = 'LSODA', first_step = first_step)
+            ysol = solve_ivp(derivs, (t0, tfinal), ystart, args = [set_progress, hpls], method = ODE_SOLVER, first_step = first_step)
 
         elapse = timeit.default_timer() - start_time
 
@@ -383,22 +383,22 @@ def model_run(set_progress):
 
 
                 if platform.system() == 'Windows':
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER)
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA', first_step = 5e2)
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER, first_step = 5e2)
 
 
                         if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA', first_step = 1e2)
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER, first_step = 1e2)
 
 
 
                 else:
                     first_step = None
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA',  first_step = first_step)
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER,  first_step = first_step)
 
 
 
@@ -436,22 +436,22 @@ def model_run(set_progress):
 
 
             if platform.system() == 'Windows':
-                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = ODE_SOLVER)
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = 5e2)
+                    ysol =solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = ODE_SOLVER, first_step = 5e2)
 
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =  solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = 1e2)
+                        ysol =  solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = ODE_SOLVER, first_step = 1e2)
 
 
 
             else:
                 first_step = None
-                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA', first_step = first_step)
+                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
 
 
@@ -520,22 +520,22 @@ def model_run(set_progress):
                 # write out the ysol as the initial values for next loop
 
                 if platform.system() == 'Windows':
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = 'LSODA')
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = ODE_SOLVER)
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]],  method = 'LSODA', first_step = 5e2)
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]],  method = ODE_SOLVER, first_step = 5e2)
 
 
                         if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = 'LSODA', first_step = 1e2)
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = ODE_SOLVER, first_step = 1e2)
 
 
 
                 else:
                     first_step = None
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = 'LSODA', first_step = first_step)
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, args = [0, hpls], t_eval = [tems[1]], method = ODE_SOLVER, first_step = first_step)
 
 
 
@@ -581,22 +581,22 @@ def model_run(set_progress):
 
 
             if platform.system() == 'Windows':
-                ysol = solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+                ysol = solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls], method = ODE_SOLVER)
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],   method = 'LSODA', first_step = 5e2)
+                    ysol =solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],   method = ODE_SOLVER, first_step = 5e2)
 
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =  solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = 1e2)
+                        ysol =  solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],  method = ODE_SOLVER, first_step = 1e2)
 
 
 
             else:
                 first_step = None
-                ysol = solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = first_step)
+                ysol = solve_ivp(derivs, (t_target[0], t_target[-1]), ystart, args = [0, hpls],  method = ODE_SOLVER, first_step = first_step)
 
 
 
@@ -663,22 +663,22 @@ def model_run(set_progress):
                 # write out the ysol as the initial values for the next loop
 
                 if platform.system() == 'Windows':
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER)
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA', first_step = 5e2)
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER, first_step = 5e2)
 
 
                         if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA', first_step = 1e2)
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER, first_step = 1e2)
 
 
 
                 else:
                     first_step = None
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = first_step)
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
 
                 yfinal = ysol['y'][:,-1]
@@ -713,22 +713,22 @@ def model_run(set_progress):
 
 
             if platform.system() == 'Windows':
-                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA')
+                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = ODE_SOLVER)
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = 'LSODA', first_step = 5e2)
+                    ysol =solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls],  method = ODE_SOLVER, first_step = 5e2)
 
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =  solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                        ysol =  solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
             else:
                 first_step = None
-                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = 'LSODA', first_step = first_step)
+                ysol = solve_ivp(derivs, (t_target[0]-500, t_target[-1]), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
             info = html.Div([
                             html.P(f'{elapse: .2f}s used.'),
@@ -785,22 +785,22 @@ def model_run(set_progress):
                 # write out the ysol as the initial values for the next loop
 
                 if platform.system() == 'Windows':
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER)
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = 5e2)
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                         if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
                 else:
                     first_step = None
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = first_step)
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
                 yfinal = ysol['y'][:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
@@ -890,22 +890,22 @@ def model_run(set_progress):
                 # write out hte ysol as the initial values for next loop
 
                 if platform.system() == 'Windows':
-                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA')
+                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = ODE_SOLVER)
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = 5e2)
+                        ysol =solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = ODE_SOLVER, first_step = 5e2)
 
 
                         if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                            ysol =  solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = 1e2)
+                            ysol =  solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = ODE_SOLVER, first_step = 1e2)
 
 
 
                 else:
                     first_step = None
-                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = first_step)
+                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = ODE_SOLVER, first_step = first_step)
 
                 yfinal = ysol.y[:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
@@ -934,22 +934,22 @@ def model_run(set_progress):
 
 
             if platform.system() == 'Windows':
-                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA')
+                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = ODE_SOLVER)
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = 5e2)
+                    ysol =solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =  solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                        ysol =  solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
             else:
                 first_step = None
-                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = first_step)
+                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
             info = html.Div([
                             html.P(f'{elapse: .2f}s used.'),
@@ -1006,22 +1006,22 @@ def model_run(set_progress):
                 # write out the ysol as the initial values for the next loop
 
                 if platform.system() == 'Windows':
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = 'LSODA')
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls],  method = ODE_SOLVER)
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = 5e2)
+                        ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                         if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                            ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
                 else:
                     first_step = None
-                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = 'LSODA', first_step = first_step)
+                    ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]],args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
                 yfinal = ysol['y'][:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
@@ -1125,22 +1125,22 @@ def model_run(set_progress):
 
 
                 if platform.system() == 'Windows':
-                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA')
+                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = ODE_SOLVER)
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = 5e2)
+                        ysol =solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = ODE_SOLVER, first_step = 5e2)
 
 
                         if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                            ysol =  solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = 1e2)
+                            ysol =  solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = ODE_SOLVER, first_step = 1e2)
 
 
 
                 else:
                     first_step = None
-                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = 'LSODA', first_step = first_step)
+                    ysol = solve_ivp(derivs, (tems_d13c[0], tems_d13c[1]), y0, args = [0, hpls], t_eval = [tems_d13c[1]], method = ODE_SOLVER, first_step = first_step)
 
                 yfinal = ysol.y[:,-1]
                 yfinal[3*NB:4*NB] *= TSCAL
@@ -1169,22 +1169,22 @@ def model_run(set_progress):
 
 
             if platform.system() == 'Windows':
-                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA')
+                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = ODE_SOLVER)
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = 5e2)
+                    ysol =solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                     if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                        ysol =  solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                        ysol =  solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
             else:
                 first_step = None
-                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = 'LSODA', first_step = first_step)
+                ysol = solve_ivp(derivs, (t_start-500, t_end), ystart, args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
             info = html.Div([
                             html.P(f'{elapse: .2f}s used.'),
@@ -1217,22 +1217,22 @@ def cost_function(ems_new, tracer_type, hpls, tems, ems):
 
 
         if platform.system() == 'Windows':
-            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER)
 
             if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 5e2)
+                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
         else:
             first_step = None
-            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = first_step)
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
         index = NOCT * NB
 
@@ -1248,22 +1248,22 @@ def cost_function(ems_new, tracer_type, hpls, tems, ems):
         fcinp = interpolate.interp1d([tems[0], tems[1]], [ems[0], ems[1]], bounds_error=False, fill_value=0)
 
         if platform.system() == 'Windows':
-            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER)
 
             if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 5e2)
+                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
         else:
             first_step = None
-            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = first_step)
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
         dic = ysol.y[0:NB,:]
         dicc = ysol.y[5*NB:6*NB,:] * CNTI*1e3/RHO
@@ -1285,22 +1285,22 @@ def cost_function(ems_new, tracer_type, hpls, tems, ems):
 
 
         if platform.system() == 'Windows':
-            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER)
 
             if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 5e2)
+                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
         else:
             first_step = None
-            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = first_step)
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
 
         dic = ysol.y[0:NB,:]
@@ -1321,22 +1321,22 @@ def cost_function(ems_new, tracer_type, hpls, tems, ems):
         fcinp = interpolate.interp1d([tems[0], tems[1]], [ems[0], ems[1]], bounds_error=False, fill_value=0)
 
         if platform.system() == 'Windows':
-            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA')
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER)
 
             if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 5e2)
+                ysol =solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = 5e2)
 
 
                 if np.isnan(ysol['y']).any() or len(ysol['y']) == 0:
 
-                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = 1e2)
+                    ysol =  solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = 1e2)
 
 
 
         else:
             first_step = None
-            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = 'LSODA', first_step = first_step)
+            ysol = solve_ivp(derivs, (tems[0], tems[1]), y0, t_eval = [tems[1]], args = [0, hpls], method = ODE_SOLVER, first_step = first_step)
 
 
         t = ysol.t
