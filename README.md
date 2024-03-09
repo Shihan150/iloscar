@@ -391,7 +391,7 @@ Adjust the values in the second and third rows of Step 3 table accordingly.
     
 ![image](https://user-images.githubusercontent.com/57557675/232137441-c1a4c47b-5420-46a0-a88f-2f6841de7991.png)
     
-* Once the inverse experiment is successful, the results will be displayed.
+* Once the inverse experiment is successful, the results will be displayed and saved in the exp_name folder (e.g., 'twin_exp' here).
 <img width="468" alt="image" src="https://github.com/Shihan150/iloscar/assets/57557675/d020b780-dae2-44fa-bfaa-3158dbc3a43b">
 
 
