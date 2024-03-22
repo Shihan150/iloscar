@@ -4,7 +4,9 @@ A web-based interactive carbon cycle model, built upon the classic LOSCAR model.
 When using iLOSCAR, cite as: 
   
 Zeebe, R.E., 2012. LOSCAR: Long-term ocean-atmosphere-sediment carbon cycle reservoir model v2.0.4. Geoscientific Model Development 5, 149–166.   
-Li, et al., in review, iLOSCAR: interactive Long-term Ocean-atmosphere-Sediment CArbon cycle Reservoir Model v1.0.
+Li, S., Zeebe, R. E., & Zhang, S. (2024). iLOSCAR: interactive Long-term Ocean-atmosphere-Sediment CArbon cycle Reservoir model v1.0. Global and Planetary Change, 236, 104413. https://doi.org/10.1016/j.gloplacha.2024.104413.
+
+![image](https://github.com/Shihan150/iloscar/assets/57557675/f688d4ac-26e2-4126-b811-9d611d841be9)
  
  Author  
  Shihan Li | Department of Oceanography, Texas A&M University, College Station, Texas, 77843, USA
