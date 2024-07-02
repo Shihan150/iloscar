@@ -2,7 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 @author: shihan
+
 """
+
 
 
 """
@@ -20,6 +22,8 @@ Based on the .c version
 """
 Update log:
 
+
+07/01/2024: the inversion emission trajectories are saved to corresponding exp_name folder.
 06/14/2023: fix the bugs when FSED = 0
 """
 
@@ -430,7 +434,7 @@ def model_run(set_progress):
 
             emi_scenario = pd.DataFrame(np.vstack([tt, emi_c, emi_c_cum]).T)
             emi_scenario.columns = ['Age', 'Carbon_emission_Gt', 'total_carbon_emission_Gt']
-            emi_scenario.to_csv('inverse_emission_from_pco2.csv')
+            emi_scenario.to_csv(f'{exp_name}/inverse_emission_from_pco2.csv')
 
 
 
@@ -575,7 +579,7 @@ def model_run(set_progress):
 
             emi_scenario = pd.DataFrame(np.vstack([tt, emi_c, emi_c_cum]).T)
             emi_scenario.columns = ['Age', 'Carbon_emission_Gt', 'total_carbon_emission_Gt']
-            emi_scenario.to_csv('inverse_emission_from_d13c.csv')
+            emi_scenario.to_csv(f'{exp_name}/inverse_emission_from_d13c.csv')
 
             RUN_TYPE = 3
 
@@ -708,7 +712,7 @@ def model_run(set_progress):
             # emi_c_cum = np.cumsum(emi_c)
             emi_scenario = pd.DataFrame(np.vstack([tt, emi_c, emi_c_cum]).T)
             emi_scenario.columns = ['Age', 'Carbon_emission_Gt', 'total_carbon_emission_Gt']
-            emi_scenario.to_csv('inverse_emission_from_ph.csv')
+            emi_scenario.to_csv(f'{exp_name}/inverse_emission_from_ph.csv')
 
 
 
@@ -829,7 +833,7 @@ def model_run(set_progress):
             emi_c_cum = np.cumsum(emi_interval)
             emi_scenario = pd.DataFrame(np.vstack([tt, emi_c, emi_c_cum]).T)
             emi_scenario.columns = ['Age', 'Carbon_emission_Gt', 'total_carbon_emission_Gt']
-            emi_scenario.to_csv('double_inversion_emission.csv')
+            emi_scenario.to_csv(f'{exp_name}/double_inversion_emission.csv')
 
             # inverse the d13c
             target_d13c = pd.read_csv(target_file2).dropna().to_numpy()
@@ -928,7 +932,7 @@ def model_run(set_progress):
 
             emi_d13c_scenario = pd.DataFrame(np.vstack([tt, emi_d13c]).T)
             emi_d13c_scenario.columns = ['Age', 'd13C_of_carbon_emission']
-            emi_d13c_scenario.to_csv('double_inversion_emission_d13c.csv')
+            emi_d13c_scenario.to_csv(f'{exp_name}/double_inversion_emission_d13c.csv')
 
 
 
@@ -1051,7 +1055,7 @@ def model_run(set_progress):
 
             emi_scenario = pd.DataFrame(np.vstack([tt, emi_c, emi_c_cum]).T)
             emi_scenario.columns = ['Age', 'Carbon_emission_Gt', 'total_carbon_emission_Gt']
-            emi_scenario.to_csv('double_inversion_emission_pH.csv')
+            emi_scenario.to_csv(f'{exp_name}/double_inversion_emission_pH.csv')
 
             # inverse the d13c
             target_d13c = pd.read_csv(target_file2).dropna().to_numpy()
@@ -1163,7 +1167,7 @@ def model_run(set_progress):
 
             emi_d13c_scenario = pd.DataFrame(np.vstack([tt, emi_d13c]).T)
             emi_d13c_scenario.columns = ['Age', 'd13C_of_carbon_emission']
-            emi_d13c_scenario.to_csv('double_inversion_emission_d13c_pH.csv')
+            emi_d13c_scenario.to_csv(f'{exp_name}/double_inversion_emission_d13c_pH.csv')
 
 
 
