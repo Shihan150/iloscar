@@ -1,3 +1,8 @@
+'''
+Update log:
+09/16/2024: update the file path for plotting the results
+'''
+
 import dash
 from dash import Input, Output, dcc, html, Dash, dash_table, html, callback, State, ctx
 from dash.dash_table.Format import Format
@@ -766,7 +771,7 @@ def update_figure(data, exp_name, dict1):
             if dict1['target'] == 'pCO2':
                 data = pd.read_csv(f'{exp_name}/pCO2_d13c.csv')
                 data2 = pd.read_csv(dict1['target_file'])
-                data3 = pd.read_csv('inverse_emission_from_pco2.csv')
+                data3 = pd.read_csv(f'{exp_name}/inverse_emission_from_pco2.csv')
 
                 fig = make_subplots(rows = 2, cols = 1, shared_xaxes = True,
                                     vertical_spacing = 0.02)
@@ -836,7 +841,7 @@ def update_figure(data, exp_name, dict1):
             elif dict1['target'] == 'd13c':
                 data = pd.read_csv((f'{exp_name}/Surface_dic_alk_d13c_ph.csv'))
                 data2 = pd.read_csv(dict1['target_file'])
-                data3 = pd.read_csv('inverse_emission_from_d13c.csv')
+                data3 = pd.read_csv(f'{exp_name}/inverse_emission_from_d13c.csv')
 
                 fig = make_subplots(rows = 2, cols = 1, shared_xaxes = True,
                                     vertical_spacing = 0.02)
@@ -905,7 +910,7 @@ def update_figure(data, exp_name, dict1):
             elif dict1['target'] == 'GSpH':
                 data = pd.read_csv((f'{exp_name}/Surface_dic_alk_d13c_ph.csv'))
                 data2 = pd.read_csv(dict1['target_file'])
-                data3 = pd.read_csv('inverse_emission_from_ph.csv')
+                data3 = pd.read_csv(f'{exp_name}/inverse_emission_from_ph.csv')
 
                 fig = make_subplots(rows = 2, cols = 1, shared_xaxes = True,
                                     vertical_spacing = 0.02)
@@ -980,8 +985,8 @@ def update_figure(data, exp_name, dict1):
                 data4 = pd.read_csv(f'{exp_name}/Surface_dic_alk_d13c_ph.csv')
                 data3 = pd.read_csv(dict1['target_file2'])
 
-                data5 = pd.read_csv('double_inversion_emission.csv')
-                data6 = pd.read_csv('double_inversion_emission_d13c.csv')
+                data5 = pd.read_csv(f'{exp_name}/double_inversion_emission.csv')
+                data6 = pd.read_csv(f'{exp_name}/double_inversion_emission_d13c.csv')
 
                 fig = make_subplots(rows=3, cols=1,
                     shared_xaxes=True,
@@ -1103,8 +1108,8 @@ def update_figure(data, exp_name, dict1):
                 data2 = pd.read_csv(dict1['target_file'])
                 data4 = pd.read_csv(f'{exp_name}/Surface_dic_alk_d13c_ph.csv')
                 data3 = pd.read_csv(dict1['target_file2'])
-                data5 = pd.read_csv('double_inversion_emission_pH.csv')
-                data6 = pd.read_csv('double_inversion_emission_d13c_pH.csv')
+                data5 = pd.read_csv(f'{exp_name}/double_inversion_emission_pH.csv')
+                data6 = pd.read_csv(f'{exp_name}/double_inversion_emission_d13c_pH.csv')
 
                 fig = make_subplots(rows=3, cols=1,
                     shared_xaxes=True,
