@@ -246,7 +246,7 @@ run_section = html.Div(style = {'textAlign':'left', "margin-left": "10rem"}, chi
         [
         dbc.Label(style = {'fontSize': 24}, children = "Experiment name"),
         dbc.Input(placeholder = 'Input experiment name...', id = 'exp_name', type = 'text'),
-        dbc.FormText('The modeling results will be saved in a dictionary after experinent name', style = {'fontSize': 18})
+        dbc.FormText('The modeling results will be saved in a dictionary after experiment name', style = {'fontSize': 18})
 
         ]
 )
