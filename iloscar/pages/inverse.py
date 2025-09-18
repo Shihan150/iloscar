@@ -290,7 +290,7 @@ run_section_inv = html.Div(style = {'textAlign':'left', "margin-left": "10rem"},
         [
         dbc.Label(style = {'fontSize': 24}, children = "Experiment name"),
         dbc.Input(placeholder = 'Input experiment name...', id = 'exp_name_inv', type = 'text'),
-        dbc.FormText('The modeling results will be saved in a dictionary after experinent name', style = {'fontSize': 18})
+        dbc.FormText('The modeling results will be saved in a dictionary after experiment name', style = {'fontSize': 18})
         ]
 )
 
